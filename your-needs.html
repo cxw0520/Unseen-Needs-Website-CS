@@ -135,6 +135,51 @@
         mask-repeat: repeat-x;
         padding-bottom: 40px;
       }
+
+      [data-reveal] {
+        opacity: 0;
+        translate: var(--reveal-x, 0px) var(--reveal-y, 12px);
+        scale: var(--reveal-scale, 1);
+        transition:
+          opacity var(--reveal-duration, 600ms) var(--reveal-ease, cubic-bezier(0.22, 1, 0.36, 1)),
+          translate var(--reveal-duration, 600ms) var(--reveal-ease, cubic-bezier(0.22, 1, 0.36, 1)),
+          scale var(--reveal-duration, 600ms) var(--reveal-ease, cubic-bezier(0.22, 1, 0.36, 1));
+        transition-delay: var(--reveal-delay, 0ms);
+      }
+      [data-reveal="fade"] {
+        --reveal-x: 0px;
+        --reveal-y: 0px;
+      }
+      [data-reveal="up"] {
+        --reveal-x: 0px;
+        --reveal-y: 12px;
+      }
+      [data-reveal="left"] {
+        --reveal-x: -12px;
+        --reveal-y: 0px;
+      }
+      [data-reveal="right"] {
+        --reveal-x: 12px;
+        --reveal-y: 0px;
+      }
+      [data-reveal="scale"] {
+        --reveal-x: 0px;
+        --reveal-y: 0px;
+        --reveal-scale: 0.98;
+      }
+      .is-visible[data-reveal] {
+        opacity: 1;
+        translate: 0 0;
+        scale: 1;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        [data-reveal] {
+          opacity: 1;
+          translate: 0 0;
+          scale: 1;
+          transition: none;
+        }
+      }
     </style>
   </head>
 
@@ -183,21 +228,55 @@
     <main class="flex-grow flex flex-col">
       <!-- Hero Section -->
       <section
-        class="relative w-full min-h-[614px] flex items-center justify-center py-section-padding px-gutter overflow-hidden bg-surface-container-lowest"
+        class="relative w-full min-h-[760px] md:min-h-[900px] flex items-center justify-center py-section-padding px-gutter overflow-hidden bg-surface-container-lowest [--hero-shift-x:0px] md:[--hero-shift-x:100px] [--hero-scale:1.2]"
       >
-        <div class="absolute inset-0 z-0">
-          <img
-            class="w-full h-full object-cover opacity-30 mix-blend-multiply"
-            src="assets/handle.png"
-            alt="Your Needs header image"
-          />
-          <div class="absolute inset-0 bg-gradient-to-b from-background/40 to-background/90"></div>
+        <div class="absolute inset-0 z-0 pointer-events-none">
+          <div
+            class="absolute inset-y-0 left-1/2 w-[min(520px,72vw)] md:w-[min(460px,34vw)]"
+            style="transform: translateX(calc(-50% - var(--hero-shift-x))) scale(var(--hero-scale)); transform-origin: center"
+          >
+            <img class="w-full h-full object-contain opacity-70" src="assets/handle.png" alt="Your Needs header image" />
+            <div class="absolute inset-0 bg-background/60"></div>
+          </div>
         </div>
-        <div class="relative z-10 max-w-container-max mx-auto text-center">
-          <h1 class="text-display-xl font-display-xl text-text-deep mb-8 flex flex-col items-center">
-            <span class="text-on-surface-variant">A WAY TO</span>
-            <span class="text-accent-red mt-overlap-offset relative z-20 mix-blend-multiply font-bold">SEE</span>
-            <span class="text-on-surface-variant -mt-8">YOUR NEEDS</span>
+        <div class="relative z-10 w-full max-w-[1600px] mx-auto">
+          <h1 class="w-full" aria-label="A WAY TO SEE SHOW YOUR NEEDS">
+            <div
+              class="flex flex-col items-center gap-6 md:grid md:grid-cols-[minmax(0,1fr)_min(640px,40vw)_minmax(0,1fr)] md:items-center md:gap-16"
+            >
+              <span
+                class="font-display-xl text-[clamp(44px,6.5vw,110px)] leading-none text-text-deep opacity-80 tracking-tight md:text-left whitespace-nowrap min-w-max md:justify-self-start"
+                data-reveal="fade"
+                style="--reveal-delay: 0ms"
+              >
+                A WAY TO
+              </span>
+
+              <span class="flex flex-col items-center leading-none md:justify-self-center" style="transform: translateX(calc(-1 * var(--hero-shift-x)))">
+                <span
+                  class="font-display-xl text-[clamp(52px,5.5vw,100px)] leading-none text-accent-red font-bold"
+                  data-reveal="left"
+                  style="--reveal-delay: 160ms; --reveal-x: -28px; --reveal-duration: 520ms; --reveal-ease: cubic-bezier(0.16, 1, 0.3, 1)"
+                >
+                  SEE
+                </span>
+                <span
+                  class="font-display-xl text-[clamp(52px,5.5vw,100px)] leading-none text-accent-red font-bold"
+                  data-reveal="right"
+                  style="--reveal-delay: 320ms; --reveal-x: 28px; --reveal-duration: 520ms; --reveal-ease: cubic-bezier(0.16, 1, 0.3, 1)"
+                >
+                  SHOW
+                </span>
+              </span>
+
+              <span
+                class="font-display-xl text-[clamp(44px,6.5vw,110px)] leading-none text-text-deep opacity-80 tracking-tight md:text-right whitespace-nowrap min-w-max md:justify-self-end"
+                data-reveal="fade"
+                style="--reveal-delay: 80ms"
+              >
+                YOUR NEEDS
+              </span>
+            </div>
           </h1>
         </div>
       </section>
@@ -205,13 +284,13 @@
       <!-- Statement Block -->
       <section class="w-full bg-secondary py-section-padding px-gutter text-center relative z-20">
         <div class="max-w-4xl mx-auto">
-          <h2 class="text-headline-lg font-headline-lg md:text-display-xl md:font-display-xl text-on-secondary mb-6 leading-tight">
+          <h2 class="text-headline-lg font-headline-lg md:text-display-xl md:font-display-xl text-on-secondary mb-6 leading-tight" data-reveal="up">
             A way to show needs <span class="text-primary-fixed-dim">without defining people.</span>
           </h2>
-          <p class="text-body-lg font-body-lg text-secondary-fixed max-w-3xl mx-auto">
+          <p class="text-body-lg font-body-lg text-secondary-fixed max-w-3xl mx-auto" data-reveal="up" style="--reveal-delay: 120ms">
             These categories reflect temporary situations, feelings, and invisible conditions that many of us may experience.
           </p>
-          <p class="text-body-lg font-body-lg text-secondary-fixed mt-8 max-w-3xl mx-auto italic">
+          <p class="text-body-lg font-body-lg text-secondary-fixed mt-8 max-w-3xl mx-auto italic" data-reveal="up" style="--reveal-delay: 240ms">
             These terms describe contexts of need, not labels of identity.
           </p>
         </div>
@@ -221,8 +300,8 @@
       <section class="w-full bg-primary-container relative z-10 pt-section-padding pb-[120px] px-gutter overflow-hidden">
         <div class="absolute -top-10 left-0 w-full h-20 bg-primary-container scalloped-top z-0"></div>
         <div class="max-w-container-max mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between mb-16">
-          <h2 class="text-display-xl font-display-xl text-accent-red leading-none mb-8 md:mb-0">Emotional<br />Cognitive</h2>
-          <div class="w-32 h-32 md:w-48 md:h-48 relative text-accent-red flex-shrink-0">
+          <h2 class="text-display-xl font-display-xl text-accent-red leading-none mb-8 md:mb-0" data-reveal="left">Emotional<br />Cognitive</h2>
+          <div class="w-32 h-32 md:w-48 md:h-48 relative text-accent-red flex-shrink-0" data-reveal="right">
             <svg class="w-full h-full transform -rotate-12" fill="currentColor" viewBox="0 0 100 100">
               <path
                 d="M50 10 A15 15 0 1 0 50 40 A15 15 0 1 0 50 10 Z M30 45 Q50 30 70 45 L85 70 Q90 80 80 85 L65 60 L50 95 L35 60 L20 85 Q10 80 15 70 Z"
@@ -249,30 +328,30 @@
           </div>
 
           <!-- Content Overlay on Grid -->
-          <div class="relative z-10 w-full max-w-5xl mx-auto flex flex-wrap justify-center gap-4 md:gap-8 p-8">
-            <div class="bg-accent-red/90 text-on-error w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-primary-fixed-dim">
+          <div class="relative z-10 w-full max-w-5xl mx-auto flex flex-wrap justify-center gap-4 md:gap-8 p-8" data-stagger data-stagger-step="90">
+            <div class="bg-accent-red/90 text-on-error w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-primary-fixed-dim" data-reveal="scale">
               <span class="text-body-md font-body-md">Anxiety</span>
             </div>
-            <div class="bg-accent-red/90 text-on-error w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-primary-fixed-dim">
+            <div class="bg-accent-red/90 text-on-error w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-primary-fixed-dim" data-reveal="scale">
               <span class="text-body-md font-body-md">Overstimulated</span>
             </div>
-            <div class="bg-accent-red/90 text-on-error w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-primary-fixed-dim">
+            <div class="bg-accent-red/90 text-on-error w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-primary-fixed-dim" data-reveal="scale">
               <span class="text-body-md font-body-md">Social<br />discomfort</span>
             </div>
-            <div class="bg-accent-red/90 text-on-error w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-primary-fixed-dim">
+            <div class="bg-accent-red/90 text-on-error w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-primary-fixed-dim" data-reveal="scale">
               <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 100 100">
                 <path
                   d="M50 10 A15 15 0 1 0 50 40 A15 15 0 1 0 50 10 Z M30 45 Q50 30 70 45 L85 70 Q90 80 80 85 L65 60 L50 95 L35 60 L20 85 Q10 80 15 70 Z"
                 ></path>
               </svg>
             </div>
-            <div class="bg-accent-red/90 text-on-error w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-primary-fixed-dim">
+            <div class="bg-accent-red/90 text-on-error w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-primary-fixed-dim" data-reveal="scale">
               <span class="text-body-md font-body-md">Sensory<br />sensitivity</span>
             </div>
-            <div class="bg-accent-red/90 text-on-error w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-primary-fixed-dim">
+            <div class="bg-accent-red/90 text-on-error w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-primary-fixed-dim" data-reveal="scale">
               <span class="text-body-md font-body-md">Psychological</span>
             </div>
-            <div class="bg-accent-red/90 text-on-error w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-primary-fixed-dim">
+            <div class="bg-accent-red/90 text-on-error w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-primary-fixed-dim" data-reveal="scale">
               <span class="text-body-md font-body-md">Distress</span>
             </div>
           </div>
@@ -280,15 +359,15 @@
 
         <!-- Message Block within Red Section -->
         <div class="bg-accent-red pt-20 pb-section-padding px-gutter relative flex flex-col items-center text-center">
-          <h3 class="text-headline-lg md:text-display-xl font-display-xl text-on-error mb-12 transform -rotate-3 max-w-2xl">
+          <h3 class="text-headline-lg md:text-display-xl font-display-xl text-on-error mb-12 transform -rotate-3 max-w-2xl" data-reveal="up">
             Please be gentle with me.
           </h3>
-          <div class="space-y-6 text-on-error text-body-lg font-body-lg italic">
-            <p class="transform -translate-x-12">I may need space.</p>
-            <p class="transform translate-x-4">I may need quiet.</p>
-            <p class="transform translate-x-20">I'm feeling overwhelmed.</p>
+          <div class="space-y-6 text-on-error text-body-lg font-body-lg italic" data-stagger data-stagger-step="120">
+            <p class="transform -translate-x-12" data-reveal="left">I may need space.</p>
+            <p class="transform translate-x-4" data-reveal="up">I may need quiet.</p>
+            <p class="transform translate-x-20" data-reveal="right">I'm feeling overwhelmed.</p>
           </div>
-          <div class="absolute bottom-10 right-10 md:right-32 w-48 h-32 transform rotate-12 opacity-80">
+          <div class="absolute bottom-10 right-10 md:right-32 w-48 h-32 transform rotate-12 opacity-80" data-reveal="scale">
             <div class="w-full h-12 bg-primary-fixed rounded-full shadow-lg flex items-center justify-center border-2 border-primary">
               <span class="text-on-primary-container text-xs font-bold tracking-widest">UNSEEN I MAY NEED SPACE</span>
             </div>
@@ -299,8 +378,8 @@
       <!-- Physical Support Section -->
       <section class="w-full bg-support-pink relative z-20 py-section-padding px-gutter overflow-hidden">
         <div class="max-w-container-max mx-auto relative z-10 flex flex-col md:flex-row items-center justify-center md:justify-start gap-8 mb-16">
-          <h2 class="text-display-xl font-display-xl text-on-surface leading-none text-center md:text-left">Physical<br />Support</h2>
-          <div class="w-32 h-32 md:w-48 md:h-48 relative text-action-teal flex-shrink-0">
+          <h2 class="text-display-xl font-display-xl text-on-surface leading-none text-center md:text-left" data-reveal="left">Physical<br />Support</h2>
+          <div class="w-32 h-32 md:w-48 md:h-48 relative text-action-teal flex-shrink-0" data-reveal="right">
             <svg class="w-full h-full" fill="currentColor" viewBox="0 0 100 100">
               <path
                 d="M40 20 A12 12 0 1 0 40 44 A12 12 0 1 0 40 20 Z M60 20 A12 12 0 1 0 60 44 A12 12 0 1 0 60 20 Z M25 50 Q40 40 50 50 Q60 40 75 50 L85 75 Q90 85 80 90 L65 65 L55 95 L45 95 L35 65 L20 90 Q10 85 15 75 Z"
@@ -325,42 +404,42 @@
             <div class="w-full aspect-square bg-support-pink rounded-full scale-125 hidden md:block"></div>
           </div>
 
-          <div class="relative z-10 w-full max-w-5xl mx-auto flex flex-wrap justify-center gap-4 md:gap-8 p-8">
-            <div class="bg-action-teal/90 text-on-primary w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-support-pink">
+          <div class="relative z-10 w-full max-w-5xl mx-auto flex flex-wrap justify-center gap-4 md:gap-8 p-8" data-stagger data-stagger-step="100">
+            <div class="bg-action-teal/90 text-on-primary w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-support-pink" data-reveal="scale">
               <span class="text-body-md font-body-md">Chronic<br />pain</span>
             </div>
-            <div class="bg-action-teal/90 text-on-primary w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-support-pink">
+            <div class="bg-action-teal/90 text-on-primary w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-support-pink" data-reveal="scale">
               <span class="text-body-md font-body-md">Heart Condition</span>
             </div>
-            <div class="bg-action-teal/90 text-on-primary w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-support-pink">
+            <div class="bg-action-teal/90 text-on-primary w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-support-pink" data-reveal="scale">
               <span class="text-body-md font-body-md">Surgery<br />recovery</span>
             </div>
-            <div class="bg-action-teal/90 text-on-primary w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-support-pink">
+            <div class="bg-action-teal/90 text-on-primary w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-support-pink" data-reveal="scale">
               <span class="text-body-md font-body-md">Menstrual pain</span>
             </div>
-            <div class="bg-action-teal/90 text-support-pink w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-support-pink bg-on-primary">
+            <div class="bg-action-teal/90 text-support-pink w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-support-pink bg-on-primary" data-reveal="scale">
               <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 100 100">
                 <path
                   d="M40 20 A12 12 0 1 0 40 44 A12 12 0 1 0 40 20 Z M60 20 A12 12 0 1 0 60 44 A12 12 0 1 0 60 20 Z M25 50 Q40 40 50 50 Q60 40 75 50 L85 75 Q90 85 80 90 L65 65 L55 95 L45 95 L35 65 L20 90 Q10 85 15 75 Z"
                 ></path>
               </svg>
             </div>
-            <div class="bg-action-teal/90 text-on-primary w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-support-pink">
+            <div class="bg-action-teal/90 text-on-primary w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-support-pink" data-reveal="scale">
               <span class="text-body-md font-body-md">Early<br />pregnancy</span>
             </div>
           </div>
         </div>
 
         <div class="bg-action-teal pt-20 pb-section-padding px-gutter relative flex flex-col items-center text-center text-on-primary">
-          <h3 class="text-headline-lg md:text-display-xl font-display-xl mb-12 transform rotate-2 max-w-3xl">
+          <h3 class="text-headline-lg md:text-display-xl font-display-xl mb-12 transform rotate-2 max-w-3xl" data-reveal="up">
             Please be mindful<br />of my condition.
           </h3>
-          <div class="space-y-6 text-body-lg font-body-lg italic w-full max-w-2xl text-right">
-            <p class="transform -translate-x-12">I may need a seat.</p>
-            <p class="transform translate-x-4">I may need assistance.</p>
-            <p class="transform translate-x-12">I'm managing a physical condition.</p>
+          <div class="space-y-6 text-body-lg font-body-lg italic w-full max-w-2xl text-right" data-stagger data-stagger-step="120">
+            <p class="transform -translate-x-12" data-reveal="left">I may need a seat.</p>
+            <p class="transform translate-x-4" data-reveal="up">I may need assistance.</p>
+            <p class="transform translate-x-12" data-reveal="right">I'm managing a physical condition.</p>
           </div>
-          <div class="absolute bottom-10 left-10 md:left-32 w-64 h-48 transform -rotate-6 opacity-90 flex flex-col gap-2">
+          <div class="absolute bottom-10 left-10 md:left-32 w-64 h-48 transform -rotate-6 opacity-90 flex flex-col gap-2" data-reveal="scale">
             <div class="w-full h-10 bg-support-pink rounded-full shadow-lg flex items-center justify-center border-2 border-action-teal">
               <span class="text-on-surface text-[10px] font-bold tracking-widest">UNSEEN I MAY NEED A SEAT</span>
             </div>
@@ -378,15 +457,15 @@
         >
           <div class="absolute -top-20 -right-20 w-64 h-64 bg-support-pink/40 rounded-full blur-3xl z-0"></div>
           <div class="relative z-10 text-center mb-12">
-            <h2 class="text-headline-lg font-headline-lg text-text-deep mb-4">Let's Share Together</h2>
-            <p class="text-body-md font-body-md text-on-surface-variant">
+            <h2 class="text-headline-lg font-headline-lg text-text-deep mb-4" data-reveal="up">Let's Share Together</h2>
+            <p class="text-body-md font-body-md text-on-surface-variant" data-reveal="up" style="--reveal-delay: 120ms">
               Your voice helps make the invisible, visible. Share your context.
             </p>
           </div>
 
-          <form class="relative z-10 space-y-6">
+          <form class="relative z-10 space-y-6" data-stagger data-stagger-step="90">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div class="flex flex-col">
+              <div class="flex flex-col" data-reveal="up">
                 <label class="text-label-bold font-label-bold text-on-surface mb-2 ml-4" for="name">Name (Optional)</label>
                 <input
                   class="bg-surface-container-lowest/50 border border-outline-variant text-on-surface rounded-full px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-on-surface-variant/50"
@@ -395,7 +474,7 @@
                   type="text"
                 />
               </div>
-              <div class="flex flex-col">
+              <div class="flex flex-col" data-reveal="up" style="--reveal-delay: 90ms">
                 <label class="text-label-bold font-label-bold text-on-surface mb-2 ml-4" for="email">Email (Optional)</label>
                 <input
                   class="bg-surface-container-lowest/50 border border-outline-variant text-on-surface rounded-full px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-on-surface-variant/50"
@@ -405,7 +484,7 @@
                 />
               </div>
             </div>
-            <div class="flex flex-col">
+            <div class="flex flex-col" data-reveal="up" style="--reveal-delay: 180ms">
               <label class="text-label-bold font-label-bold text-on-surface mb-2 ml-4" for="needs">What unseen needs do you carry?</label>
               <textarea
                 class="bg-surface-container-lowest/50 border border-outline-variant text-on-surface rounded-[2rem] px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-on-surface-variant/50 resize-none"
@@ -414,7 +493,7 @@
                 rows="3"
               ></textarea>
             </div>
-            <div class="flex flex-col">
+            <div class="flex flex-col" data-reveal="up" style="--reveal-delay: 270ms">
               <label class="text-label-bold font-label-bold text-on-surface mb-2 ml-4" for="reflection">How could others better support this?</label>
               <textarea
                 class="bg-surface-container-lowest/50 border border-outline-variant text-on-surface rounded-[2rem] px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-on-surface-variant/50 resize-none"
@@ -423,7 +502,7 @@
                 rows="4"
               ></textarea>
             </div>
-            <div class="pt-4 flex justify-center">
+            <div class="pt-4 flex justify-center" data-reveal="scale" style="--reveal-delay: 360ms">
               <button
                 class="bg-secondary text-on-secondary px-10 py-4 rounded-full font-label-bold text-lg hover:bg-secondary/90 hover:scale-105 transition-all shadow-md flex items-center gap-2"
                 type="button"
@@ -436,6 +515,56 @@
         </div>
       </section>
     </main>
+
+    <script>
+      (() => {
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const revealEls = document.querySelectorAll("[data-reveal]");
+
+        const initStagger = () => {
+          document.querySelectorAll("[data-stagger]").forEach((parent) => {
+            const step = Number(parent.dataset.staggerStep || "120");
+            const start = Number(parent.dataset.staggerStart || "0");
+            const children = parent.querySelectorAll("[data-reveal]");
+            let i = 0;
+            children.forEach((el) => {
+              const hasInlineDelay = el.style.getPropertyValue("--reveal-delay");
+              const hasAttrDelay = el.dataset.delay;
+              if (hasInlineDelay || hasAttrDelay) return;
+              el.style.setProperty("--reveal-delay", `${start + i * step}ms`);
+              i += 1;
+            });
+          });
+        };
+
+        const reveal = (el) => el.classList.add("is-visible");
+
+        initStagger();
+
+        if (reduceMotion) {
+          revealEls.forEach(reveal);
+          return;
+        }
+
+        if (!("IntersectionObserver" in window)) {
+          revealEls.forEach(reveal);
+          return;
+        }
+
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue;
+              reveal(entry.target);
+              obs.unobserve(entry.target);
+            }
+          },
+          { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
+        );
+
+        revealEls.forEach((el) => observer.observe(el));
+      })();
+    </script>
 
     <!-- Footer -->
     <footer
