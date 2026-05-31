@@ -125,6 +125,46 @@
       .icon-fill {
         font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
       }
+
+      [data-reveal] {
+        opacity: 0;
+        translate: 0 var(--reveal-y, 12px);
+        scale: var(--reveal-scale, 1);
+        transition:
+          opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
+          translate 600ms cubic-bezier(0.22, 1, 0.36, 1),
+          scale 600ms cubic-bezier(0.22, 1, 0.36, 1);
+        transition-delay: var(--reveal-delay, 0ms);
+      }
+      [data-reveal="fade"] {
+        translate: 0 0;
+      }
+      [data-reveal="up"] {
+        --reveal-y: 12px;
+      }
+      [data-reveal="left"] {
+        translate: -12px 0;
+      }
+      [data-reveal="right"] {
+        translate: 12px 0;
+      }
+      [data-reveal="scale"] {
+        translate: 0 0;
+        --reveal-scale: 0.98;
+      }
+      .is-visible[data-reveal] {
+        opacity: 1;
+        translate: 0 0;
+        scale: 1;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        [data-reveal] {
+          opacity: 1;
+          translate: 0 0;
+          scale: 1;
+          transition: none;
+        }
+      }
     </style>
   </head>
 
@@ -180,15 +220,15 @@
           class="max-w-container-max mx-auto px-gutter relative z-10 grid md:grid-cols-2 gap-12 items-center"
         >
           <div>
-            <h1 class="font-display-xl text-display-xl md:text-[100px] leading-none mb-6">
+            <h1 class="font-display-xl text-display-xl md:text-[100px] leading-none mb-6" data-reveal="up">
               SEE?<br />UNSEEN?
             </h1>
-            <p class="font-body-lg text-body-lg max-w-md">
+            <p class="font-body-lg text-body-lg max-w-md" data-reveal="up" style="--reveal-delay: 120ms">
               Visibility makes action more direct, and care more clear.
             </p>
           </div>
           <div class="flex justify-center relative">
-            <span class="material-symbols-outlined text-[200px] icon-fill text-on-secondary"
+            <span class="material-symbols-outlined text-[200px] icon-fill text-on-secondary" data-reveal="scale"
               >accessible</span
             >
             <div
@@ -200,8 +240,8 @@
 
       <!-- SEEN Section Header -->
       <section class="py-12 bg-surface-container text-center">
-        <h2 class="font-headline-lg text-headline-lg text-primary">What is Visible?</h2>
-        <p class="font-body-md text-body-md mt-4 max-w-2xl mx-auto text-on-surface-variant">
+        <h2 class="font-headline-lg text-headline-lg text-primary" data-reveal="up">What is Visible?</h2>
+        <p class="font-body-md text-body-md mt-4 max-w-2xl mx-auto text-on-surface-variant" data-reveal="up" style="--reveal-delay: 120ms">
           Needs that are often easy to recognize from appearance alone.
         </p>
       </section>
@@ -210,14 +250,14 @@
       <section class="bg-surface-lowest py-16">
         <div class="max-w-container-max mx-auto px-gutter grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h3 class="font-headline-md text-headline-md text-secondary mb-4">Caregiving</h3>
-            <p class="font-body-lg text-body-lg text-on-surface-variant">
+            <h3 class="font-headline-md text-headline-md text-secondary mb-4" data-reveal="left">Caregiving</h3>
+            <p class="font-body-lg text-body-lg text-on-surface-variant" data-reveal="left" style="--reveal-delay: 120ms">
               Caregivers with children are easy to recognize. Their needs are visible, and we often
               respond.
             </p>
           </div>
           <div class="flex justify-center md:justify-end">
-            <span class="material-symbols-outlined text-[180px] icon-fill text-action-teal"
+            <span class="material-symbols-outlined text-[180px] icon-fill text-action-teal" data-reveal="scale"
               >family_restroom</span
             >
           </div>
@@ -227,13 +267,13 @@
       <section class="bg-surface py-16">
         <div class="max-w-container-max mx-auto px-gutter grid md:grid-cols-2 gap-12 items-center">
           <div class="order-2 md:order-1 flex justify-center md:justify-start">
-            <span class="material-symbols-outlined text-[180px] icon-fill text-secondary"
+            <span class="material-symbols-outlined text-[180px] icon-fill text-secondary" data-reveal="scale"
               >accessible</span
             >
           </div>
           <div class="order-1 md:order-2 text-right">
-            <h3 class="font-headline-md text-headline-md text-accent-red mb-4">Wheelchair Use</h3>
-            <p class="font-body-lg text-body-lg text-on-surface-variant">
+            <h3 class="font-headline-md text-headline-md text-accent-red mb-4" data-reveal="right">Wheelchair Use</h3>
+            <p class="font-body-lg text-body-lg text-on-surface-variant" data-reveal="right" style="--reveal-delay: 120ms">
               People who use wheelchairs are often easy to recognize. Their needs are visible, and
               we can respond by giving them space.
             </p>
@@ -244,14 +284,14 @@
       <section class="bg-secondary text-on-secondary py-16">
         <div class="max-w-container-max mx-auto px-gutter grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h3 class="font-headline-md text-headline-md mb-4 text-primary-fixed">Aging</h3>
-            <p class="font-body-lg text-body-lg">
+            <h3 class="font-headline-md text-headline-md mb-4 text-primary-fixed" data-reveal="left">Aging</h3>
+            <p class="font-body-lg text-body-lg" data-reveal="left" style="--reveal-delay: 120ms">
               Older adults are often easy to recognize. Their needs are visible, and we often offer
               them seats or assistance.
             </p>
           </div>
           <div class="flex justify-center md:justify-end">
-            <span class="material-symbols-outlined text-[180px] icon-fill text-primary-fixed"
+            <span class="material-symbols-outlined text-[180px] icon-fill text-primary-fixed" data-reveal="scale"
               >elderly</span
             >
           </div>
@@ -261,7 +301,7 @@
       <!-- UNSEEN Section Header -->
       <section class="py-section-padding bg-calm-purple text-on-secondary relative overflow-hidden">
         <div class="max-w-container-max mx-auto px-gutter grid md:grid-cols-2 gap-12 items-center relative z-10">
-          <div class="flex justify-center relative">
+          <div class="flex justify-center relative" data-reveal="scale">
             <span class="material-symbols-outlined text-[200px] icon-fill text-primary-fixed"
               >person</span
             >
@@ -271,10 +311,10 @@
             >
           </div>
           <div>
-            <h2 class="font-display-xl text-display-xl md:text-[80px] leading-tight mb-6 text-primary-fixed">
+            <h2 class="font-display-xl text-display-xl md:text-[80px] leading-tight mb-6 text-primary-fixed" data-reveal="up">
               What is<br />Invisible?
             </h2>
-            <p class="font-body-lg text-body-lg max-w-md">
+            <p class="font-body-lg text-body-lg max-w-md" data-reveal="up" style="--reveal-delay: 120ms">
               Invisible needs are often difficult to recognize from appearance alone.
             </p>
           </div>
@@ -286,7 +326,7 @@
         <div class="absolute top-10 right-10 w-48 h-48 bg-primary-fixed rounded-full opacity-50 blur-xl"></div>
         <div class="absolute bottom-10 left-10 w-32 h-32 bg-action-teal rounded-full opacity-40 blur-lg"></div>
         <div class="max-w-container-max mx-auto px-gutter text-center relative z-10">
-          <p class="font-headline-lg text-headline-lg md:text-[40px] text-text-deep max-w-4xl mx-auto leading-relaxed">
+          <p class="font-headline-lg text-headline-lg md:text-[40px] text-text-deep max-w-4xl mx-auto leading-relaxed" data-reveal="up">
             They can include anxiety, sensory sensitivity, chronic pain, fatigue, mental health
             conditions, reduced stamina, or temporary physical discomfort.
           </p>
@@ -296,7 +336,7 @@
       <!-- UNSEEN Items with Bubbles -->
       <section class="bg-surface-container py-24">
         <div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row items-center justify-center gap-12">
-          <div class="relative w-full md:w-1/3 flex justify-center">
+          <div class="relative w-full md:w-1/3 flex justify-center" data-reveal="left">
             <span class="material-symbols-outlined text-[250px] icon-fill text-support-pink"
               >pregnant_woman</span
             >
@@ -306,7 +346,7 @@
             >
           </div>
           <div class="w-full md:w-2/3">
-            <div class="bg-support-pink text-on-secondary rounded-[3rem] rounded-bl-none p-10 relative shadow-none">
+            <div class="bg-support-pink text-on-secondary rounded-[3rem] rounded-bl-none p-10 relative shadow-none" data-reveal="right">
               <p class="font-body-lg text-body-lg text-[24px]">
                 "My pregnancy may not be visible yet, but if I feel dizzy or unwell, could you offer
                 me a seat?"
@@ -320,7 +360,7 @@
       <section class="bg-surface-bright py-24">
         <div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row items-center justify-center gap-12">
           <div class="w-full md:w-2/3 order-2 md:order-1">
-            <div class="bg-accent-red text-on-secondary rounded-[3rem] rounded-br-none p-10 relative shadow-none text-right">
+            <div class="bg-accent-red text-on-secondary rounded-[3rem] rounded-br-none p-10 relative shadow-none text-right" data-reveal="left">
               <p class="font-body-lg text-body-lg text-[24px]">
                 "I may experience sensory input more intensely than others. Please lower the volume
                 to help me feel more comfortable."
@@ -330,7 +370,7 @@
               </h3>
             </div>
           </div>
-          <div class="relative w-full md:w-1/3 flex justify-center order-1 md:order-2">
+          <div class="relative w-full md:w-1/3 flex justify-center order-1 md:order-2" data-reveal="right">
             <div class="text-[250px] text-accent-red leading-none select-none drop-shadow-none" style="font-family: serif; transform: scale(1.5)">
               ✸
             </div>
@@ -340,7 +380,7 @@
 
       <section class="bg-action-teal py-24">
         <div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row items-center justify-center gap-12">
-          <div class="relative w-full md:w-1/3 flex justify-center">
+          <div class="relative w-full md:w-1/3 flex justify-center" data-reveal="left">
             <span class="material-symbols-outlined text-[250px] icon-fill text-on-secondary"
               >person</span
             >
@@ -350,7 +390,7 @@
             >
           </div>
           <div class="w-full md:w-2/3">
-            <div class="bg-support-pink text-on-secondary rounded-[3rem] rounded-bl-none p-10 relative shadow-none">
+            <div class="bg-support-pink text-on-secondary rounded-[3rem] rounded-bl-none p-10 relative shadow-none" data-reveal="right">
               <p class="font-body-lg text-body-lg text-[24px]">
                 "My pregnancy may not be visible yet, but if I feel dizzy or unwell, could you offer
                 me a seat?"
@@ -363,6 +403,56 @@
         </div>
       </section>
     </main>
+
+    <script>
+      (() => {
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const revealEls = document.querySelectorAll("[data-reveal]");
+
+        const initStagger = () => {
+          document.querySelectorAll("[data-stagger]").forEach((parent) => {
+            const step = Number(parent.dataset.staggerStep || "120");
+            const start = Number(parent.dataset.staggerStart || "0");
+            const children = parent.querySelectorAll("[data-reveal]");
+            let i = 0;
+            children.forEach((el) => {
+              const hasInlineDelay = el.style.getPropertyValue("--reveal-delay");
+              const hasAttrDelay = el.dataset.delay;
+              if (hasInlineDelay || hasAttrDelay) return;
+              el.style.setProperty("--reveal-delay", `${start + i * step}ms`);
+              i += 1;
+            });
+          });
+        };
+
+        const reveal = (el) => el.classList.add("is-visible");
+
+        initStagger();
+
+        if (reduceMotion) {
+          revealEls.forEach(reveal);
+          return;
+        }
+
+        if (!("IntersectionObserver" in window)) {
+          revealEls.forEach(reveal);
+          return;
+        }
+
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue;
+              reveal(entry.target);
+              obs.unobserve(entry.target);
+            }
+          },
+          { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
+        );
+
+        revealEls.forEach((el) => observer.observe(el));
+      })();
+    </script>
 
     <!-- Footer -->
     <footer

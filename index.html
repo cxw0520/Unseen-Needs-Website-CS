@@ -215,6 +215,56 @@
         width: 100%;
         text-align: center;
       }
+
+      [data-reveal] {
+        opacity: 0;
+        translate: 0 var(--reveal-y, 12px);
+        scale: var(--reveal-scale, 1);
+        transition:
+          opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
+          translate 600ms cubic-bezier(0.22, 1, 0.36, 1),
+          scale 600ms cubic-bezier(0.22, 1, 0.36, 1);
+        transition-delay: var(--reveal-delay, 0ms);
+      }
+      [data-reveal="fade"] {
+        translate: 0 0;
+      }
+      [data-reveal="up"] {
+        --reveal-y: 12px;
+      }
+      [data-reveal="left"] {
+        translate: -12px 0;
+      }
+      [data-reveal="right"] {
+        translate: 12px 0;
+      }
+      [data-reveal="scale"] {
+        translate: 0 0;
+        --reveal-scale: 0.98;
+      }
+      .is-visible[data-reveal] {
+        opacity: 1;
+        translate: 0 0;
+        scale: 1;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        [data-reveal] {
+          opacity: 1;
+          translate: 0 0;
+          scale: 1;
+          transition: none;
+        }
+      }
+
+      .interactive-lift {
+        transition: translate 200ms ease, background-color 200ms ease, color 200ms ease;
+      }
+      .interactive-lift:hover {
+        translate: 0 -2px;
+      }
+      .press:active {
+        scale: 0.98;
+      }
     </style>
   </head>
 
@@ -232,7 +282,7 @@
             <a class="text-on-surface-variant hover:text-primary transition-colors" href="visibility.html">Visibility</a>
             <a class="text-on-surface-variant hover:text-primary transition-colors" href="your-needs.html">Your Needs</a>
           </nav>
-          <a class="border-2 border-outline rounded-full px-6 py-2 text-on-surface font-label-bold hover:bg-surface-variant transition-colors" href="your-needs.html#share">Share With Us</a>
+          <a class="border-2 border-outline rounded-full px-6 py-2 text-on-surface font-label-bold hover:bg-surface-variant interactive-lift press" href="your-needs.html#share">Share With Us</a>
         </div>
         <button class="md:hidden text-on-surface p-2" aria-label="Open menu" type="button">
           <span class="material-symbols-outlined text-3xl">menu</span>
@@ -247,13 +297,13 @@
           <div class="circle-decor bg-secondary w-64 h-64 top-12 -left-8 opacity-90" data-anim="blue"></div>
           <div class="circle-decor bg-calm-purple w-56 h-56 top-8 right-1/4 opacity-90 z-20" data-anim="purple"></div>
 
-          <div class="w-full aspect-video md:aspect-[21/9] relative overflow-hidden rounded-xl mt-4">
+          <div class="w-full aspect-video md:aspect-[21/9] relative overflow-hidden rounded-xl mt-4" data-reveal="scale">
             <img alt="Crowded subway interior" class="w-full h-full object-cover opacity-80 mix-blend-multiply" src="assets/subway.jpg" />
           </div>
 
           <div class="relative z-30 py-16 text-center w-full flex justify-center overflow-visible">
             <div class="circle-decor bg-primary-container w-48 h-48 -left-8 top-1/2 -translate-y-1/2 opacity-90 -z-10" data-anim="yellow"></div>
-            <h1 class="font-display-xl text-[60px] md:text-[120px] lg:text-[180px] leading-none text-primary-container drop-shadow-sm tracking-tighter inline-block relative heading-fill">Seeing the Unseen</h1>
+            <h1 class="font-display-xl text-[60px] md:text-[120px] lg:text-[180px] leading-none text-primary-container drop-shadow-sm tracking-tighter inline-block relative heading-fill" data-reveal="up" style="--reveal-delay: 120ms">Seeing the Unseen</h1>
           </div>
 
           <div class="circle-decor bg-accent-red w-40 h-40 bottom-1/4 left-1/3 opacity-90 z-20" data-anim="red"></div>
@@ -264,11 +314,11 @@
       <section class="bg-primary-container py-section-padding relative overflow-hidden">
         <div class="max-w-container-max mx-auto px-gutter relative z-10">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            <div class="relative h-64 md:h-96 rounded-xl overflow-hidden">
+            <div class="relative h-64 md:h-96 rounded-xl overflow-hidden" data-reveal="scale">
               <img alt="Priority zone sign" class="w-full h-full object-cover" src="assets/4block.jpg" />
               <div class="absolute inset-0 bg-secondary/20 mix-blend-multiply"></div>
             </div>
-            <div class="relative h-64 md:h-96 rounded-xl overflow-hidden">
+            <div class="relative h-64 md:h-96 rounded-xl overflow-hidden" data-reveal="scale" style="--reveal-delay: 120ms">
               <img alt="Public transportation seats" class="w-full h-full object-cover" src="assets/small-seat.jpg" />
               <div class="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
             </div>
@@ -279,8 +329,8 @@
           <div class="circle-decor bg-secondary w-72 h-72 -bottom-12 -right-12 opacity-90 z-20" data-anim="blue"></div>
 
           <div class="flex flex-col md:flex-row justify-between items-end gap-8 relative z-30 mt-12">
-            <h2 class="font-display-xl text-on-primary text-[50px] md:text-[80px] leading-tight max-w-2xl">What is Unseen</h2>
-            <a class="border border-on-primary text-on-primary font-label-bold px-8 py-3 rounded-full hover:bg-on-primary hover:text-primary-container transition-colors whitespace-nowrap" href="visibility.html">Learn more</a>
+            <h2 class="font-display-xl text-on-primary text-[50px] md:text-[80px] leading-tight max-w-2xl" data-reveal="up">What is Unseen</h2>
+            <a class="border border-on-primary text-on-primary font-label-bold px-8 py-3 rounded-full hover:bg-on-primary hover:text-primary-container transition-colors whitespace-nowrap interactive-lift press" href="visibility.html" data-reveal="up" style="--reveal-delay: 120ms">Learn more</a>
           </div>
         </div>
       </section>
@@ -289,11 +339,11 @@
         <div class="max-w-container-max mx-auto px-gutter relative">
           <div class="circle-decor bg-support-pink w-64 h-64 top-0 right-12 opacity-80" data-anim="pink"></div>
           <div class="circle-decor bg-calm-purple w-56 h-56 bottom-0 right-1/4 opacity-90 z-20 translate-y-1/2" data-anim="purple"></div>
-          <h2 class="font-display-xl text-on-surface text-[40px] md:text-[70px] lg:text-[90px] leading-tight max-w-4xl relative z-10 mb-24">
+          <h2 class="font-display-xl text-on-surface text-[40px] md:text-[70px] lg:text-[90px] leading-tight max-w-4xl relative z-10 mb-24" data-reveal="up">
             We often assume the answer is obvious.
             <br />But is it?
           </h2>
-          <div class="relative h-[614px] rounded-xl overflow-hidden mt-12">
+          <div class="relative h-[614px] rounded-xl overflow-hidden mt-12" data-reveal="scale" style="--reveal-delay: 120ms">
             <img alt="Blue subway seats interior" class="w-full h-full object-cover" src="assets/seats.jpg" />
             <div class="absolute inset-0 bg-secondary/10 mix-blend-multiply"></div>
           </div>
@@ -303,19 +353,29 @@
 
     <script>
       (() => {
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
         const circles = document.querySelectorAll(".circle-decor[data-anim]");
-        if (!circles.length) return;
+        const revealEls = document.querySelectorAll("[data-reveal]");
 
-        const activate = (el) => {
+        const activateCircle = (el) => {
           const name = el.dataset.anim;
           if (!name) return;
           el.classList.add(`anim-${name}`);
         };
 
+        const reveal = (el) => {
+          el.classList.add("is-visible");
+        };
+
+        if (reduceMotion) {
+          revealEls.forEach(reveal);
+          return;
+        }
+
         if (!("IntersectionObserver" in window)) {
-          circles.forEach(activate);
+          circles.forEach(activateCircle);
+          revealEls.forEach(reveal);
           return;
         }
 
@@ -323,17 +383,17 @@
           (entries, obs) => {
             for (const entry of entries) {
               if (!entry.isIntersecting) continue;
-              activate(entry.target);
-              obs.unobserve(entry.target);
+              const el = entry.target;
+              if (el.matches(".circle-decor[data-anim]")) activateCircle(el);
+              if (el.matches("[data-reveal]")) reveal(el);
+              obs.unobserve(el);
             }
           },
-          {
-            threshold: 0.15,
-            rootMargin: "0px 0px -10% 0px",
-          }
+          { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
         );
 
         circles.forEach((el) => observer.observe(el));
+        revealEls.forEach((el) => observer.observe(el));
       })();
     </script>
   </body>
