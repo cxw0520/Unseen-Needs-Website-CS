@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNSEEN - Visibility</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              error: "#ba1a1a",
+              "primary-container": "#e6c143",
+              "action-teal": "#6BB4A2",
+              "on-primary": "#ffffff",
+              "secondary-fixed": "#d3e3ff",
+              background: "#f9f9f9",
+              "surface-tint": "#725c00",
+              secondary: "#2c609a",
+              "surface-container-high": "#e8e8e8",
+              "on-tertiary-container": "#8a3624",
+              primary: "#725c00",
+              "primary-fixed": "#ffe083",
+              "on-surface": "#1a1c1c",
+              "outline-variant": "#d0c6af",
+              outline: "#7e7663",
+              "tertiary-container": "#ffb1a0",
+              "on-primary-container": "#634f00",
+              "on-tertiary-fixed-variant": "#7d2c1b",
+              "surface-variant": "#e2e2e2",
+              "secondary-fixed-dim": "#a3c9ff",
+              "tertiary-fixed": "#ffdad3",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed-variant": "#044881",
+              "primary-fixed-dim": "#e8c345",
+              "secondary-container": "#8fbeff",
+              "support-pink": "#E8A7BD",
+              "on-secondary-container": "#0f4c86",
+              "on-surface-variant": "#4d4635",
+              "calm-purple": "#7269A3",
+              "on-secondary": "#ffffff",
+              "surface-container-highest": "#e2e2e2",
+              "error-container": "#ffdad6",
+              "surface-dim": "#dadada",
+              "on-error-container": "#93000a",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-fixed": "#3e0500",
+              "inverse-surface": "#2f3131",
+              "inverse-on-surface": "#f0f1f1",
+              "on-error": "#ffffff",
+              "tertiary-fixed-dim": "#ffb4a4",
+              "on-primary-fixed": "#231b00",
+              "inverse-primary": "#e8c345",
+              "on-primary-fixed-variant": "#564500",
+              surface: "#f9f9f9",
+              tertiary: "#9c4330",
+              "surface-container": "#eeeeee",
+              "surface-bright": "#f9f9f9",
+              "text-deep": "#3F4652",
+              "on-background": "#1a1c1c",
+              "accent-red": "#CD472D",
+              "surface-container-low": "#f3f3f4",
+              "on-secondary-fixed": "#001c39",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              gutter: "24px",
+              "container-max": "1200px",
+              "section-padding": "80px",
+              unit: "8px",
+              "margin-mobile": "16px",
+              "overlap-offset": "-40px",
+            },
+            fontFamily: {
+              "body-lg": ["Tobias", "serif"],
+              "display-xl": ["Tobias", "serif"],
+              "headline-md": ["Franklin Gothic Medium", "sans-serif"],
+              "headline-lg-mobile": ["Tobias", "serif"],
+              "label-bold": ["Franklin Gothic Medium", "sans-serif"],
+              "headline-lg": ["Tobias", "serif"],
+              "body-md": ["Franklin Gothic Medium", "sans-serif"],
+            },
+            fontSize: {
+              "body-lg": ["22px", { lineHeight: "32px", fontWeight: "400" }],
+              "display-xl": [
+                "80px",
+                {
+                  lineHeight: "90px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "300",
+                },
+              ],
+              "headline-md": ["28px", { lineHeight: "34px", fontWeight: "400" }],
+              "headline-lg-mobile": [
+                "32px",
+                { lineHeight: "38px", fontWeight: "400" },
+              ],
+              "label-bold": ["16px", { lineHeight: "20px", fontWeight: "400" }],
+              "headline-lg": ["48px", { lineHeight: "56px", fontWeight: "400" }],
+              "body-md": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+      .icon-fill {
+        font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+    </style>
+  </head>
+
+  <body class="bg-background text-on-surface antialiased font-body-md overflow-x-hidden">
+    <!-- TopAppBar -->
+    <header class="bg-background/90 backdrop-blur-md sticky full-width top-0 z-50">
+      <div
+        class="flex justify-between items-center w-full px-gutter py-4 max-w-container-max mx-auto border-b border-outline-variant"
+      >
+        <a class="text-2xl font-display-xl tracking-tighter text-on-surface" href="index.html"
+          >UNSE<span class="opacity-0">E</span>N</a
+        >
+        <nav class="hidden md:flex gap-6 items-center">
+          <a
+            class="text-on-surface-variant hover:text-primary transition-colors text-label-bold font-label-bold"
+            href="index.html"
+            >Home</a
+          >
+          <a
+            class="text-on-surface-variant hover:text-primary transition-colors text-label-bold font-label-bold"
+            href="story.html"
+            >Story</a
+          >
+          <a
+            class="text-primary border-b-2 border-primary pb-1 text-label-bold font-label-bold"
+            href="visibility.html"
+            >Visibility</a
+          >
+          <a
+            class="text-on-surface-variant hover:text-primary transition-colors text-label-bold font-label-bold"
+            href="your-needs.html"
+            >Your Needs</a
+          >
+        </nav>
+        <a
+          class="hidden md:inline-flex px-6 py-3 bg-secondary text-on-secondary rounded-lg font-label-bold text-label-bold hover:bg-secondary/90 transition-colors"
+          href="your-needs.html#share"
+          >Share With Us</a
+        >
+        <button class="md:hidden text-on-surface" aria-label="Open menu" type="button">
+          <span class="material-symbols-outlined text-3xl">menu</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section: SEE? UNSEEN? -->
+      <section class="bg-secondary text-on-secondary py-section-padding relative overflow-hidden">
+        <div
+          class="absolute top-[-50px] right-[-50px] w-64 h-64 bg-accent-red rounded-full opacity-90 blur-sm"
+        ></div>
+        <div
+          class="max-w-container-max mx-auto px-gutter relative z-10 grid md:grid-cols-2 gap-12 items-center"
+        >
+          <div>
+            <h1 class="font-display-xl text-display-xl md:text-[100px] leading-none mb-6">
+              SEE?<br />UNSEEN?
+            </h1>
+            <p class="font-body-lg text-body-lg max-w-md">
+              Visibility makes action more direct, and care more clear.
+            </p>
+          </div>
+          <div class="flex justify-center relative">
+            <span class="material-symbols-outlined text-[200px] icon-fill text-on-secondary"
+              >accessible</span
+            >
+            <div
+              class="absolute bottom-10 left-10 w-32 h-32 bg-accent-red rounded-full opacity-90 -z-10 blur-sm"
+            ></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEEN Section Header -->
+      <section class="py-12 bg-surface-container text-center">
+        <h2 class="font-headline-lg text-headline-lg text-primary">What is Visible?</h2>
+        <p class="font-body-md text-body-md mt-4 max-w-2xl mx-auto text-on-surface-variant">
+          Needs that are often easy to recognize from appearance alone.
+        </p>
+      </section>
+
+      <!-- SEEN Items -->
+      <section class="bg-surface-lowest py-16">
+        <div class="max-w-container-max mx-auto px-gutter grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h3 class="font-headline-md text-headline-md text-secondary mb-4">Caregiving</h3>
+            <p class="font-body-lg text-body-lg text-on-surface-variant">
+              Caregivers with children are easy to recognize. Their needs are visible, and we often
+              respond.
+            </p>
+          </div>
+          <div class="flex justify-center md:justify-end">
+            <span class="material-symbols-outlined text-[180px] icon-fill text-action-teal"
+              >family_restroom</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-surface py-16">
+        <div class="max-w-container-max mx-auto px-gutter grid md:grid-cols-2 gap-12 items-center">
+          <div class="order-2 md:order-1 flex justify-center md:justify-start">
+            <span class="material-symbols-outlined text-[180px] icon-fill text-secondary"
+              >accessible</span
+            >
+          </div>
+          <div class="order-1 md:order-2 text-right">
+            <h3 class="font-headline-md text-headline-md text-accent-red mb-4">Wheelchair Use</h3>
+            <p class="font-body-lg text-body-lg text-on-surface-variant">
+              People who use wheelchairs are often easy to recognize. Their needs are visible, and
+              we can respond by giving them space.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-secondary text-on-secondary py-16">
+        <div class="max-w-container-max mx-auto px-gutter grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h3 class="font-headline-md text-headline-md mb-4 text-primary-fixed">Aging</h3>
+            <p class="font-body-lg text-body-lg">
+              Older adults are often easy to recognize. Their needs are visible, and we often offer
+              them seats or assistance.
+            </p>
+          </div>
+          <div class="flex justify-center md:justify-end">
+            <span class="material-symbols-outlined text-[180px] icon-fill text-primary-fixed"
+              >elderly</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- UNSEEN Section Header -->
+      <section class="py-section-padding bg-calm-purple text-on-secondary relative overflow-hidden">
+        <div class="max-w-container-max mx-auto px-gutter grid md:grid-cols-2 gap-12 items-center relative z-10">
+          <div class="flex justify-center relative">
+            <span class="material-symbols-outlined text-[200px] icon-fill text-primary-fixed"
+              >person</span
+            >
+            <span
+              class="material-symbols-outlined absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[60px] icon-fill text-accent-red"
+              >favorite</span
+            >
+          </div>
+          <div>
+            <h2 class="font-display-xl text-display-xl md:text-[80px] leading-tight mb-6 text-primary-fixed">
+              What is<br />Invisible?
+            </h2>
+            <p class="font-body-lg text-body-lg max-w-md">
+              Invisible needs are often difficult to recognize from appearance alone.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- UNSEEN Context -->
+      <section class="bg-background py-16 relative overflow-hidden">
+        <div class="absolute top-10 right-10 w-48 h-48 bg-primary-fixed rounded-full opacity-50 blur-xl"></div>
+        <div class="absolute bottom-10 left-10 w-32 h-32 bg-action-teal rounded-full opacity-40 blur-lg"></div>
+        <div class="max-w-container-max mx-auto px-gutter text-center relative z-10">
+          <p class="font-headline-lg text-headline-lg md:text-[40px] text-text-deep max-w-4xl mx-auto leading-relaxed">
+            They can include anxiety, sensory sensitivity, chronic pain, fatigue, mental health
+            conditions, reduced stamina, or temporary physical discomfort.
+          </p>
+        </div>
+      </section>
+
+      <!-- UNSEEN Items with Bubbles -->
+      <section class="bg-surface-container py-24">
+        <div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row items-center justify-center gap-12">
+          <div class="relative w-full md:w-1/3 flex justify-center">
+            <span class="material-symbols-outlined text-[250px] icon-fill text-support-pink"
+              >pregnant_woman</span
+            >
+            <span
+              class="material-symbols-outlined absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-4 text-[40px] text-secondary font-bold"
+              >format_quote</span
+            >
+          </div>
+          <div class="w-full md:w-2/3">
+            <div class="bg-support-pink text-on-secondary rounded-[3rem] rounded-bl-none p-10 relative shadow-none">
+              <p class="font-body-lg text-body-lg text-[24px]">
+                "My pregnancy may not be visible yet, but if I feel dizzy or unwell, could you offer
+                me a seat?"
+              </p>
+              <h3 class="font-headline-md text-headline-md text-secondary mt-6">Early Pregnancy</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-surface-bright py-24">
+        <div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row items-center justify-center gap-12">
+          <div class="w-full md:w-2/3 order-2 md:order-1">
+            <div class="bg-accent-red text-on-secondary rounded-[3rem] rounded-br-none p-10 relative shadow-none text-right">
+              <p class="font-body-lg text-body-lg text-[24px]">
+                "I may experience sensory input more intensely than others. Please lower the volume
+                to help me feel more comfortable."
+              </p>
+              <h3 class="font-headline-md text-headline-md text-primary-fixed mt-6">
+                Sensory Sensitivity
+              </h3>
+            </div>
+          </div>
+          <div class="relative w-full md:w-1/3 flex justify-center order-1 md:order-2">
+            <div class="text-[250px] text-accent-red leading-none select-none drop-shadow-none" style="font-family: serif; transform: scale(1.5)">
+              ✸
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-action-teal py-24">
+        <div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row items-center justify-center gap-12">
+          <div class="relative w-full md:w-1/3 flex justify-center">
+            <span class="material-symbols-outlined text-[250px] icon-fill text-on-secondary"
+              >person</span
+            >
+            <span
+              class="material-symbols-outlined absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-8 text-[80px] icon-fill text-action-teal"
+              >favorite</span
+            >
+          </div>
+          <div class="w-full md:w-2/3">
+            <div class="bg-support-pink text-on-secondary rounded-[3rem] rounded-bl-none p-10 relative shadow-none">
+              <p class="font-body-lg text-body-lg text-[24px]">
+                "My pregnancy may not be visible yet, but if I feel dizzy or unwell, could you offer
+                me a seat?"
+              </p>
+              <h3 class="font-headline-md text-headline-md text-on-secondary mt-6 opacity-80">
+                Early Pregnancy
+              </h3>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="bg-surface-container-highest w-full px-gutter py-section-padding flex flex-col md:flex-row justify-between items-center gap-8 max-w-container-max mx-auto mt-24"
+    >
+      <div class="text-xl font-headline-lg text-primary">UNSEEN</div>
+      <div class="text-on-surface-variant font-body-md text-body-md text-center md:text-left">
+        © 2024 UNSEEN Project. Seeing the Unseen in our shared spaces.
+      </div>
+      <div class="flex gap-6 flex-wrap justify-center">
+        <a
+          class="text-on-surface-variant hover:text-secondary transition-colors text-label-bold font-label-bold hover:underline"
+          href="#"
+          >Accessibility</a
+        >
+        <a
+          class="text-on-surface-variant hover:text-secondary transition-colors text-label-bold font-label-bold hover:underline"
+          href="#"
+          >Privacy Policy</a
+        >
+        <a
+          class="text-on-surface-variant hover:text-secondary transition-colors text-label-bold font-label-bold hover:underline"
+          href="#"
+          >Contact</a
+        >
+        <a
+          class="text-on-surface-variant hover:text-secondary transition-colors text-label-bold font-label-bold hover:underline"
+          href="#"
+          >Join Movement</a
+        >
+      </div>
+    </footer>
+  </body>
+</html>

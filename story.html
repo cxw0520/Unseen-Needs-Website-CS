@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en" class="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNSEEN - Story About Us</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              error: "#ba1a1a",
+              "primary-container": "#e6c143",
+              "action-teal": "#6BB4A2",
+              "on-primary": "#ffffff",
+              "secondary-fixed": "#d3e3ff",
+              background: "#f9f9f9",
+              "surface-tint": "#725c00",
+              secondary: "#2c609a",
+              "surface-container-high": "#e8e8e8",
+              "on-tertiary-container": "#8a3624",
+              primary: "#725c00",
+              "primary-fixed": "#ffe083",
+              "on-surface": "#1a1c1c",
+              "outline-variant": "#d0c6af",
+              outline: "#7e7663",
+              "tertiary-container": "#ffb1a0",
+              "on-primary-container": "#634f00",
+              "on-tertiary-fixed-variant": "#7d2c1b",
+              "surface-variant": "#e2e2e2",
+              "secondary-fixed-dim": "#a3c9ff",
+              "tertiary-fixed": "#ffdad3",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed-variant": "#044881",
+              "primary-fixed-dim": "#e8c345",
+              "secondary-container": "#8fbeff",
+              "support-pink": "#E8A7BD",
+              "on-secondary-container": "#0f4c86",
+              "on-surface-variant": "#4d4635",
+              "calm-purple": "#7269A3",
+              "on-secondary": "#ffffff",
+              "surface-container-highest": "#e2e2e2",
+              "error-container": "#ffdad6",
+              "surface-dim": "#dadada",
+              "on-error-container": "#93000a",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-fixed": "#3e0500",
+              "inverse-surface": "#2f3131",
+              "inverse-on-surface": "#f0f1f1",
+              "on-error": "#ffffff",
+              "tertiary-fixed-dim": "#ffb4a4",
+              "on-primary-fixed": "#231b00",
+              "inverse-primary": "#e8c345",
+              "on-primary-fixed-variant": "#564500",
+              surface: "#f9f9f9",
+              tertiary: "#9c4330",
+              "surface-container": "#eeeeee",
+              "surface-bright": "#f9f9f9",
+              "text-deep": "#3F4652",
+              "on-background": "#1a1c1c",
+              "accent-red": "#CD472D",
+              "surface-container-low": "#f3f3f4",
+              "on-secondary-fixed": "#001c39",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              gutter: "24px",
+              "container-max": "1200px",
+              "section-padding": "80px",
+              unit: "8px",
+              "margin-mobile": "16px",
+              "overlap-offset": "-40px",
+            },
+            fontFamily: {
+              "body-lg": ["Tobias", "serif"],
+              "display-xl": ["Tobias", "serif"],
+              "headline-md": ["Franklin Gothic Medium Regular", "sans-serif"],
+              "headline-lg-mobile": ["Tobias", "serif"],
+              "label-bold": ["Franklin Gothic Medium Regular", "sans-serif"],
+              "headline-lg": ["Tobias", "serif"],
+              "body-md": ["Franklin Gothic Medium Regular", "sans-serif"],
+            },
+            fontSize: {
+              "body-lg": ["22px", { lineHeight: "32px", fontWeight: "400" }],
+              "display-xl": [
+                "80px",
+                {
+                  lineHeight: "90px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "300",
+                },
+              ],
+              "headline-md": ["28px", { lineHeight: "34px", fontWeight: "400" }],
+              "headline-lg-mobile": [
+                "32px",
+                { lineHeight: "38px", fontWeight: "400" },
+              ],
+              "label-bold": ["16px", { lineHeight: "20px", fontWeight: "400" }],
+              "headline-lg": ["48px", { lineHeight: "56px", fontWeight: "400" }],
+              "body-md": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      .material-symbols-outlined {
+        font-family: "Material Symbols Outlined";
+        font-weight: normal;
+        font-style: normal;
+        font-size: 24px;
+        line-height: 1;
+        letter-spacing: normal;
+        text-transform: none;
+        display: inline-block;
+        white-space: nowrap;
+        word-wrap: normal;
+        direction: ltr;
+        -webkit-font-feature-settings: "liga";
+        -webkit-font-smoothing: antialiased;
+      }
+    </style>
+  </head>
+
+  <body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+    <!-- TopAppBar -->
+    <header
+      class="bg-background/90 dark:bg-background/90 backdrop-blur-md docked full-width top-0 z-50 border-b border-outline-variant dark:border-outline flat no shadows sticky"
+    >
+      <div class="flex justify-between items-center w-full px-gutter py-4 max-w-container-max mx-auto">
+        <a class="text-2xl font-display-xl tracking-tighter text-on-surface dark:text-surface-bright uppercase" href="index.html">
+          UNS<span>E</span><span class="opacity-0">E</span>N
+        </a>
+        <nav aria-label="Main Navigation" class="hidden md:flex gap-8 items-center">
+          <a
+            class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-label-bold font-label-bold"
+            href="index.html"
+            >Home</a
+          >
+          <a
+            class="text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1 text-label-bold font-label-bold"
+            href="story.html"
+            >Story</a
+          >
+          <a
+            class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-label-bold font-label-bold"
+            href="visibility.html"
+            >Visibility</a
+          >
+          <a
+            class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-label-bold font-label-bold"
+            href="your-needs.html"
+            >Your Needs</a
+          >
+        </nav>
+        <a
+          class="hidden md:block bg-secondary text-on-secondary px-6 py-3 rounded-lg text-label-bold font-label-bold hover:bg-opacity-90 transition-all hover:-translate-y-1"
+          href="your-needs.html#share"
+          >Share With Us</a
+        >
+        <button class="md:hidden text-primary p-2" aria-label="Open menu" type="button">
+          <span class="material-symbols-outlined" data-icon="menu">menu</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Canvas -->
+    <main class="flex-grow flex flex-col">
+      <!-- Hero Story Title Section -->
+      <section class="bg-primary-container flex-grow flex items-center justify-start min-h-[716px] relative overflow-hidden">
+        <div
+          class="absolute -right-[20%] -bottom-[20%] w-[60%] h-[120%] bg-primary-fixed-dim rounded-full opacity-30 mix-blend-multiply blur-3xl pointer-events-none"
+        ></div>
+        <div class="w-full max-w-container-max mx-auto px-gutter relative z-10">
+          <h1 class="text-on-primary-container font-display-xl text-display-xl uppercase tracking-widest max-w-[800px]">
+            STORY ABOUT US
+          </h1>
+        </div>
+      </section>
+
+      <!-- Narrative Block 1 -->
+      <section class="py-section-padding bg-surface">
+        <div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+          <div class="md:col-span-5 relative z-10">
+            <h2 class="text-tertiary font-headline-lg text-headline-lg mb-6">The Genesis of Empathy</h2>
+            <p class="text-text-deep font-body-lg text-body-lg mb-8 leading-relaxed">
+              UNSEEN was born from a simple, profound realization: the vast majority of human struggle
+              happens beneath the surface. We move through shared spaces carrying invisible burdens—chronic
+              pain, anxiety, neurodivergence—often feeling entirely alone in a crowd.
+            </p>
+            <p class="text-text-deep font-body-md text-body-md opacity-80">
+              Our mission is not merely to acknowledge these unseen truths, but to make them tangible. To
+              weave a new visual language of radical empathy.
+            </p>
+          </div>
+          <div class="md:col-span-6 md:col-start-7 relative mt-12 md:mt-0">
+            <div class="aspect-square bg-support-pink rounded-full absolute -left-12 -top-12 w-64 h-64 mix-blend-multiply opacity-50"></div>
+            <img
+              class="w-full h-auto rounded-lg object-cover relative z-10 shadow-none border-4 border-surface"
+              alt="A high-contrast, editorial photograph of a person in silhouette against a brightly lit background"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO-h8h1PQIcx8jDaRh5JORHfObyHybc-nI_QXiq8Rk33aF93-QWTCEsTPUoY-EQ4QVpeOqS9T-FOebdwkGVOunddyNdl_zv2xUUyO2R0-xhluT-C-sZFj9g57U-zLwYt-_X6rQtV22sKp6rVbQHWsoF_Rbd_v1F2yxpECzjzs_cowuCQAoSiV3SmoGpjKzyc53dtU_S4frIBQ22H5V6zHEke4q7fzyEQ2syzQFCBqT2TsaaLJoIBKzMItMt4yKC3jctDbkpFQ2yA2K"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- The Vision Grid -->
+      <section class="py-section-padding bg-surface-container-low border-t border-outline-variant">
+        <div class="max-w-container-max mx-auto px-gutter">
+          <div class="text-center mb-16 max-w-3xl mx-auto">
+            <h2 class="text-secondary font-headline-md text-headline-md mb-4">Our Core Philosophy</h2>
+            <p class="text-on-surface-variant font-body-md text-body-md">
+              We believe visibility is the first step toward true connection. Here is how we bridge the
+              gap.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-surface p-8 rounded-xl border border-surface-dim hover:border-action-teal transition-colors group">
+              <div class="w-16 h-16 bg-action-teal/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-action-teal/30 transition-colors">
+                <span class="material-symbols-outlined text-action-teal" data-icon="visibility">visibility</span>
+              </div>
+              <h3 class="font-headline-md text-headline-md text-on-surface mb-3">Make It Visible</h3>
+              <p class="font-body-md text-body-md text-on-surface-variant">
+                Translating internal states into external signals using our symbolic humanist design language.
+              </p>
+            </div>
+
+            <div class="bg-surface p-8 rounded-xl border border-surface-dim hover:border-accent-red transition-colors group mt-0 md:mt-12">
+              <div class="w-16 h-16 bg-accent-red/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-accent-red/30 transition-colors">
+                <span class="material-symbols-outlined text-accent-red" data-icon="favorite">favorite</span>
+              </div>
+              <h3 class="font-headline-md text-headline-md text-on-surface mb-3">Radical Empathy</h3>
+              <p class="font-body-md text-body-md text-on-surface-variant">
+                Moving past mere awareness into active, compassionate acknowledgment in shared spaces.
+              </p>
+            </div>
+
+            <div class="bg-surface p-8 rounded-xl border border-surface-dim hover:border-calm-purple transition-colors group mt-0 md:mt-24">
+              <div class="w-16 h-16 bg-calm-purple/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-calm-purple/30 transition-colors">
+                <span class="material-symbols-outlined text-calm-purple" data-icon="forum">forum</span>
+              </div>
+              <h3 class="font-headline-md text-headline-md text-on-surface mb-3">Spark Dialog</h3>
+              <p class="font-body-md text-body-md text-on-surface-variant">
+                Creating safe openings for conversation without placing the burden of explanation on the individual.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface-container-highest dark:bg-inverse-surface w-full px-gutter py-section-padding flex flex-col md:flex-row justify-between items-center gap-8 max-w-container-max mx-auto flat no shadows">
+      <div class="text-xl font-headline-lg text-primary dark:text-primary-fixed uppercase tracking-tighter">UNS<span>E</span><span class="opacity-0">E</span>N</div>
+      <nav aria-label="Footer Navigation" class="flex flex-wrap justify-center gap-6">
+        <a class="text-on-surface-variant dark:text-surface-variant hover:underline hover:text-secondary dark:hover:text-secondary-fixed transition-colors text-label-bold font-label-bold hover:translate-y-[-2px] duration-200 block" href="#">Accessibility</a>
+        <a class="text-on-surface-variant dark:text-surface-variant hover:underline hover:text-secondary dark:hover:text-secondary-fixed transition-colors text-label-bold font-label-bold hover:translate-y-[-2px] duration-200 block" href="#">Privacy Policy</a>
+        <a class="text-on-surface-variant dark:text-surface-variant hover:underline hover:text-secondary dark:hover:text-secondary-fixed transition-colors text-label-bold font-label-bold hover:translate-y-[-2px] duration-200 block" href="#">Contact</a>
+        <a class="text-on-surface-variant dark:text-surface-variant hover:underline hover:text-secondary dark:hover:text-secondary-fixed transition-colors text-label-bold font-label-bold hover:translate-y-[-2px] duration-200 block" href="#">Join Movement</a>
+      </nav>
+      <div class="text-body-md font-body-md text-on-surface-variant text-center md:text-right">
+        © 2024 UNSEEN Project. Seeing the Unseen in our shared spaces.
+      </div>
+    </footer>
+  </body>
+</html>

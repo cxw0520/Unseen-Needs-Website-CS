@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNSEEN - Your Needs</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              error: "#ba1a1a",
+              "primary-container": "#e6c143",
+              "action-teal": "#6BB4A2",
+              "on-primary": "#ffffff",
+              "secondary-fixed": "#d3e3ff",
+              background: "#f9f9f9",
+              "surface-tint": "#725c00",
+              secondary: "#2c609a",
+              "surface-container-high": "#e8e8e8",
+              "on-tertiary-container": "#8a3624",
+              primary: "#725c00",
+              "primary-fixed": "#ffe083",
+              "on-surface": "#1a1c1c",
+              "outline-variant": "#d0c6af",
+              outline: "#7e7663",
+              "tertiary-container": "#ffb1a0",
+              "on-primary-container": "#634f00",
+              "on-tertiary-fixed-variant": "#7d2c1b",
+              "surface-variant": "#e2e2e2",
+              "secondary-fixed-dim": "#a3c9ff",
+              "tertiary-fixed": "#ffdad3",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed-variant": "#044881",
+              "primary-fixed-dim": "#e8c345",
+              "secondary-container": "#8fbeff",
+              "support-pink": "#E8A7BD",
+              "on-secondary-container": "#0f4c86",
+              "on-surface-variant": "#4d4635",
+              "calm-purple": "#7269A3",
+              "on-secondary": "#ffffff",
+              "surface-container-highest": "#e2e2e2",
+              "error-container": "#ffdad6",
+              "surface-dim": "#dadada",
+              "on-error-container": "#93000a",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-fixed": "#3e0500",
+              "inverse-surface": "#2f3131",
+              "inverse-on-surface": "#f0f1f1",
+              "on-error": "#ffffff",
+              "tertiary-fixed-dim": "#ffb4a4",
+              "on-primary-fixed": "#231b00",
+              "inverse-primary": "#e8c345",
+              "on-primary-fixed-variant": "#564500",
+              surface: "#f9f9f9",
+              tertiary: "#9c4330",
+              "surface-container": "#eeeeee",
+              "surface-bright": "#f9f9f9",
+              "text-deep": "#3F4652",
+              "on-background": "#1a1c1c",
+              "accent-red": "#CD472D",
+              "surface-container-low": "#f3f3f4",
+              "on-secondary-fixed": "#001c39",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              gutter: "24px",
+              "container-max": "1200px",
+              "section-padding": "80px",
+              unit: "8px",
+              "margin-mobile": "16px",
+              "overlap-offset": "-40px",
+            },
+            fontFamily: {
+              "body-lg": ["Tobias", "serif"],
+              "display-xl": ["Tobias", "serif"],
+              "headline-md": ["Franklin Gothic Medium Regular", "sans-serif"],
+              "headline-lg-mobile": ["Tobias", "serif"],
+              "label-bold": ["Franklin Gothic Medium Regular", "sans-serif"],
+              "headline-lg": ["Tobias", "serif"],
+              "body-md": ["Franklin Gothic Medium Regular", "sans-serif"],
+            },
+            fontSize: {
+              "body-lg": ["22px", { lineHeight: "32px", fontWeight: "400" }],
+              "display-xl": [
+                "80px",
+                {
+                  lineHeight: "90px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "300",
+                },
+              ],
+              "headline-md": ["28px", { lineHeight: "34px", fontWeight: "400" }],
+              "headline-lg-mobile": [
+                "32px",
+                { lineHeight: "38px", fontWeight: "400" },
+              ],
+              "label-bold": ["16px", { lineHeight: "20px", fontWeight: "400" }],
+              "headline-lg": ["48px", { lineHeight: "56px", fontWeight: "400" }],
+              "body-md": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      .overlap-top {
+        margin-top: -40px;
+      }
+      .overlap-bottom {
+        margin-bottom: -40px;
+      }
+      .scalloped-top {
+        mask-image: radial-gradient(circle at 20px 0, transparent 20px, black 21px);
+        mask-size: 40px 100%;
+        mask-repeat: repeat-x;
+        padding-top: 40px;
+      }
+      .scalloped-bottom {
+        mask-image: radial-gradient(circle at 20px 100%, transparent 20px, black 21px);
+        mask-size: 40px 100%;
+        mask-repeat: repeat-x;
+        padding-bottom: 40px;
+      }
+    </style>
+  </head>
+
+  <body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col">
+    <!-- TopAppBar -->
+    <header
+      class="bg-background/90 dark:bg-background/90 backdrop-blur-md sticky full-width top-0 z-50 border-b border-outline-variant dark:border-outline"
+    >
+      <div class="flex justify-between items-center w-full px-gutter py-4 max-w-container-max mx-auto">
+        <a class="text-2xl font-display-xl tracking-tighter text-on-surface dark:text-surface-bright" href="index.html">
+          UNSE<span class="opacity-0">E</span>N
+        </a>
+        <nav class="hidden md:flex items-center gap-8">
+          <a
+            class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-label-bold font-label-bold"
+            href="index.html"
+            >Home</a
+          >
+          <a
+            class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-label-bold font-label-bold"
+            href="story.html"
+            >Story</a
+          >
+          <a
+            class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-label-bold font-label-bold"
+            href="visibility.html"
+            >Visibility</a
+          >
+          <a
+            class="text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1 text-label-bold font-label-bold"
+            href="your-needs.html"
+            >Your Needs</a
+          >
+        </nav>
+        <a
+          class="bg-secondary text-on-secondary px-6 py-2 rounded-full font-label-bold hover:bg-secondary/90 transition-colors hidden md:block"
+          href="#share"
+          >Share With Us</a
+        >
+        <button class="md:hidden text-on-surface" aria-label="Open menu" type="button">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="flex-grow flex flex-col">
+      <!-- Hero Section -->
+      <section
+        class="relative w-full min-h-[614px] flex items-center justify-center py-section-padding px-gutter overflow-hidden bg-surface-container-lowest"
+      >
+        <div class="absolute inset-0 z-0">
+          <img
+            class="w-full h-full object-cover opacity-30 mix-blend-multiply"
+            src="assets/handle.png"
+            alt="Your Needs header image"
+          />
+          <div class="absolute inset-0 bg-gradient-to-b from-background/40 to-background/90"></div>
+        </div>
+        <div class="relative z-10 max-w-container-max mx-auto text-center">
+          <h1 class="text-display-xl font-display-xl text-text-deep mb-8 flex flex-col items-center">
+            <span class="text-on-surface-variant">A WAY TO</span>
+            <span class="text-accent-red mt-overlap-offset relative z-20 mix-blend-multiply font-bold">SEE</span>
+            <span class="text-on-surface-variant -mt-8">YOUR NEEDS</span>
+          </h1>
+        </div>
+      </section>
+
+      <!-- Statement Block -->
+      <section class="w-full bg-secondary py-section-padding px-gutter text-center relative z-20">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-headline-lg font-headline-lg md:text-display-xl md:font-display-xl text-on-secondary mb-6 leading-tight">
+            A way to show needs <span class="text-primary-fixed-dim">without defining people.</span>
+          </h2>
+          <p class="text-body-lg font-body-lg text-secondary-fixed max-w-3xl mx-auto">
+            These categories reflect temporary situations, feelings, and invisible conditions that many of us may experience.
+          </p>
+          <p class="text-body-lg font-body-lg text-secondary-fixed mt-8 max-w-3xl mx-auto italic">
+            These terms describe contexts of need, not labels of identity.
+          </p>
+        </div>
+      </section>
+
+      <!-- Emotional/Cognitive Section -->
+      <section class="w-full bg-primary-container relative z-10 pt-section-padding pb-[120px] px-gutter overflow-hidden">
+        <div class="absolute -top-10 left-0 w-full h-20 bg-primary-container scalloped-top z-0"></div>
+        <div class="max-w-container-max mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between mb-16">
+          <h2 class="text-display-xl font-display-xl text-accent-red leading-none mb-8 md:mb-0">Emotional<br />Cognitive</h2>
+          <div class="w-32 h-32 md:w-48 md:h-48 relative text-accent-red flex-shrink-0">
+            <svg class="w-full h-full transform -rotate-12" fill="currentColor" viewBox="0 0 100 100">
+              <path
+                d="M50 10 A15 15 0 1 0 50 40 A15 15 0 1 0 50 10 Z M30 45 Q50 30 70 45 L85 70 Q90 80 80 85 L65 60 L50 95 L35 60 L20 85 Q10 80 15 70 Z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Grid Pattern -->
+        <div class="w-full relative py-20 bg-accent-red overlap-bottom flex justify-center items-center overflow-hidden">
+          <div class="absolute inset-0 grid grid-cols-4 md:grid-cols-6 gap-2 p-4 opacity-80 mix-blend-overlay">
+            <div class="w-full aspect-square bg-primary-fixed-dim rounded-full scale-125"></div>
+            <div class="w-full aspect-square bg-primary-fixed-dim rounded-full scale-125"></div>
+            <div class="w-full aspect-square bg-primary-fixed-dim rounded-full scale-125"></div>
+            <div class="w-full aspect-square bg-primary-fixed-dim rounded-full scale-125"></div>
+            <div class="w-full aspect-square bg-primary-fixed-dim rounded-full scale-125 hidden md:block"></div>
+            <div class="w-full aspect-square bg-primary-fixed-dim rounded-full scale-125 hidden md:block"></div>
+            <div class="w-full aspect-square bg-primary-fixed-dim rounded-full scale-125"></div>
+            <div class="w-full aspect-square bg-primary-fixed-dim rounded-full scale-125"></div>
+            <div class="w-full aspect-square bg-primary-fixed-dim rounded-full scale-125"></div>
+            <div class="w-full aspect-square bg-primary-fixed-dim rounded-full scale-125"></div>
+            <div class="w-full aspect-square bg-primary-fixed-dim rounded-full scale-125 hidden md:block"></div>
+            <div class="w-full aspect-square bg-primary-fixed-dim rounded-full scale-125 hidden md:block"></div>
+          </div>
+
+          <!-- Content Overlay on Grid -->
+          <div class="relative z-10 w-full max-w-5xl mx-auto flex flex-wrap justify-center gap-4 md:gap-8 p-8">
+            <div class="bg-accent-red/90 text-on-error w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-primary-fixed-dim">
+              <span class="text-body-md font-body-md">Anxiety</span>
+            </div>
+            <div class="bg-accent-red/90 text-on-error w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-primary-fixed-dim">
+              <span class="text-body-md font-body-md">Overstimulated</span>
+            </div>
+            <div class="bg-accent-red/90 text-on-error w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-primary-fixed-dim">
+              <span class="text-body-md font-body-md">Social<br />discomfort</span>
+            </div>
+            <div class="bg-accent-red/90 text-on-error w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-primary-fixed-dim">
+              <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 100 100">
+                <path
+                  d="M50 10 A15 15 0 1 0 50 40 A15 15 0 1 0 50 10 Z M30 45 Q50 30 70 45 L85 70 Q90 80 80 85 L65 60 L50 95 L35 60 L20 85 Q10 80 15 70 Z"
+                ></path>
+              </svg>
+            </div>
+            <div class="bg-accent-red/90 text-on-error w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-primary-fixed-dim">
+              <span class="text-body-md font-body-md">Sensory<br />sensitivity</span>
+            </div>
+            <div class="bg-accent-red/90 text-on-error w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-primary-fixed-dim">
+              <span class="text-body-md font-body-md">Psychological</span>
+            </div>
+            <div class="bg-accent-red/90 text-on-error w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-primary-fixed-dim">
+              <span class="text-body-md font-body-md">Distress</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Message Block within Red Section -->
+        <div class="bg-accent-red pt-20 pb-section-padding px-gutter relative flex flex-col items-center text-center">
+          <h3 class="text-headline-lg md:text-display-xl font-display-xl text-on-error mb-12 transform -rotate-3 max-w-2xl">
+            Please be gentle with me.
+          </h3>
+          <div class="space-y-6 text-on-error text-body-lg font-body-lg italic">
+            <p class="transform -translate-x-12">I may need space.</p>
+            <p class="transform translate-x-4">I may need quiet.</p>
+            <p class="transform translate-x-20">I'm feeling overwhelmed.</p>
+          </div>
+          <div class="absolute bottom-10 right-10 md:right-32 w-48 h-32 transform rotate-12 opacity-80">
+            <div class="w-full h-12 bg-primary-fixed rounded-full shadow-lg flex items-center justify-center border-2 border-primary">
+              <span class="text-on-primary-container text-xs font-bold tracking-widest">UNSEEN I MAY NEED SPACE</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Physical Support Section -->
+      <section class="w-full bg-support-pink relative z-20 py-section-padding px-gutter overflow-hidden">
+        <div class="max-w-container-max mx-auto relative z-10 flex flex-col md:flex-row items-center justify-center md:justify-start gap-8 mb-16">
+          <h2 class="text-display-xl font-display-xl text-on-surface leading-none text-center md:text-left">Physical<br />Support</h2>
+          <div class="w-32 h-32 md:w-48 md:h-48 relative text-action-teal flex-shrink-0">
+            <svg class="w-full h-full" fill="currentColor" viewBox="0 0 100 100">
+              <path
+                d="M40 20 A12 12 0 1 0 40 44 A12 12 0 1 0 40 20 Z M60 20 A12 12 0 1 0 60 44 A12 12 0 1 0 60 20 Z M25 50 Q40 40 50 50 Q60 40 75 50 L85 75 Q90 85 80 90 L65 65 L55 95 L45 95 L35 65 L20 90 Q10 85 15 75 Z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+
+        <div class="w-full relative py-20 bg-action-teal flex justify-center items-center overflow-hidden scalloped-top scalloped-bottom">
+          <div class="absolute inset-0 grid grid-cols-4 md:grid-cols-6 gap-2 p-4 opacity-30 mix-blend-multiply">
+            <div class="w-full aspect-square bg-support-pink rounded-full scale-125"></div>
+            <div class="w-full aspect-square bg-support-pink rounded-full scale-125"></div>
+            <div class="w-full aspect-square bg-support-pink rounded-full scale-125"></div>
+            <div class="w-full aspect-square bg-support-pink rounded-full scale-125"></div>
+            <div class="w-full aspect-square bg-support-pink rounded-full scale-125 hidden md:block"></div>
+            <div class="w-full aspect-square bg-support-pink rounded-full scale-125 hidden md:block"></div>
+            <div class="w-full aspect-square bg-support-pink rounded-full scale-125"></div>
+            <div class="w-full aspect-square bg-support-pink rounded-full scale-125"></div>
+            <div class="w-full aspect-square bg-support-pink rounded-full scale-125"></div>
+            <div class="w-full aspect-square bg-support-pink rounded-full scale-125"></div>
+            <div class="w-full aspect-square bg-support-pink rounded-full scale-125 hidden md:block"></div>
+            <div class="w-full aspect-square bg-support-pink rounded-full scale-125 hidden md:block"></div>
+          </div>
+
+          <div class="relative z-10 w-full max-w-5xl mx-auto flex flex-wrap justify-center gap-4 md:gap-8 p-8">
+            <div class="bg-action-teal/90 text-on-primary w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-support-pink">
+              <span class="text-body-md font-body-md">Chronic<br />pain</span>
+            </div>
+            <div class="bg-action-teal/90 text-on-primary w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-support-pink">
+              <span class="text-body-md font-body-md">Heart Condition</span>
+            </div>
+            <div class="bg-action-teal/90 text-on-primary w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-support-pink">
+              <span class="text-body-md font-body-md">Surgery<br />recovery</span>
+            </div>
+            <div class="bg-action-teal/90 text-on-primary w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-support-pink">
+              <span class="text-body-md font-body-md">Menstrual pain</span>
+            </div>
+            <div class="bg-action-teal/90 text-support-pink w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-support-pink bg-on-primary">
+              <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 100 100">
+                <path
+                  d="M40 20 A12 12 0 1 0 40 44 A12 12 0 1 0 40 20 Z M60 20 A12 12 0 1 0 60 44 A12 12 0 1 0 60 20 Z M25 50 Q40 40 50 50 Q60 40 75 50 L85 75 Q90 85 80 90 L65 65 L55 95 L45 95 L35 65 L20 90 Q10 85 15 75 Z"
+                ></path>
+              </svg>
+            </div>
+            <div class="bg-action-teal/90 text-on-primary w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-center p-4 shadow-lg backdrop-blur-sm border-2 border-support-pink">
+              <span class="text-body-md font-body-md">Early<br />pregnancy</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-action-teal pt-20 pb-section-padding px-gutter relative flex flex-col items-center text-center text-on-primary">
+          <h3 class="text-headline-lg md:text-display-xl font-display-xl mb-12 transform rotate-2 max-w-3xl">
+            Please be mindful<br />of my condition.
+          </h3>
+          <div class="space-y-6 text-body-lg font-body-lg italic w-full max-w-2xl text-right">
+            <p class="transform -translate-x-12">I may need a seat.</p>
+            <p class="transform translate-x-4">I may need assistance.</p>
+            <p class="transform translate-x-12">I'm managing a physical condition.</p>
+          </div>
+          <div class="absolute bottom-10 left-10 md:left-32 w-64 h-48 transform -rotate-6 opacity-90 flex flex-col gap-2">
+            <div class="w-full h-10 bg-support-pink rounded-full shadow-lg flex items-center justify-center border-2 border-action-teal">
+              <span class="text-on-surface text-[10px] font-bold tracking-widest">UNSEEN I MAY NEED A SEAT</span>
+            </div>
+            <div class="w-full h-10 bg-support-pink rounded-full shadow-lg flex items-center justify-center border-2 border-action-teal ml-4">
+              <span class="text-on-surface text-[10px] font-bold tracking-widest">BE MINDFUL OF MY CONDITION</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Share Form Section -->
+      <section id="share" class="w-full bg-surface py-[120px] px-gutter relative z-30">
+        <div
+          class="max-w-3xl mx-auto bg-support-pink/20 rounded-[40px] p-8 md:p-16 border border-support-pink/30 shadow-xl backdrop-blur-sm relative overflow-hidden"
+        >
+          <div class="absolute -top-20 -right-20 w-64 h-64 bg-support-pink/40 rounded-full blur-3xl z-0"></div>
+          <div class="relative z-10 text-center mb-12">
+            <h2 class="text-headline-lg font-headline-lg text-text-deep mb-4">Let's Share Together</h2>
+            <p class="text-body-md font-body-md text-on-surface-variant">
+              Your voice helps make the invisible, visible. Share your context.
+            </p>
+          </div>
+
+          <form class="relative z-10 space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="flex flex-col">
+                <label class="text-label-bold font-label-bold text-on-surface mb-2 ml-4" for="name">Name (Optional)</label>
+                <input
+                  class="bg-surface-container-lowest/50 border border-outline-variant text-on-surface rounded-full px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-on-surface-variant/50"
+                  id="name"
+                  placeholder="How should we call you?"
+                  type="text"
+                />
+              </div>
+              <div class="flex flex-col">
+                <label class="text-label-bold font-label-bold text-on-surface mb-2 ml-4" for="email">Email (Optional)</label>
+                <input
+                  class="bg-surface-container-lowest/50 border border-outline-variant text-on-surface rounded-full px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-on-surface-variant/50"
+                  id="email"
+                  placeholder="For updates on the movement"
+                  type="email"
+                />
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <label class="text-label-bold font-label-bold text-on-surface mb-2 ml-4" for="needs">What unseen needs do you carry?</label>
+              <textarea
+                class="bg-surface-container-lowest/50 border border-outline-variant text-on-surface rounded-[2rem] px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-on-surface-variant/50 resize-none"
+                id="needs"
+                placeholder="E.g., Sensory overload in crowds, chronic fatigue..."
+                rows="3"
+              ></textarea>
+            </div>
+            <div class="flex flex-col">
+              <label class="text-label-bold font-label-bold text-on-surface mb-2 ml-4" for="reflection">How could others better support this?</label>
+              <textarea
+                class="bg-surface-container-lowest/50 border border-outline-variant text-on-surface rounded-[2rem] px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-on-surface-variant/50 resize-none"
+                id="reflection"
+                placeholder="Share your thoughts..."
+                rows="4"
+              ></textarea>
+            </div>
+            <div class="pt-4 flex justify-center">
+              <button
+                class="bg-secondary text-on-secondary px-10 py-4 rounded-full font-label-bold text-lg hover:bg-secondary/90 hover:scale-105 transition-all shadow-md flex items-center gap-2"
+                type="button"
+              >
+                <span>Share My Context</span>
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">favorite</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="w-full bg-surface-container-highest dark:bg-inverse-surface px-gutter py-section-padding flex flex-col md:flex-row justify-between items-center gap-8 max-w-container-max mx-auto mt-auto"
+    >
+      <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8 w-full justify-between">
+        <span class="text-xl font-headline-lg text-primary dark:text-primary-fixed">UNSEEN</span>
+        <nav class="flex flex-wrap justify-center gap-6">
+          <a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors text-label-bold font-label-bold" href="#">Accessibility</a>
+          <a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors text-label-bold font-label-bold" href="#">Privacy Policy</a>
+          <a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors text-label-bold font-label-bold" href="#">Contact</a>
+          <a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors text-label-bold font-label-bold" href="#">Join Movement</a>
+        </nav>
+        <span class="text-body-md font-body-md text-on-surface-variant text-center md:text-right">
+          © 2024 UNSEEN Project. Seeing the Unseen in our shared spaces.
+        </span>
+      </div>
+    </footer>
+  </body>
+</html>
