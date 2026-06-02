@@ -133,6 +133,49 @@
         -webkit-font-smoothing: antialiased;
       }
 
+      .max-w-container-max {
+        max-width: 100% !important;
+      }
+
+      .px-gutter {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+
+      .nav-logo {
+        width: 120px;
+        height: auto;
+      }
+
+      .floating-circle {
+        animation: circleFloat 6.5s ease-in-out infinite alternate;
+        opacity: 1 !important;
+      }
+
+      @keyframes logoPulse {
+        0% {
+          transform: scale(1) rotate(0deg);
+        }
+        50% {
+          transform: scale(1.03) rotate(-1deg);
+        }
+        100% {
+          transform: scale(1) rotate(0deg);
+        }
+      }
+
+      @keyframes circleFloat {
+        0% {
+          transform: translate3d(0, 0, 0);
+        }
+        50% {
+          transform: translate3d(8px, -12px, 0);
+        }
+        100% {
+          transform: translate3d(-8px, 10px, 0);
+        }
+      }
+
       [data-reveal] {
         opacity: 0;
         translate: 0 var(--reveal-y, 12px);
@@ -178,39 +221,49 @@
   <body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col">
     <!-- TopAppBar -->
     <header
-      class="bg-background/90 dark:bg-background/90 backdrop-blur-md docked full-width top-0 z-50 border-b border-outline-variant dark:border-outline flat no shadows sticky"
+      class="bg-background/90 backdrop-blur-md border-b border-outline-variant docked full-width top-0 z-50 sticky"
     >
       <div class="flex justify-between items-center w-full px-gutter py-4 max-w-container-max mx-auto">
-        <a class="text-2xl font-display-xl tracking-tighter text-on-surface dark:text-surface-bright uppercase" href="index.html">
-          UNS<span>E</span><span class="opacity-0">E</span>N
+        <div class="hidden md:flex gap-4">
+          <span class="text-on-surface-variant font-label-bold uppercase tracking-wider text-xs">How can we see others' needs</span>
+        </div>
+        <a class="inline-flex items-center" href="index.html" aria-label="UNSEEN Home">
+          <img class="nav-logo" src="assets/logo.png" alt="UNSEEN logo" />
         </a>
-        <nav aria-label="Main Navigation" class="hidden md:flex gap-8 items-center">
+        <div class="hidden md:flex items-center gap-6">
+          <nav aria-label="Main Navigation" class="flex gap-6">
+            <a
+              class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors"
+              href="index.html"
+              >Home</a
+            >
+            <a
+              class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors"
+              href="visibility.html"
+              >Seen</a
+            >
+            <a
+              class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors"
+              href="unseen.html"
+              >Unseen</a
+            >
+            <a
+              class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors"
+              href="your-needs.html"
+              >Your Needs</a
+            >
+            <a
+              class="text-primary font-label-bold text-label-bold border-b-2 border-primary pb-1"
+              href="story.html"
+              >Story</a
+            >
+          </nav>
           <a
-            class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-label-bold font-label-bold"
-            href="index.html"
-            >Home</a
+            class="border-2 border-outline rounded-full px-8 py-2 text-on-surface font-label-bold text-label-bold hover:bg-surface-variant transition-colors"
+            href="#share"
+            >Share With Us</a
           >
-          <a
-            class="text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1 text-label-bold font-label-bold"
-            href="story.html"
-            >Story</a
-          >
-          <a
-            class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-label-bold font-label-bold"
-            href="visibility.html"
-            >Visibility</a
-          >
-          <a
-            class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-label-bold font-label-bold"
-            href="your-needs.html"
-            >Your Needs</a
-          >
-        </nav>
-        <a
-          class="hidden md:block bg-secondary text-on-secondary px-6 py-3 rounded-lg text-label-bold font-label-bold hover:bg-opacity-90 transition-all hover:-translate-y-1"
-          href="your-needs.html#share"
-          >Share With Us</a
-        >
+        </div>
         <button class="md:hidden text-primary p-2" aria-label="Open menu" type="button">
           <span class="material-symbols-outlined" data-icon="menu">menu</span>
         </button>
@@ -301,12 +354,77 @@
           </div>
         </div>
       </section>
+
+      <section id="share" class="w-full bg-surface py-[120px] px-gutter relative z-30">
+        <div
+          class="max-w-3xl mx-auto bg-support-pink/20 rounded-[40px] p-8 md:p-16 border border-support-pink/30 shadow-xl backdrop-blur-sm relative overflow-hidden"
+        >
+          <div class="absolute -top-20 -right-20 w-64 h-64 bg-support-pink rounded-full floating-circle z-0"></div>
+          <div class="relative z-10 text-center mb-12">
+            <h2 class="text-headline-lg font-headline-lg text-text-deep mb-4" data-reveal="up">Let's Share Together</h2>
+            <p class="text-body-md font-body-md text-on-surface-variant" data-reveal="up" style="--reveal-delay: 120ms">
+              Your voice helps make the invisible visible. Share your context.
+            </p>
+          </div>
+
+          <form class="relative z-10 space-y-6" data-stagger data-stagger-step="90">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="flex flex-col" data-reveal="up">
+                <label class="text-label-bold font-label-bold text-on-surface mb-2 ml-4" for="name">Name (Optional)</label>
+                <input
+                  class="bg-surface-container-lowest/50 border border-outline-variant text-on-surface rounded-full px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-on-surface-variant/50"
+                  id="name"
+                  placeholder="How should we call you?"
+                  type="text"
+                />
+              </div>
+              <div class="flex flex-col" data-reveal="up" style="--reveal-delay: 90ms">
+                <label class="text-label-bold font-label-bold text-on-surface mb-2 ml-4" for="email">Email (Optional)</label>
+                <input
+                  class="bg-surface-container-lowest/50 border border-outline-variant text-on-surface rounded-full px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-on-surface-variant/50"
+                  id="email"
+                  placeholder="For updates on the movement"
+                  type="email"
+                />
+              </div>
+            </div>
+            <div class="flex flex-col" data-reveal="up" style="--reveal-delay: 180ms">
+              <label class="text-label-bold font-label-bold text-on-surface mb-2 ml-4" for="needs">What unseen needs do you carry?</label>
+              <textarea
+                class="bg-surface-container-lowest/50 border border-outline-variant text-on-surface rounded-[2rem] px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-on-surface-variant/50 resize-none"
+                id="needs"
+                placeholder="E.g., Sensory overload in crowds, chronic fatigue..."
+                rows="3"
+              ></textarea>
+            </div>
+            <div class="flex flex-col" data-reveal="up" style="--reveal-delay: 270ms">
+              <label class="text-label-bold font-label-bold text-on-surface mb-2 ml-4" for="reflection">How could others better support this?</label>
+              <textarea
+                class="bg-surface-container-lowest/50 border border-outline-variant text-on-surface rounded-[2rem] px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-on-surface-variant/50 resize-none"
+                id="reflection"
+                placeholder="Share your thoughts..."
+                rows="4"
+              ></textarea>
+            </div>
+            <div class="pt-4 flex justify-center" data-reveal="scale" style="--reveal-delay: 360ms">
+              <button
+                class="bg-secondary text-on-secondary px-10 py-4 rounded-full font-label-bold text-lg hover:bg-secondary/90 hover:scale-105 transition-all shadow-md flex items-center gap-2"
+                type="button"
+              >
+                <span>Share My Context</span>
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">favorite</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
     </main>
 
     <script>
       (() => {
         const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         const revealEls = document.querySelectorAll("[data-reveal]");
+        const circles = document.querySelectorAll("div.rounded-full[class*='w-'][class*='h-']");
 
         const initStagger = () => {
           document.querySelectorAll("[data-stagger]").forEach((parent) => {
@@ -327,6 +445,7 @@
         const reveal = (el) => el.classList.add("is-visible");
 
         initStagger();
+        circles.forEach((el) => el.classList.add("floating-circle"));
 
         if (reduceMotion) {
           revealEls.forEach(reveal);

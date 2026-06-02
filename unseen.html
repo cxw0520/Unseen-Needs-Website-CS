@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en" class="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNSEEN - Unseen</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              error: "#ba1a1a",
+              "primary-container": "#e6c143",
+              "action-teal": "#6BB4A2",
+              "on-primary": "#ffffff",
+              "secondary-fixed": "#d3e3ff",
+              background: "#f9f9f9",
+              "surface-tint": "#725c00",
+              secondary: "#2c609a",
+              "surface-container-high": "#e8e8e8",
+              "on-tertiary-container": "#8a3624",
+              primary: "#725c00",
+              "primary-fixed": "#ffe083",
+              "on-surface": "#1a1c1c",
+              "outline-variant": "#d0c6af",
+              outline: "#7e7663",
+              "tertiary-container": "#ffb1a0",
+              "on-primary-container": "#634f00",
+              "on-tertiary-fixed-variant": "#7d2c1b",
+              "surface-variant": "#e2e2e2",
+              "secondary-fixed-dim": "#a3c9ff",
+              "tertiary-fixed": "#ffdad3",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed-variant": "#044881",
+              "primary-fixed-dim": "#e8c345",
+              "secondary-container": "#8fbeff",
+              "support-pink": "#E8A7BD",
+              "on-secondary-container": "#0f4c86",
+              "on-surface-variant": "#4d4635",
+              "calm-purple": "#7269A3",
+              "on-secondary": "#ffffff",
+              "surface-container-highest": "#e2e2e2",
+              "error-container": "#ffdad6",
+              "surface-dim": "#dadada",
+              "on-error-container": "#93000a",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-fixed": "#3e0500",
+              "inverse-surface": "#2f3131",
+              "inverse-on-surface": "#f0f1f1",
+              "on-error": "#ffffff",
+              "tertiary-fixed-dim": "#ffb4a4",
+              "on-primary-fixed": "#231b00",
+              "inverse-primary": "#e8c345",
+              "on-primary-fixed-variant": "#564500",
+              surface: "#f9f9f9",
+              tertiary: "#9c4330",
+              "surface-container": "#eeeeee",
+              "surface-bright": "#f9f9f9",
+              "text-deep": "#3F4652",
+              "on-background": "#1a1c1c",
+              "accent-red": "#CD472D",
+              "surface-container-low": "#f3f3f4",
+              "on-secondary-fixed": "#001c39"
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px"
+            },
+            spacing: {
+              gutter: "24px",
+              "container-max": "1200px",
+              "section-padding": "80px",
+              unit: "8px",
+              "margin-mobile": "16px",
+              "overlap-offset": "-40px"
+            },
+            fontFamily: {
+              "body-lg": ["Tobias", "serif"],
+              "display-xl": ["Tobias", "serif"],
+              "headline-md": ["Franklin Gothic Medium", "sans-serif"],
+              "headline-lg-mobile": ["Tobias", "serif"],
+              "label-bold": ["Franklin Gothic Medium", "sans-serif"],
+              "headline-lg": ["Tobias", "serif"],
+              "body-md": ["Franklin Gothic Medium", "sans-serif"]
+            }
+          }
+        }
+      };
+    </script>
+
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 1, "wght" 450, "GRAD" 0, "opsz" 24;
+      }
+
+      .max-w-container-max {
+        max-width: 100% !important;
+      }
+
+      .px-gutter {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+
+      .nav-logo {
+        width: 120px;
+        height: auto;
+      }
+
+      .floating-circle {
+        animation: circleFloat 6.8s ease-in-out infinite alternate;
+        opacity: 1 !important;
+      }
+
+      [data-reveal] {
+        opacity: 0;
+        translate: 0 var(--reveal-y, 12px);
+        transition: opacity 600ms cubic-bezier(0.22, 1, 0.36, 1), translate 600ms cubic-bezier(0.22, 1, 0.36, 1);
+        transition-delay: var(--reveal-delay, 0ms);
+      }
+
+      [data-reveal="up"] {
+        --reveal-y: 12px;
+      }
+
+      .is-visible[data-reveal] {
+        opacity: 1;
+        translate: 0 0;
+      }
+
+      .interactive-lift {
+        transition: translate 200ms ease, background-color 200ms ease, color 200ms ease;
+      }
+
+      .interactive-lift:hover {
+        translate: 0 -2px;
+      }
+
+      .press:active {
+        scale: 0.98;
+      }
+
+      .speech {
+        border-radius: 56px;
+      }
+
+      @keyframes logoPulse {
+        0% {
+          transform: scale(1) rotate(0deg);
+        }
+        50% {
+          transform: scale(1.03) rotate(-1deg);
+        }
+        100% {
+          transform: scale(1) rotate(0deg);
+        }
+      }
+
+      @keyframes circleFloat {
+        0% {
+          transform: translate3d(0, 0, 0);
+        }
+        50% {
+          transform: translate3d(10px, -12px, 0);
+        }
+        100% {
+          transform: translate3d(-9px, 10px, 0);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        [data-reveal] {
+          opacity: 1;
+          translate: 0 0;
+          transition: none;
+        }
+
+        .floating-circle,
+        .nav-logo {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+    <header class="bg-background/90 backdrop-blur-md border-b border-outline-variant docked full-width top-0 z-50 sticky">
+      <div class="flex justify-between items-center w-full px-gutter py-4 max-w-container-max mx-auto">
+        <div class="hidden md:flex gap-4">
+          <span class="text-on-surface-variant font-label-bold uppercase tracking-wider text-xs">How can we see others' needs</span>
+        </div>
+        <a class="relative z-20 inline-flex items-center" href="index.html" aria-label="UNSEEN Home">
+          <img class="nav-logo" src="assets/logo.png" alt="UNSEEN logo" />
+        </a>
+        <div class="hidden md:flex items-center gap-6">
+          <nav class="flex gap-6">
+            <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors" href="index.html">Home</a>
+            <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors" href="visibility.html">Seen</a>
+            <a class="text-primary font-label-bold text-label-bold border-b-2 border-primary pb-1" href="unseen.html">Unseen</a>
+            <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors" href="your-needs.html">Your Needs</a>
+            <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors" href="story.html">Story</a>
+          </nav>
+          <a class="border-2 border-outline rounded-full px-8 py-2 text-on-surface font-label-bold text-label-bold hover:bg-surface-variant transition-colors interactive-lift press" href="story.html#share">Share With Us</a>
+        </div>
+        <button class="md:hidden text-on-surface p-2" aria-label="Open menu" type="button">
+          <span class="material-symbols-outlined text-3xl">menu</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="w-full bg-calm-purple text-on-secondary py-14 relative overflow-hidden">
+        <div class="absolute -left-8 bottom-8 w-24 h-24 bg-action-teal rounded-full floating- mix-blend-normal z-60 opacity-100""></div>
+        <div class="absolute right-0 top-20 w-24 h-24 bg-primary-container rounded-full floating-circle mix-blend-normal z-60 opacity-100" style="animation-duration: 7.5s"></div>
+        <div class="w-full px-gutter grid md:grid-cols-2 gap-10 items-center relative z-10">
+          <div class="pl-10 pr-10 md:pl-20" data-reveal="up">
+            <h1 class="font-display-xl text-[56px] md:text-[72px] leading-none text-primary-fixed">What is Invisible?</h1>
+            <p class="text-[52px] leading-none mt-6">🧍</p>
+          </div>
+          <p class="font-body-lg text-[52px] md:text-[58px] leading-tight pr-10 md:pr-20" data-reveal="up" style="--reveal-delay: 140ms">
+            Invisible needs are often difficult to recognize from appearance alone.
+          </p>
+        </div>
+      </section>
+
+      <section class="w-full bg-surface-container py-12 relative overflow-hidden">
+        <div class="absolute left-0 top-1/2 -translate-y-1/2 w-24 h-24 bg-action-teal rounded-full floating-circle mix-blend-normal z-60 opacity-100""></div>
+        <div class="absolute left-1/4 bottom-0 w-20 h-20 bg-calm-purple rounded-full floating-circle mix-blend-normal z-60 opacity-100"" style="animation-duration: 8.2s"></div>
+        <div class="absolute right-0 top-1/2 -translate-y-1/2 w-24 h-24 bg-primary-container rounded-full floating-circle mix-blend-normal z-60 opacity-100"></div>
+        <div class="w-full px-10 md:px-20 relative z-10">
+          <p class="font-headline-lg text-[56px] md:text-[64px] text-text-deep leading-[1.12]" data-reveal="up">
+            They can include anxiety, sensory sensitivity, chronic pain, fatigue, mental health conditions, reduced stamina, or temporary physical discomfort.
+          </p>
+        </div>
+      </section>
+
+      <section class="w-full bg-secondary py-12 text-on-secondary">
+        <div class="w-full px-10 md:px-20 grid md:grid-cols-2 gap-10 items-center">
+          <p class="font-headline-lg text-[56px] md:text-[62px] leading-[1.08]" data-reveal="up">
+            Unlike visible conditions, these experiences are not always immediately understood by others.
+            Yet the need for patience, space, rest, or support still exists.
+          </p>
+          <div class="flex justify-center" data-reveal="up" style="--reveal-delay: 140ms">
+            <span class="material-symbols-outlined text-[220px] text-primary-fixed">person</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="w-full bg-surface-container py-14">
+        <div class="w-full px-10 md:px-20 grid md:grid-cols-2 gap-8 items-center">
+          <div class="flex justify-center" data-reveal="up">
+            <span class="material-symbols-outlined text-[220px] text-support-pink">pregnant_woman</span>
+          </div>
+          <div data-reveal="up" style="--reveal-delay: 120ms">
+            <div class="speech bg-support-pink text-on-secondary p-8 md:p-10 text-[48px] md:text-[54px] leading-[1.05]">
+              My pregnancy may not be visible yet, but if I feel dizzy or unwell, could you offer me a seat?
+            </div>
+            <h3 class="font-display-xl text-[56px] md:text-[64px] text-secondary mt-6">Early Pregnancy</h3>
+          </div>
+        </div>
+      </section>
+
+      <section class="w-full bg-surface py-14">
+        <div class="w-full px-10 md:px-20 grid md:grid-cols-2 gap-8 items-center">
+          <div data-reveal="up">
+            <div class="speech bg-accent-red text-on-error p-8 md:p-10 text-[48px] md:text-[54px] leading-[1.05]">
+              I may experience sensory input more intensely than others. Please lower the volume to help me feel more comfortable.
+            </div>
+            <h3 class="font-display-xl text-[56px] md:text-[64px] text-primary mt-6">Sensory Sensitivity</h3>
+          </div>
+          <div class="flex justify-center" data-reveal="up" style="--reveal-delay: 120ms">
+            <span class="material-symbols-outlined text-[220px] text-accent-red">air</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="w-full bg-action-teal py-14">
+        <div class="w-full px-10 md:px-20 grid md:grid-cols-2 gap-8 items-center">
+          <div class="flex justify-center" data-reveal="up">
+            <span class="material-symbols-outlined text-[220px] text-on-secondary">person</span>
+          </div>
+          <div data-reveal="up" style="--reveal-delay: 120ms">
+            <div class="speech bg-support-pink text-on-secondary p-8 md:p-10 text-[48px] md:text-[54px] leading-[1.05]">
+              My pregnancy may not be visible yet, but if I feel dizzy or unwell, could you offer me a seat?
+            </div>
+            <h3 class="font-display-xl text-[56px] md:text-[64px] text-support-pink mt-6">Early Pregnancy</h3>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (() => {
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const revealEls = document.querySelectorAll("[data-reveal]");
+        const circles = document.querySelectorAll("div.rounded-full[class*='w-'][class*='h-']");
+
+        const reveal = (el) => el.classList.add("is-visible");
+        circles.forEach((el) => el.classList.add("floating-circle"));
+
+        if (reduceMotion) {
+          revealEls.forEach(reveal);
+          return;
+        }
+
+        if (!("IntersectionObserver" in window)) {
+          revealEls.forEach(reveal);
+          return;
+        }
+
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue;
+              reveal(entry.target);
+              obs.unobserve(entry.target);
+            }
+          },
+          { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
+        );
+
+        revealEls.forEach((el) => observer.observe(el));
+      })();
+    </script>
+  </body>
+</html>
