@@ -18,16 +18,16 @@
           extend: {
             colors: {
               error: "#ba1a1a",
-              "primary-container": "#e6c143",
-              "action-teal": "#6BB4A2",
+              "primary-container": "#E5C543",
+              "action-teal": "#68AC9D",
               "on-primary": "#ffffff",
               "secondary-fixed": "#d3e3ff",
               background: "#f9f9f9",
-              "surface-tint": "#725c00",
-              secondary: "#2c609a",
+              "surface-tint": "#4B332D",
+              secondary: "#4680BE",
               "surface-container-high": "#e8e8e8",
               "on-tertiary-container": "#8a3624",
-              primary: "#725c00",
+              primary: "#4B332D",
               "primary-fixed": "#ffe083",
               "on-surface": "#1a1c1c",
               "outline-variant": "#d0c6af",
@@ -42,10 +42,10 @@
               "on-secondary-fixed-variant": "#044881",
               "primary-fixed-dim": "#e8c345",
               "secondary-container": "#8fbeff",
-              "support-pink": "#E8A7BD",
+              "support-pink": "#EBB5CA",
               "on-secondary-container": "#0f4c86",
               "on-surface-variant": "#4d4635",
-              "calm-purple": "#7269A3",
+              "calm-purple": "#6D65A1",
               "on-secondary": "#ffffff",
               "surface-container-highest": "#e2e2e2",
               "error-container": "#ffdad6",
@@ -66,7 +66,7 @@
               "surface-bright": "#f9f9f9",
               "text-deep": "#3F4652",
               "on-background": "#1a1c1c",
-              "accent-red": "#CD472D",
+              "accent-red": "#D74737",
               "surface-container-low": "#f3f3f4",
               "on-secondary-fixed": "#001c39"
             },
@@ -219,81 +219,119 @@
     </header>
 
     <main>
+      <!-- Section 1: What is Invisible? -->
       <section class="w-full bg-calm-purple text-on-secondary py-14 relative overflow-hidden">
-        <div class="absolute -left-8 bottom-8 w-24 h-24 bg-action-teal rounded-full floating- mix-blend-normal z-60 opacity-100""></div>
+        <div class="absolute -left-8 bottom-8 w-24 h-24 bg-action-teal rounded-full floating-circle mix-blend-normal z-60 opacity-100"></div>
         <div class="absolute right-0 top-20 w-24 h-24 bg-primary-container rounded-full floating-circle mix-blend-normal z-60 opacity-100" style="animation-duration: 7.5s"></div>
-        <div class="w-full px-gutter grid md:grid-cols-2 gap-10 items-center relative z-10">
-          <div class="pl-10 pr-10 md:pl-20" data-reveal="up">
-            <h1 class="font-display-xl text-[56px] md:text-[72px] leading-none text-primary-fixed">What is Invisible?</h1>
-            <p class="text-[52px] leading-none mt-6">🧍</p>
+        <div class="w-full px-10 md:px-20 relative z-10">
+          <h1 class="font-display-xl text-[44px] md:text-[72px] leading-none text-primary-container mb-8" data-reveal="up">What is Invisible?</h1>
+          <div class="flex items-center gap-6 md:gap-12" data-reveal="up" style="--reveal-delay: 100ms">
+            <div class="w-1/3 max-w-[200px] flex-shrink-0 flex justify-center">
+              <img src="assets/png/06-Unseen/unseen-hero.png" class="w-[120px] md:w-[220px] h-auto object-contain" alt="Unseen Hero Icon" />
+            </div>
+            <div class="w-2/3 md:w-auto">
+              <p class="font-body-lg text-[22px] md:text-[48px] leading-tight text-white">
+                Invisible needs are often difficult to recognize from appearance alone.
+              </p>
+            </div>
           </div>
-          <p class="font-body-lg text-[52px] md:text-[58px] leading-tight pr-10 md:pr-20" data-reveal="up" style="--reveal-delay: 140ms">
-            Invisible needs are often difficult to recognize from appearance alone.
-          </p>
         </div>
       </section>
 
-      <section class="w-full bg-surface-container py-12 relative overflow-hidden">
-        <div class="absolute left-0 top-1/2 -translate-y-1/2 w-24 h-24 bg-action-teal rounded-full floating-circle mix-blend-normal z-60 opacity-100""></div>
-        <div class="absolute left-1/4 bottom-0 w-20 h-20 bg-calm-purple rounded-full floating-circle mix-blend-normal z-60 opacity-100"" style="animation-duration: 8.2s"></div>
-        <div class="absolute right-0 top-1/2 -translate-y-1/2 w-24 h-24 bg-primary-container rounded-full floating-circle mix-blend-normal z-60 opacity-100"></div>
+      <!-- Section 2: They can include... -->
+      <section class="w-full bg-white py-12 relative overflow-hidden">
         <div class="w-full px-10 md:px-20 relative z-10">
-          <p class="font-headline-lg text-[56px] md:text-[64px] text-text-deep leading-[1.12]" data-reveal="up">
+          <p class="font-headline-lg text-[24px] md:text-[48px] text-text-deep leading-snug" data-reveal="up">
             They can include anxiety, sensory sensitivity, chronic pain, fatigue, mental health conditions, reduced stamina, or temporary physical discomfort.
           </p>
+          
+          <!-- Overlapping Circles Composition -->
+          <div class="flex items-center justify-center mt-10 select-none overflow-visible" data-reveal="up" style="--reveal-delay: 120ms">
+            <!-- Green Circle -->
+            <div class="w-16 h-16 md:w-24 md:h-24 bg-action-teal rounded-full mr-[-8px] md:mr-[-12px]"></div>
+            
+            <!-- Purple Circle -->
+            <div class="w-12 h-12 md:w-16 md:h-16 bg-calm-purple rounded-full mr-[-24px] md:mr-[-36px] mt-12 md:mt-20 z-20"></div>
+            
+            <!-- Blue Circle with Eyes -->
+            <div class="w-32 h-32 md:w-48 md:h-48 bg-secondary rounded-full z-10 flex items-center justify-center">
+              <div class="flex gap-2 -mt-4 md:-mt-6">
+                <!-- Left Eye -->
+                <div class="w-8 h-8 md:w-12 md:h-12 bg-white rounded-full relative">
+                  <div class="w-3.5 h-3.5 md:w-5 md:h-5 bg-[#1a1c1c] rounded-full absolute top-[15%] left-[20%]"></div>
+                </div>
+                <!-- Right Eye -->
+                <div class="w-8 h-8 md:w-12 md:h-12 bg-white rounded-full relative">
+                  <div class="w-3.5 h-3.5 md:w-5 md:h-5 bg-[#1a1c1c] rounded-full absolute top-[15%] left-[20%]"></div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Red Circle -->
+            <div class="w-14 h-14 md:w-20 md:h-20 bg-accent-red rounded-full ml-[-20px] md:ml-[-32px] -mt-12 md:-mt-20 z-20"></div>
+            
+            <!-- Yellow Circle -->
+            <div class="w-16 h-16 md:w-24 md:h-24 bg-primary-container rounded-full ml-[-8px] md:ml-[-12px] -mt-6 md:-mt-10"></div>
+          </div>
         </div>
       </section>
 
+      <!-- Section 3: Unlike visible conditions... -->
       <section class="w-full bg-secondary py-12 text-on-secondary">
-        <div class="w-full px-10 md:px-20 grid md:grid-cols-2 gap-10 items-center">
-          <p class="font-headline-lg text-[56px] md:text-[62px] leading-[1.08]" data-reveal="up">
-            Unlike visible conditions, these experiences are not always immediately understood by others.
-            Yet the need for patience, space, rest, or support still exists.
-          </p>
-          <div class="flex justify-center" data-reveal="up" style="--reveal-delay: 140ms">
-            <span class="material-symbols-outlined text-[220px] text-primary-fixed">person</span>
+        <div class="w-full px-10 md:px-20 flex items-center gap-6 md:gap-12">
+          <div class="w-2/3 md:w-auto" data-reveal="up">
+            <p class="font-headline-lg text-[24px] md:text-[48px] leading-snug text-white">
+              Unlike visible conditions, these experiences are not always immediately understood by others.
+              Yet the need for patience, space, rest, or support still exists.
+            </p>
+          </div>
+          <div class="w-1/3 max-w-[200px] flex-shrink-0 flex justify-center" data-reveal="up" style="--reveal-delay: 120ms">
+            <img src="assets/png/03-Person/素材_Person-09.png" class="w-[120px] md:w-[220px] h-auto object-contain" alt="Yellow Person Icon" />
           </div>
         </div>
       </section>
 
-      <section class="w-full bg-surface-container py-14">
-        <div class="w-full px-10 md:px-20 grid md:grid-cols-2 gap-8 items-center">
-          <div class="flex justify-center" data-reveal="up">
-            <span class="material-symbols-outlined text-[220px] text-support-pink">pregnant_woman</span>
+      <!-- Section 4: Early Pregnancy (Pink) -->
+      <section class="w-full bg-white py-14">
+        <div class="w-full px-10 md:px-20 flex items-center gap-6 md:gap-12">
+          <div class="w-1/3 max-w-[200px] flex-shrink-0 flex justify-center" data-reveal="up">
+            <img src="assets/png/06-Unseen/unseen (8).png" class="w-[120px] md:w-[220px] h-auto object-contain" alt="Early Pregnancy Icon" />
           </div>
-          <div data-reveal="up" style="--reveal-delay: 120ms">
-            <div class="speech bg-support-pink text-on-secondary p-8 md:p-10 text-[48px] md:text-[54px] leading-[1.05]">
+          <div class="w-2/3 md:w-auto" data-reveal="up" style="--reveal-delay: 120ms">
+            <div class="speech bg-support-pink text-on-secondary p-6 md:p-10 text-[20px] md:text-[44px] leading-snug">
               My pregnancy may not be visible yet, but if I feel dizzy or unwell, could you offer me a seat?
             </div>
-            <h3 class="font-display-xl text-[56px] md:text-[64px] text-secondary mt-6">Early Pregnancy</h3>
+            <h3 class="font-display-xl text-[28px] md:text-[56px] leading-none text-secondary mt-4">Early Pregnancy</h3>
           </div>
         </div>
       </section>
 
-      <section class="w-full bg-surface py-14">
-        <div class="w-full px-10 md:px-20 grid md:grid-cols-2 gap-8 items-center">
-          <div data-reveal="up">
-            <div class="speech bg-accent-red text-on-error p-8 md:p-10 text-[48px] md:text-[54px] leading-[1.05]">
+      <!-- Section 5: Sensory Sensitivity -->
+      <section class="w-full bg-white py-14">
+        <div class="w-full px-10 md:px-20 flex items-center gap-6 md:gap-12">
+          <div class="w-2/3 md:w-auto" data-reveal="up">
+            <div class="speech bg-accent-red text-on-error p-6 md:p-10 text-[20px] md:text-[44px] leading-snug">
               I may experience sensory input more intensely than others. Please lower the volume to help me feel more comfortable.
             </div>
-            <h3 class="font-display-xl text-[56px] md:text-[64px] text-primary mt-6">Sensory Sensitivity</h3>
+            <h3 class="font-display-xl text-[28px] md:text-[56px] leading-none text-primary-container mt-4">Sensory Sensitivity</h3>
           </div>
-          <div class="flex justify-center" data-reveal="up" style="--reveal-delay: 120ms">
-            <span class="material-symbols-outlined text-[220px] text-accent-red">air</span>
+          <div class="w-1/3 max-w-[200px] flex-shrink-0 flex justify-center" data-reveal="up" style="--reveal-delay: 120ms">
+            <img src="assets/png/06-Unseen/unseen-sensory.png" class="w-[120px] md:w-[220px] h-auto object-contain" alt="Sensory Sensitivity Icon" />
           </div>
         </div>
       </section>
 
+      <!-- Section 6: Early Pregnancy (Heart icon) -->
       <section class="w-full bg-action-teal py-14">
-        <div class="w-full px-10 md:px-20 grid md:grid-cols-2 gap-8 items-center">
-          <div class="flex justify-center" data-reveal="up">
-            <span class="material-symbols-outlined text-[220px] text-on-secondary">person</span>
+        <div class="w-full px-10 md:px-20 flex items-center gap-6 md:gap-12">
+          <div class="w-1/3 max-w-[200px] flex-shrink-0 flex justify-center" data-reveal="up">
+            <img src="assets/png/06-Unseen/unseen-heart.png" class="w-[120px] md:w-[220px] h-auto object-contain" alt="Heart Condition Icon" />
           </div>
-          <div data-reveal="up" style="--reveal-delay: 120ms">
-            <div class="speech bg-support-pink text-on-secondary p-8 md:p-10 text-[48px] md:text-[54px] leading-[1.05]">
+          <div class="w-2/3 md:w-auto" data-reveal="up" style="--reveal-delay: 120ms">
+            <div class="speech bg-support-pink text-on-secondary p-6 md:p-10 text-[20px] md:text-[44px] leading-snug">
               My pregnancy may not be visible yet, but if I feel dizzy or unwell, could you offer me a seat?
             </div>
-            <h3 class="font-display-xl text-[56px] md:text-[64px] text-support-pink mt-6">Early Pregnancy</h3>
+            <h3 class="font-display-xl text-[28px] md:text-[56px] leading-none text-support-pink mt-4">Early Pregnancy</h3>
           </div>
         </div>
       </section>
