@@ -122,8 +122,8 @@
       }
 
       .px-gutter {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
+        padding-left: 5% !important;
+        padding-right: 5% !important;
       }
 
       .nav-logo {
@@ -283,7 +283,7 @@
     <main class="flex-grow flex flex-col">
       <!-- Hero Section -->
       <section
-        class="relative w-full min-h-[760px] md:min-h-[900px] flex items-center justify-center py-section-padding px-gutter overflow-hidden bg-surface-container-lowest [--hero-shift-x:0px] md:[--hero-shift-x:100px] [--hero-scale:1.2]"
+        class="relative w-full min-h-[760px] md:min-h-[900px] flex items-center justify-center py-section-padding px-gutter overflow-hidden bg-surface-container-lowest [--hero-shift-x:0px] md:[--hero-shift-x:clamp(41.4px,5.4vw,91.3px)] [--hero-scale:1.2]"
       >
         <div class="absolute inset-0 z-0 pointer-events-none">
           <div
@@ -310,14 +310,14 @@
                 <span
                   class="font-display-xl text-[clamp(52px,5.5vw,100px)] leading-none text-accent-red font-bold decoration-[8px] decoration-accent-red"
                   data-reveal="left"
-                  style="--reveal-delay: 160ms; --reveal-x: -28px; --reveal-duration: 520ms; --reveal-ease: cubic-bezier(0.16, 1, 0.3, 1)"
+                  style="--reveal-delay: 160ms; --reveal-x: -28px; --reveal-duration: 1000ms; --reveal-ease: cubic-bezier(0.16, 1, 0.3, 1)"
                 >
                   SEE
                 </span>
                 <span
                   class="font-display-xl text-[clamp(52px,5.5vw,100px)] leading-none text-accent-red font-bold"
                   data-reveal="right"
-                  style="--reveal-delay: 320ms; --reveal-x: 28px; --reveal-duration: 520ms; --reveal-ease: cubic-bezier(0.16, 1, 0.3, 1)"
+                  style="--reveal-delay: 320ms; --reveal-x: 28px; --reveal-duration: 1000ms; --reveal-ease: cubic-bezier(0.16, 1, 0.3, 1)"
                 >
                   SHOW
                 </span>
@@ -357,48 +357,44 @@
       </section>
 
       <!-- Emotional/Cognitive Section -->
-      <section class="w-full bg-primary-container relative z-10 pt-24 pb-12 px-0">
+      <section class="w-full bg-primary-container relative z-10 pt-24 pb-12 px-gutter">
         <!-- Top Scalloped Border -->
         <div class="absolute top-0 left-0 right-0 h-[20px] -translate-y-full z-20 pointer-events-none" style="background-image: radial-gradient(circle at 20px 20px, #E5C543 20px, transparent 21px); background-size: 40px 20px; background-repeat: repeat-x;"></div>
 
         <!-- Header -->
-        <div class="max-w-6xl mx-auto px-6 flex flex-row items-center justify-between">
-          <div class="flex flex-col gap-4" data-reveal="left">
-            <img src="assets/png/04-Wristbands/Emotional -22_cropped.png" class="h-10 md:h-[50px] object-contain object-left" alt="Emotional" />
-            <img src="assets/png/04-Wristbands/Emotional-23_cropped.png" class="h-10 md:h-[50px] object-contain object-left" alt="Cognitive" />
-          </div>
-          <div class="w-24 h-24 md:w-36 md:h-36 relative flex-shrink-0" data-reveal="right">
-            <img src="assets/png/04-Wristbands/Emotional -21_cropped.png" class="w-full h-full object-contain" alt="Emotional Cognitive Icon" />
+        <div class="max-w-6xl mx-auto px-6 flex justify-center">
+          <div class="w-72 h-72 md:w-[432px] md:h-[432px] relative flex-shrink-0" data-reveal="scale">
+            <img src="assets/png/04-Wristbands/Emotional-20.png" class="w-full h-full object-contain" alt="Emotional Cognitive Icon" />
           </div>
         </div>
       </section>
 
       <!-- Emotional Grid Section -->
-      <section class="w-full bg-primary-container py-0 px-0 relative z-10">
-        <div class="grid grid-cols-6 gap-0 max-w-6xl mx-auto w-full">
+      <section class="w-full bg-primary-container py-0 relative z-10 overflow-hidden">
+        <div class="grid grid-cols-6 gap-0 w-full overflow-hidden" style="margin-top: -8.333vw; margin-bottom: -8.333vw;">
           <!-- Row 1 -->
           <div class="aspect-square"><div class="w-full h-full rounded-full bg-accent-red"></div></div>
           <div class="aspect-square"><div class="w-full h-full rounded-full bg-accent-red"></div></div>
-          <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-accent-red flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(11px,1.3vw,20px)] leading-tight">
-              Anxiety
-            </div>
-          </div>
+          <div class="aspect-square"><div class="w-full h-full rounded-full bg-accent-red"></div></div>
           <div class="aspect-square"><div class="w-full h-full rounded-full bg-accent-red"></div></div>
           <div class="aspect-square"><div class="w-full h-full rounded-full bg-accent-red"></div></div>
           <div class="aspect-square"><div class="w-full h-full rounded-full bg-accent-red"></div></div>
 
           <!-- Row 2 -->
           <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-accent-red flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(11px,1.3vw,20px)] leading-tight">
+            <div class="w-full h-full rounded-full bg-accent-red flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(20px,1.3vw,20px)] leading-tight">
               Overstimulated
             </div>
           </div>
           <div class="aspect-square"><div class="w-full h-full rounded-full bg-accent-red"></div></div>
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-accent-red"></div></div>
           <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-accent-red flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(11px,1.3vw,20px)] leading-tight">
-              Social<br />discomfort
+            <div class="w-full h-full rounded-full bg-accent-red flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(20px,1.3vw,20px)] leading-tight">
+              Anxiety
+            </div>
+          </div>
+          <div class="aspect-square">
+            <div class="w-full h-full rounded-full bg-accent-red flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(20px,1.3vw,20px)] leading-tight">
+              Social<br />Discomfort
             </div>
           </div>
           <div class="aspect-square">
@@ -411,22 +407,30 @@
           <!-- Row 3 -->
           <div class="aspect-square"><div class="w-full h-full rounded-full bg-accent-red"></div></div>
           <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-accent-red flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(11px,1.3vw,20px)] leading-tight">
-              Sensory<br />sensitivity
+            <div class="w-full h-full rounded-full bg-accent-red flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(20px,1.3vw,20px)] leading-tight">
+              Sensory<br />Sensitivity
             </div>
           </div>
           <div class="aspect-square"><div class="w-full h-full rounded-full bg-accent-red"></div></div>
           <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-accent-red flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(11px,1.3vw,20px)] leading-tight">
+            <div class="w-full h-full rounded-full bg-accent-red flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(20px,1.3vw,20px)] leading-tight">
               Psychological
             </div>
           </div>
           <div class="aspect-square"><div class="w-full h-full rounded-full bg-accent-red"></div></div>
           <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-accent-red flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(11px,1.3vw,20px)] leading-tight">
-              distress
+            <div class="w-full h-full rounded-full bg-accent-red flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(20px,1.3vw,20px)] leading-tight">
+              Distress
             </div>
           </div>
+
+          <!-- Row 4 -->
+          <div class="aspect-square"><div class="w-full h-full rounded-full bg-accent-red"></div></div>
+          <div class="aspect-square"><div class="w-full h-full rounded-full bg-accent-red"></div></div>
+          <div class="aspect-square"><div class="w-full h-full rounded-full bg-accent-red"></div></div>
+          <div class="aspect-square"><div class="w-full h-full rounded-full bg-accent-red"></div></div>
+          <div class="aspect-square"><div class="w-full h-full rounded-full bg-accent-red"></div></div>
+          <div class="aspect-square"><div class="w-full h-full rounded-full bg-accent-red"></div></div>
         </div>
       </section>
 
@@ -446,59 +450,72 @@
       </section>
 
       <!-- Physical Support Section -->
-      <section class="w-full bg-support-pink relative z-20 pt-24 pb-12 px-0">
+      <section class="w-full bg-support-pink relative z-20 pt-24 pb-12 px-gutter">
         <!-- Header -->
-        <div class="max-w-6xl mx-auto px-6 flex flex-row items-center justify-between md:justify-start md:gap-16">
-          <h2 class="text-[clamp(44px,6vw,90px)] font-display-xl text-white leading-none" data-reveal="left">
-            Physical<br />Support
-          </h2>
-          <div class="w-24 h-24 md:w-36 md:h-36 relative flex-shrink-0" data-reveal="right">
-            <img src="assets/png/04-Wristbands/Physical -25.png" class="w-full h-full object-contain" alt="Physical Person Icon" />
+        <div class="max-w-6xl mx-auto px-6 flex justify-center">
+          <div class="w-72 h-72 md:w-[432px] md:h-[432px] relative flex-shrink-0" data-reveal="scale">
+            <img src="assets/png/04-Wristbands/Physical-24.png" class="w-full h-full object-contain" alt="Physical Person Icon" />
           </div>
         </div>
       </section>
 
       <!-- Physical Support Grid Section -->
-      <section class="w-full bg-support-pink py-0 px-0 relative z-20">
-        <div class="grid grid-cols-6 gap-0 max-w-6xl mx-auto w-full">
+      <section class="w-full bg-support-pink py-0 relative z-20 overflow-hidden">
+        <div class="grid grid-cols-6 gap-0 w-full overflow-hidden" style="margin-top: -8.333vw; margin-bottom: -8.333vw;">
           <!-- Row 1 -->
           <div class="aspect-square"><div class="w-full h-full rounded-full bg-action-teal"></div></div>
+          <div class="aspect-square"><div class="w-full h-full rounded-full bg-action-teal"></div></div>
+          <div class="aspect-square"><div class="w-full h-full rounded-full bg-action-teal"></div></div>
+          <div class="aspect-square"><div class="w-full h-full rounded-full bg-action-teal"></div></div>
+          <div class="aspect-square"><div class="w-full h-full rounded-full bg-action-teal"></div></div>
+          <div class="aspect-square"><div class="w-full h-full rounded-full bg-action-teal"></div></div>
+
+          <!-- Row 2 -->
+          <div class="aspect-square"><div class="w-full h-full rounded-full bg-action-teal"></div></div>
           <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-action-teal flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(11px,1.3vw,20px)] leading-tight">
-              Chronic<br />pain
+            <div class="w-full h-full rounded-full bg-action-teal flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(20px,1.3vw,20px)] leading-tight">
+              Chronic<br />Pain
             </div>
           </div>
           <div class="aspect-square"><div class="w-full h-full rounded-full bg-action-teal"></div></div>
           <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-action-teal flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(11px,1.3vw,20px)] leading-tight">
-              Heart Condition
+            <div class="w-full h-full rounded-full bg-action-teal flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(20px,1.3vw,20px)] leading-tight">
+              Heart<br />Condition
             </div>
           </div>
           <div class="aspect-square"><div class="w-full h-full rounded-full bg-action-teal"></div></div>
           <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-action-teal flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(11px,1.3vw,20px)] leading-tight">
-              surgery<br />recovery
+            <div class="w-full h-full rounded-full bg-action-teal flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(20px,1.3vw,20px)] leading-tight">
+              Surgery<br />Recovery
             </div>
           </div>
 
-          <!-- Row 2 -->
+          <!-- Row 3 -->
           <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-action-teal flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(11px,1.3vw,20px)] leading-tight">
-              Menstrual pain
+            <div class="w-full h-full rounded-full bg-action-teal flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(20px,1.3vw,20px)] leading-tight">
+              Menstrual<br />Pain
             </div>
           </div>
           <div class="aspect-square"><div class="w-full h-full rounded-full bg-action-teal"></div></div>
           <div class="aspect-square">
             <div class="w-full h-full rounded-full bg-action-teal flex items-center justify-center p-4">
-              <img src="assets/png/03-Person/Person-08.png" class="w-[60%] h-[60%] object-contain" alt="Pregnancy Icon" />
+              <img src="assets/png/04-Wristbands/Physical -25.png" class="w-[60%] h-[60%] object-contain" alt="Pregnancy Icon" />
             </div>
           </div>
           <div class="aspect-square"><div class="w-full h-full rounded-full bg-action-teal"></div></div>
           <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-action-teal flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(11px,1.3vw,20px)] leading-tight">
-              Early<br />pregnancy
+            <div class="w-full h-full rounded-full bg-action-teal flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(20px,1.3vw,20px)] leading-tight">
+              Early<br />Pregnancy
             </div>
           </div>
+          <div class="aspect-square"><div class="w-full h-full rounded-full bg-action-teal"></div></div>
+
+          <!-- Row 4 -->
+          <div class="aspect-square"><div class="w-full h-full rounded-full bg-action-teal"></div></div>
+          <div class="aspect-square"><div class="w-full h-full rounded-full bg-action-teal"></div></div>
+          <div class="aspect-square"><div class="w-full h-full rounded-full bg-action-teal"></div></div>
+          <div class="aspect-square"><div class="w-full h-full rounded-full bg-action-teal"></div></div>
+          <div class="aspect-square"><div class="w-full h-full rounded-full bg-action-teal"></div></div>
           <div class="aspect-square"><div class="w-full h-full rounded-full bg-action-teal"></div></div>
         </div>
       </section>

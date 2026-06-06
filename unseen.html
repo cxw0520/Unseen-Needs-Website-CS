@@ -108,8 +108,8 @@
       }
 
       .px-gutter {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
+        padding-left: 5% !important;
+        padding-right: 5% !important;
       }
 
       .nav-logo {
@@ -151,7 +151,31 @@
       }
 
       .speech {
+        position: relative;
         border-radius: 56px;
+      }
+
+      .speech::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0;
+        height: 0;
+        border-style: solid;
+        display: block;
+      }
+
+      .speech-arrow-left::after {
+        left: -29px;
+        border-width: 22px 30px 22px 0;
+        border-color: transparent var(--arrow-color, inherit) transparent transparent;
+      }
+ 
+      .speech-arrow-right::after {
+        right: -29px;
+        border-width: 22px 0 22px 30px;
+        border-color: transparent transparent transparent var(--arrow-color, inherit);
       }
 
       @keyframes logoPulse {
@@ -178,8 +202,95 @@
         }
       }
 
+      .circles-container {
+        position: relative;
+        top: 44px;
+        width: 256px;
+        height: 239px;
+        margin: 40px 12% -44px auto;
+      }
+      @media (min-width: 768px) {
+        .circles-container {
+          top: 54px;
+          width: 384px;
+          height: 358px;
+          margin: 40px 22% -54px auto;
+        }
+      }
+
+      .circle-blue {
+        position: absolute;
+        border-radius: 50%;
+        background-color: #4680BE; /* bg-secondary */
+        width: 128px;
+        height: 128px;
+      }
+      @media (min-width: 768px) {
+        .circle-blue {
+          width: 192px;
+          height: 192px;
+        }
+      }
+
+      .circle-blue.left {
+        bottom: 0;
+        left: 0;
+      }
+
+      .circle-blue.right {
+        bottom: 0;
+        right: 0;
+      }
+
+      .circle-blue.top {
+        left: 64px;
+        bottom: 111px;
+      }
+      @media (min-width: 768px) {
+        .circle-blue.top {
+          left: 96px;
+          bottom: 166px;
+        }
+      }
+
+      .circles-container[data-reveal] {
+        opacity: 1;
+        translate: none;
+        transition: none;
+      }
+
+      .circles-container .circle-blue {
+        opacity: 0;
+        translate: 0 -400px;
+        transition: opacity 1.2s ease, translate 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+        will-change: translate, opacity;
+      }
+
+      .circles-container.is-visible .circle-blue {
+        opacity: 1;
+        translate: 0 0;
+      }
+
+      .circles-container .circle-blue.left {
+        transition-delay: 0ms;
+      }
+
+      .circles-container .circle-blue.right {
+        transition-delay: 200ms;
+      }
+
+      .circles-container .circle-blue.top {
+        transition-delay: 400ms;
+      }
+
       @media (prefers-reduced-motion: reduce) {
         [data-reveal] {
+          opacity: 1;
+          translate: 0 0;
+          transition: none;
+        }
+
+        .circles-container .circle-blue {
           opacity: 1;
           translate: 0 0;
           transition: none;
@@ -221,13 +332,13 @@
     <main>
       <!-- Section 1: What is Invisible? -->
       <section class="w-full bg-calm-purple text-on-secondary py-14 relative overflow-hidden">
-        <div class="absolute -left-8 bottom-8 w-24 h-24 bg-action-teal rounded-full floating-circle mix-blend-normal z-60 opacity-100"></div>
-        <div class="absolute right-0 top-20 w-24 h-24 bg-primary-container rounded-full floating-circle mix-blend-normal z-60 opacity-100" style="animation-duration: 7.5s"></div>
-        <div class="w-full px-10 md:px-20 relative z-10">
-          <h1 class="font-display-xl text-[44px] md:text-[72px] leading-none text-primary-container mb-8" data-reveal="up">What is Invisible?</h1>
+        <div class="absolute -left-8 bottom-8 w-24 h-24 bg-primary-container rounded-full floating-circle mix-blend-normal z-60 opacity-100"></div>
+        <div class="absolute right-0 top-20 w-40 h-40 bg-primary-container rounded-full floating-circle mix-blend-normal z-60 opacity-100" style="animation-duration: 7.5s"></div>
+        <div class="w-full px-gutter relative z-10">
+          <h1 class="font-display-xl text-[44px] md:text-[72px] leading-none text-primary-container mb-8" data-reveal="up">What is Invisible  ?</h1>
           <div class="flex items-center gap-6 md:gap-12" data-reveal="up" style="--reveal-delay: 100ms">
             <div class="w-1/3 max-w-[400px] flex-shrink-0 flex justify-center">
-              <img src="assets/png/06-Unseen/unseen-hero.png" class="w-[400px] h-auto object-contain" alt="Unseen Hero Icon" data-reveal="scale" />
+              <img src="assets/png/06-Unseen/unseen-heart-new.png" class="w-[400px] h-auto object-contain" alt="Unseen Hero Icon" data-reveal="scale" />
             </div>
             <div class="w-2/3 md:w-auto">
               <p class="font-body-lg text-[22px] md:text-[48px] leading-tight text-white">
@@ -240,45 +351,26 @@
 
       <!-- Section 2: They can include... -->
       <section class="w-full bg-white py-12 relative overflow-hidden">
-        <div class="w-full px-10 md:px-20 relative z-10">
+        <div class="w-full px-gutter relative z-10">
           <p class="font-headline-lg text-[24px] md:text-[48px] text-text-deep leading-snug" data-reveal="up">
             They can include anxiety, sensory sensitivity, chronic pain, fatigue, mental health conditions, reduced stamina, or temporary physical discomfort.
           </p>
           
-          <!-- Overlapping Circles Composition -->
-          <div class="flex items-center justify-center mt-10 select-none overflow-visible" data-reveal="up" style="--reveal-delay: 120ms">
-            <!-- Green Circle -->
-            <div class="w-16 h-16 md:w-24 md:h-24 bg-action-teal rounded-full mr-[-8px] md:mr-[-12px]"></div>
-            
-            <!-- Purple Circle -->
-            <div class="w-12 h-12 md:w-16 md:h-16 bg-calm-purple rounded-full mr-[-24px] md:mr-[-36px] mt-12 md:mt-20 z-20"></div>
-            
-            <!-- Blue Circle with Eyes -->
-            <div class="w-32 h-32 md:w-48 md:h-48 bg-secondary rounded-full z-10 flex items-center justify-center">
-              <div class="flex gap-2 -mt-4 md:-mt-6">
-                <!-- Left Eye -->
-                <div class="w-8 h-8 md:w-12 md:h-12 bg-white rounded-full relative">
-                  <div class="w-3.5 h-3.5 md:w-5 md:h-5 bg-[#1a1c1c] rounded-full absolute top-[15%] left-[20%]"></div>
-                </div>
-                <!-- Right Eye -->
-                <div class="w-8 h-8 md:w-12 md:h-12 bg-white rounded-full relative">
-                  <div class="w-3.5 h-3.5 md:w-5 md:h-5 bg-[#1a1c1c] rounded-full absolute top-[15%] left-[20%]"></div>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Red Circle -->
-            <div class="w-14 h-14 md:w-20 md:h-20 bg-accent-red rounded-full ml-[-20px] md:ml-[-32px] -mt-12 md:-mt-20 z-20"></div>
-            
-            <!-- Yellow Circle -->
-            <div class="w-16 h-16 md:w-24 md:h-24 bg-primary-container rounded-full ml-[-8px] md:ml-[-12px] -mt-6 md:-mt-10"></div>
+          <!-- Three Blue Circles Composition -->
+          <div class="circles-container select-none overflow-visible" data-reveal="drop">
+            <!-- Left Circle (Bottom Left) -->
+            <div class="circle-blue left"></div>
+            <!-- Right Circle (Bottom Right) -->
+            <div class="circle-blue right"></div>
+            <!-- Top Circle (Middle Top) -->
+            <div class="circle-blue top"></div>
           </div>
         </div>
       </section>
 
       <!-- Section 3: Unlike visible conditions... -->
       <section class="w-full bg-secondary py-12 text-on-secondary">
-        <div class="w-full px-10 md:px-20 flex items-center gap-6 md:gap-12">
+        <div class="w-full px-gutter flex items-center gap-6 md:gap-12">
           <div class="w-2/3 md:w-auto" data-reveal="up">
             <p class="font-headline-lg text-[24px] md:text-[48px] leading-snug text-white">
               Unlike visible conditions, these experiences are not always immediately understood by others.
@@ -293,27 +385,27 @@
 
       <!-- Section 4: Early Pregnancy (Pink) -->
       <section class="w-full bg-white py-14">
-        <div class="w-full px-10 md:px-20 flex items-center gap-6 md:gap-12">
+        <div class="w-full px-gutter flex items-center gap-6 md:gap-12">
           <div class="w-1/3 max-w-[400px] flex-shrink-0 flex justify-center">
             <img src="assets/png/06-Unseen/unseen (8).png" class="w-[400px] h-auto object-contain" alt="Early Pregnancy Icon" data-reveal="scale" />
           </div>
           <div class="w-2/3 md:w-auto" data-reveal="up" style="--reveal-delay: 120ms">
-            <div class="speech bg-support-pink text-on-secondary p-6 md:p-10 text-[20px] md:text-[44px] leading-snug">
+            <div class="speech speech-arrow-left font-headline-lg bg-support-pink text-on-secondary p-6 md:p-10 text-[20px] md:text-[48px] leading-snug" style="--arrow-color: #EBB5CA">
               My pregnancy may not be visible yet, but if I feel dizzy or unwell, could you offer me a seat?
             </div>
-            <h3 class="font-display-xl text-[28px] md:text-[56px] leading-none text-secondary mt-4">Early Pregnancy</h3>
+            <h3 class="font-headline-md text-headline-md text-[28px] md:text-[72px] leading-none text-accent-red mt-4">Early Pregnancy</h3>
           </div>
         </div>
       </section>
 
       <!-- Section 5: Sensory Sensitivity -->
       <section class="w-full bg-white py-14">
-        <div class="w-full px-10 md:px-20 flex items-center gap-6 md:gap-12">
+        <div class="w-full px-gutter flex items-center gap-6 md:gap-12">
           <div class="w-2/3 md:w-auto" data-reveal="up">
-            <div class="speech bg-accent-red text-on-error p-6 md:p-10 text-[20px] md:text-[44px] leading-snug">
+            <div class="speech speech-arrow-right font-headline-lg bg-accent-red text-on-error p-6 md:p-10 text-[20px] md:text-[48px] leading-snug" style="--arrow-color: #D74737">
               I may experience sensory input more intensely than others. Please lower the volume to help me feel more comfortable.
             </div>
-            <h3 class="font-display-xl text-[28px] md:text-[56px] leading-none text-primary-container mt-4">Sensory Sensitivity</h3>
+            <h3 class="font-headline-md text-headline-md text-[28px] md:text-[72px] leading-none text-primary-container mt-4">Sensory Sensitivity</h3>
           </div>
           <div class="w-1/3 max-w-[400px] flex-shrink-0 flex justify-center">
             <img src="assets/png/06-Unseen/unseen-sensory.png" class="w-[400px] h-auto object-contain" alt="Sensory Sensitivity Icon" data-reveal="scale" />
@@ -323,15 +415,15 @@
 
       <!-- Section 6: Early Pregnancy (Heart icon) -->
       <section class="w-full bg-action-teal py-14">
-        <div class="w-full px-10 md:px-20 flex items-center gap-6 md:gap-12">
+        <div class="w-full px-gutter flex items-center gap-6 md:gap-12">
           <div class="w-1/3 max-w-[400px] flex-shrink-0 flex justify-center">
             <img src="assets/png/06-Unseen/unseen-heart.png" class="w-[400px] h-auto object-contain" alt="Heart Condition Icon" data-reveal="scale" />
           </div>
           <div class="w-2/3 md:w-auto" data-reveal="up" style="--reveal-delay: 120ms">
-            <div class="speech bg-support-pink text-on-secondary p-6 md:p-10 text-[20px] md:text-[44px] leading-snug">
+            <div class="speech speech-arrow-left font-headline-lg bg-support-pink text-on-secondary p-6 md:p-10 text-[20px] md:text-[48px] leading-snug" style="--arrow-color: #EBB5CA">
               My pregnancy may not be visible yet, but if I feel dizzy or unwell, could you offer me a seat?
             </div>
-            <h3 class="font-display-xl text-[28px] md:text-[56px] leading-none text-support-pink mt-4">Early Pregnancy</h3>
+            <h3 class="font-headline-md text-headline-md text-[28px] md:text-[72px] leading-none text-support-pink mt-4">Early Pregnancy</h3>
           </div>
         </div>
       </section>
