@@ -227,6 +227,27 @@
           transition: none;
         }
       }
+
+      /* Circle drop-in animation — per circle, row-staggered */
+      [data-circle-grid] .circle-drop {
+        opacity: 0;
+        translate: 0 -200px;
+        transition:
+          opacity 1.2s ease,
+          translate 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+        will-change: translate, opacity;
+      }
+      [data-circle-grid].is-dropped .circle-drop {
+        opacity: 1;
+        translate: 0 0;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        [data-circle-grid] .circle-drop {
+          opacity: 1;
+          translate: 0 0;
+          transition: none;
+        }
+      }
     </style>
   </head>
 
@@ -354,9 +375,9 @@
         </div>
 
         <!-- Yellow Transition Circles -->
-        <div class="relative w-full overflow-hidden">
+        <div class="relative w-full">
           <!-- Row 1 (Top Row of Circles) -->
-          <div class="grid grid-cols-6 gap-0 w-full relative z-10">
+          <div class="grid grid-cols-6 gap-0 w-full relative z-10" data-circle-grid>
             <div class="aspect-square"></div>
             <div class="aspect-square"><div class="w-full h-full rounded-full bg-primary-container"></div></div>
             <div class="aspect-square"></div>
@@ -381,7 +402,7 @@
       </section>
 
       <!-- Emotional/Cognitive Section -->
-      <section class="w-full bg-primary-container relative z-10 pt-12 pb-12 px-gutter">
+      <section class="w-full bg-primary-container relative z-10 pt-12 pb-20 px-gutter">
 
         <!-- Header -->
         <div class="max-w-6xl mx-auto px-6 flex justify-center">
@@ -393,7 +414,7 @@
 
       <!-- Emotional Grid Section -->
       <section class="w-full bg-primary-container py-0 relative z-10">
-        <div class="grid grid-cols-6 gap-0 w-full" style="margin-top: -8.333vw; margin-bottom: -8.333vw;">
+        <div class="grid grid-cols-6 gap-0 w-full" style="margin-top: -8.333vw; margin-bottom: -8.333vw;" data-circle-grid>
 
           <!-- Row 1 -->
           <div class="aspect-square"></div>
@@ -465,7 +486,7 @@
       </section>
 
       <!-- Physical Support Section -->
-      <section class="w-full bg-support-pink relative z-20 pt-12 pb-12 px-gutter">
+      <section class="w-full bg-support-pink relative z-20 pt-12 pb-20 px-gutter">
         <!-- Header -->
         <div class="max-w-6xl mx-auto px-6 flex justify-center">
           <div class="w-72 h-72 md:w-[432px] md:h-[432px] relative flex-shrink-0" data-reveal="scale">
@@ -476,7 +497,7 @@
 
       <!-- Physical Support Grid Section -->
       <section class="w-full bg-support-pink py-0 relative z-20">
-        <div class="grid grid-cols-6 gap-0 w-full" style="margin-top: -8.333vw; margin-bottom: -8.333vw;">
+        <div class="grid grid-cols-6 gap-0 w-full" style="margin-top: -8.333vw; margin-bottom: -8.333vw;" data-circle-grid>
 
           <!-- Row 1 -->
           <div class="aspect-square"></div>
@@ -544,7 +565,7 @@
       </section>
 
       <!-- Energy Endurance Section -->
-      <section class="w-full bg-secondary relative z-10 pt-12 pb-12 px-gutter">
+      <section class="w-full bg-secondary relative z-10 pt-12 pb-20 px-gutter">
         <!-- Header -->
         <div class="max-w-6xl mx-auto px-6 flex justify-center">
           <div class="w-72 h-72 md:w-[432px] md:h-[432px] relative flex-shrink-0" data-reveal="scale">
@@ -555,7 +576,7 @@
 
       <!-- Energy Endurance Grid Section -->
       <section class="w-full bg-secondary py-0 relative z-10">
-        <div class="grid grid-cols-6 gap-0 w-full" style="margin-top: -8.333vw; margin-bottom: -8.333vw;">
+        <div class="grid grid-cols-6 gap-0 w-full" style="margin-top: -8.333vw; margin-bottom: -8.333vw;" data-circle-grid>
 
           <!-- Row 1 -->
           <div class="aspect-square"></div>
@@ -669,6 +690,39 @@
         );
 
         revealEls.forEach((el) => observer.observe(el));
+
+        // Circle grid drop-in — row-by-row stagger
+        const COLS = 6;
+        const ROW_DELAY = 200; // ms between rows
+        const circleGrids = document.querySelectorAll('[data-circle-grid]');
+
+        // Tag each direct .aspect-square child's inner circle with delay
+        circleGrids.forEach((grid) => {
+          const cells = Array.from(grid.children).filter(c => c.classList.contains('aspect-square'));
+          cells.forEach((cell, i) => {
+            const inner = cell.firstElementChild;
+            if (!inner) return;
+            inner.classList.add('circle-drop');
+            const row = Math.floor(i / COLS);
+            inner.style.transitionDelay = `${row * ROW_DELAY}ms`;
+          });
+        });
+
+        if (reduceMotion) {
+          circleGrids.forEach((el) => el.classList.add('is-dropped'));
+        } else {
+          const gridObserver = new IntersectionObserver(
+            (entries, obs) => {
+              for (const entry of entries) {
+                if (!entry.isIntersecting) continue;
+                entry.target.classList.add('is-dropped');
+                obs.unobserve(entry.target);
+              }
+            },
+            { threshold: 0.05, rootMargin: '0px 0px -5% 0px' }
+          );
+          circleGrids.forEach((el) => gridObserver.observe(el));
+        }
       })();
     </script>
 
