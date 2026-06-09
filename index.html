@@ -267,6 +267,21 @@
       .press:active {
         scale: 0.98;
       }
+
+
+      /* ── Logo Intro Animation ── */
+      #logo-intro {
+        width: 100%;
+        height: 100svh;
+        background: #f9f9f9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      #logo-intro canvas {
+        display: block;
+      }
     </style>
   </head>
 
@@ -295,7 +310,11 @@
     </header>
 
     <main>
-      <section class="relative w-full overflow-hidden pt-8 pb-24">
+      <!-- ── Logo Intro Animation ── -->
+      <section id="logo-intro" aria-label="UNSEEN logo animation">
+        <canvas id="logo-canvas"></canvas>
+      </section>
+      <section class="relative w-full overflow-visible pt-8 pb-24">
         <div class="max-w-container-max mx-auto px-gutter relative">
           <div class="circle-decor bg-support-pink w-48 h-48 -top-12 left-1/4 mix-blend-normal opacity-100 z-60" data-anim="pink"></div>
           <div class="circle-decor bg-secondary w-64 h-64 top-12 -left-8 mix-blend-normal opacity-100 z-60" data-anim="blue"></div>
@@ -358,6 +377,244 @@
         </div>
       </section>
     </main>
+
+    <script>
+      /* ════════════════════════════════════════════
+         LOGO INTRO ANIMATION
+         Sequence (loops forever):
+           0.0s – 0.6s  : 6 balls drift in from random positions
+           0.6s – 1.4s  : balls morph/slide into letter positions
+           1.4s – 2.2s  : each ball expands to fill its letter shape
+           2.2s – 2.8s  : letters turn from color → brown #4B332D
+           2.8s – 3.4s  : 2nd E blinks (opacity oscillates)
+           3.4s – 3.9s  : 2nd E fades out
+           3.9s – 4.7s  : pause with UNSEN
+           4.7s – 5.2s  : fade out everything
+           5.2s          : restart
+         ════════════════════════════════════════════ */
+      (function () {
+        const canvas = document.getElementById("logo-canvas");
+        const ctx = canvas.getContext("2d");
+        const intro = document.getElementById("logo-intro");
+
+        const COLORS = ["#4680BE", "#D74737", "#EBB5CA", "#E5C543", "#68AC9D", "#6D65A1"];
+        const BROWN = "#4B332D";
+        const LETTERS = ["U", "N", "S", "E", "E", "N"];
+
+        // Timing (seconds)
+        const T = {
+          ballsIn:     0.6,   // balls fly in from off-screen
+          orbitStart:  0.6,   // start orbiting around center
+          orbitEnd:    1.1,   // stop orbit, begin converging
+          morphStart:  1.1,
+          morphEnd:    2.0,
+          fillStart:   2.0,
+          fillEnd:     2.8,
+          colorStart:  2.8,
+          colorEnd:    3.5,
+          blinkStart:  3.5,
+          blinkEnd:    4.2,
+          fadeE2Start: 4.2,
+          fadeE2End:   4.7,
+          pause:       5.5,
+          fadeOut:     6.0,
+          total:       6.5,
+        };
+
+        let W, H, letterPositions, ballRadius, fontSize;
+        let startTime = null;
+        let raf = null;
+
+        // Easing
+        const ease = (t) => t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
+        const lerp = (a, b, t) => a + (b - a) * t;
+        const clamp01 = (t) => Math.max(0, Math.min(1, t));
+
+        function hexToRgb(hex) {
+          const r = parseInt(hex.slice(1,3),16);
+          const g = parseInt(hex.slice(3,5),16);
+          const b = parseInt(hex.slice(5,7),16);
+          return {r, g, b};
+        }
+        function lerpColor(c1, c2, t) {
+          const a = hexToRgb(c1), b = hexToRgb(c2);
+          return `rgb(${Math.round(lerp(a.r,b.r,t))},${Math.round(lerp(a.g,b.g,t))},${Math.round(lerp(a.b,b.b,t))})` ;
+        }
+
+        function resize() {
+          W = canvas.width  = window.innerWidth;
+          H = canvas.height = window.innerHeight;
+          fontSize = Math.min(W * 0.18, H * 0.35, 200);
+          ballRadius = fontSize * 0.38;
+          letterPositions = measureLetters();
+        }
+
+        function measureLetters() {
+          ctx.font = `900 ${fontSize}px 'Franklin Gothic Medium Regular', Arial Black, sans-serif`;
+          ctx.textBaseline = "middle";
+          const totalW = LETTERS.reduce((acc, l) => acc + ctx.measureText(l).width, 0);
+          const spacing = fontSize * 0.05;
+          const fullW = totalW + spacing * (LETTERS.length - 1);
+          let x = (W - fullW) / 2;
+          const y = H / 2;
+          return LETTERS.map((l) => {
+            const w = ctx.measureText(l).width;
+            const cx = x + w / 2;
+            x += w + spacing;
+            return { cx, cy: y, w };
+          });
+        }
+
+        // Random off-screen start positions for each ball
+        let ballStarts = [];
+        function initBallStarts() {
+          ballStarts = LETTERS.map((_, i) => {
+            const angle = (i / LETTERS.length) * Math.PI * 2 + Math.PI * 0.25;
+            const dist = Math.max(W, H) * 0.7;
+            return {
+              x: W / 2 + Math.cos(angle) * dist,
+              y: H / 2 + Math.sin(angle) * dist,
+            };
+          });
+        }
+
+        function drawFrame(elapsed) {
+          const t = elapsed / 1000; // seconds
+          ctx.clearRect(0, 0, W, H);
+
+          // Global fade-out at end
+          let globalAlpha = 1;
+          if (t >= T.fadeOut) {
+            globalAlpha = clamp01(1 - (t - T.fadeOut) / (T.total - T.fadeOut));
+          }
+
+          ctx.save();
+          ctx.globalAlpha = globalAlpha;
+
+          // Determine 2nd-E visibility
+          let e2Alpha = 1;
+          if (t >= T.blinkStart && t < T.blinkEnd) {
+            const bk = (t - T.blinkStart) / (T.blinkEnd - T.blinkStart);
+            e2Alpha = 0.5 + 0.5 * Math.sin(bk * Math.PI * 6); // oscillates ~3 times
+          } else if (t >= T.fadeE2Start && t < T.fadeE2End) {
+            e2Alpha = clamp01(1 - (t - T.fadeE2Start) / (T.fadeE2End - T.fadeE2Start));
+          } else if (t >= T.fadeE2End) {
+            e2Alpha = 0;
+          }
+
+          for (let i = 0; i < LETTERS.length; i++) {
+            const color = COLORS[i];
+            const target = letterPositions[i];
+            const isE2 = i === 4; // second E
+
+            let cx, cy, alpha = 1;
+            if (isE2) alpha = e2Alpha;
+
+            // Phase 1a: balls fly in from off-screen → orbit ring entry point
+            // Phase 1b: orbit around center for 0.5s
+            // Phase 2:  converge from orbit position → letter center
+            const orbitRadius = Math.min(W, H) * 0.22;
+            // Each ball has a base angle on the ring (evenly spaced)
+            const baseAngle = (i / LETTERS.length) * Math.PI * 2 - Math.PI / 2;
+            // Where the ball sits on the orbit ring
+            const orbitX = W / 2 + Math.cos(baseAngle) * orbitRadius;
+            const orbitY = H / 2 + Math.sin(baseAngle) * orbitRadius;
+
+            if (t < T.orbitStart) {
+              // Fly in: from off-screen start → orbit ring position
+              const p = ease(clamp01(t / T.ballsIn));
+              cx = lerp(ballStarts[i].x, orbitX, p);
+              cy = lerp(ballStarts[i].y, orbitY, p);
+            } else if (t < T.orbitEnd) {
+              // Orbit: rotate 1 full turn around center
+              const op = (t - T.orbitStart) / (T.orbitEnd - T.orbitStart);
+              const spin = op * Math.PI * 2; // full revolution
+              const angle = baseAngle + spin;
+              cx = W / 2 + Math.cos(angle) * orbitRadius;
+              cy = H / 2 + Math.sin(angle) * orbitRadius;
+            } else if (t < T.morphStart) {
+              // Snap-back landing on orbit position before morph starts
+              cx = orbitX;
+              cy = orbitY;
+            } else {
+              // Converge from orbit position → letter center
+              const p = ease(clamp01((t - T.morphStart) / (T.morphEnd - T.morphStart)));
+              cx = lerp(orbitX, target.cx, p);
+              cy = lerp(orbitY, target.cy, p);
+            }
+
+            // Phase 2: morph — we transition from circle → letter clip
+            const morphP = clamp01((t - T.morphStart) / (T.morphEnd - T.morphStart));
+            const fillP  = clamp01((t - T.fillStart)  / (T.fillEnd  - T.fillStart));
+            const colorP = clamp01((t - T.colorStart)  / (T.colorEnd - T.colorStart));
+
+            const currentColor = lerpColor(color, BROWN, ease(colorP));
+
+            if (alpha <= 0) continue;
+
+            ctx.save();
+            ctx.globalAlpha *= alpha;
+
+            if (morphP < 1) {
+              // Draw as circle shrinking/expanding toward letter center
+              const r = ballRadius * (1 - ease(morphP) * 0.3);
+              ctx.beginPath();
+              ctx.arc(cx, cy, r, 0, Math.PI * 2);
+              ctx.fillStyle = currentColor;
+              ctx.fill();
+            } else {
+              // Draw letter with radial reveal from center outward
+              // Use clipping: reveal circle expanding from letter center
+              ctx.save();
+              if (fillP < 1) {
+                // Clip to expanding circle
+                const maxR = Math.sqrt(target.w * target.w + fontSize * fontSize);
+                const clipR = ease(fillP) * maxR * 1.5;
+                ctx.beginPath();
+                ctx.arc(target.cx, target.cy, clipR, 0, Math.PI * 2);
+                ctx.clip();
+              }
+              ctx.font = `900 ${fontSize}px 'Franklin Gothic Medium Regular', Arial Black, sans-serif`;
+              ctx.textBaseline = "middle";
+              ctx.textAlign = "center";
+              ctx.fillStyle = currentColor;
+              ctx.fillText(LETTERS[i], target.cx, target.cy);
+              ctx.restore();
+            }
+
+            ctx.restore();
+          }
+
+          ctx.restore();
+        }
+
+        function loop(ts) {
+          if (startTime === null) startTime = ts;
+          const elapsed = ts - startTime;
+
+          drawFrame(elapsed);
+
+          if (elapsed >= T.total * 1000) {
+            // Restart
+            startTime = null;
+            initBallStarts();
+          }
+
+          raf = requestAnimationFrame(loop);
+        }
+
+        function start() {
+          resize();
+          initBallStarts();
+          startTime = null;
+          if (raf) cancelAnimationFrame(raf);
+          raf = requestAnimationFrame(loop);
+        }
+
+        window.addEventListener("resize", () => { resize(); initBallStarts(); });
+        start();
+      })();
+    </script>
 
     <script>
       (() => {
