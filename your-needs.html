@@ -480,7 +480,7 @@
           <p class="transform translate-x-4" data-reveal="up">I may need quiet.</p>
           <p class="transform translate-x-20" data-reveal="right">I'm feeling overwhelmed.</p>
         </div>
-        <div class="absolute bottom-10 right-10 md:right-32 w-64 h-auto transform rotate-12 opacity-90" data-reveal="scale">
+        <div class="absolute bottom-20 right-10 md:right-auto md:left-[calc(50%+100px)] w-64 h-auto transform rotate-12 opacity-90" data-reveal="scale">
           <img src="assets/png/04-Wristbands/yellow-wristband-nobg.png" class="w-full h-auto object-contain" alt="Emotional Wristband" />
         </div>
       </section>
@@ -559,7 +559,7 @@
           <p class="transform translate-x-4" data-reveal="up">I may need assistance.</p>
           <p class="transform translate-x-12" data-reveal="right">I'm managing a physical condition.</p>
         </div>
-        <div class="absolute bottom-10 left-10 md:left-32 w-64 h-auto transform -rotate-6 opacity-90" data-reveal="scale">
+        <div class="absolute bottom-20 left-10 md:left-auto md:right-[calc(50%+100px)] w-64 h-auto transform -rotate-6 opacity-90" data-reveal="scale">
           <img src="assets/png/04-Wristbands/pink-wristband-nobg.png" class="w-full h-auto object-contain" alt="Physical Wristband" />
         </div>
       </section>
@@ -634,7 +634,7 @@
           <p class="transform translate-x-4" data-reveal="up">I may move slowly.</p>
           <p class="transform translate-x-20" data-reveal="right">I'm easily fatigued.</p>
         </div>
-        <div class="absolute bottom-10 right-10 md:right-32 w-64 h-auto transform rotate-12 opacity-90" data-reveal="scale">
+        <div class="absolute bottom-20 right-10 md:right-auto md:left-[calc(50%+100px)] w-64 h-auto transform rotate-12 opacity-90" data-reveal="scale">
           <img src="assets/png/04-Wristbands/blue-wristband-nobg.png" class="w-full h-auto object-contain" alt="Energy Wristband" />
         </div>
       </section>
@@ -691,20 +691,27 @@
 
         revealEls.forEach((el) => observer.observe(el));
 
-        // Circle grid drop-in — row-by-row stagger
-        const COLS = 6;
-        const ROW_DELAY = 200; // ms between rows
+        // Circle grid drop-in — dynamic random order per grid
         const circleGrids = document.querySelectorAll('[data-circle-grid]');
-
-        // Tag each direct .aspect-square child's inner circle with delay
         circleGrids.forEach((grid) => {
           const cells = Array.from(grid.children).filter(c => c.classList.contains('aspect-square'));
-          cells.forEach((cell, i) => {
+          const inners = [];
+          cells.forEach((cell) => {
             const inner = cell.firstElementChild;
-            if (!inner) return;
+            if (inner) inners.push(inner);
+          });
+
+          // Fisher-Yates shuffle to randomize the order
+          for (let i = inners.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [inners[i], inners[j]] = [inners[j], inners[i]];
+          }
+
+          // Apply staggered transition delay based on the shuffled order
+          const BASE_DELAY = 80; // ms between each circle dropping
+          inners.forEach((inner, index) => {
             inner.classList.add('circle-drop');
-            const row = Math.floor(i / COLS);
-            inner.style.transitionDelay = `${row * ROW_DELAY}ms`;
+            inner.style.transitionDelay = `${index * BASE_DELAY}ms`;
           });
         });
 
