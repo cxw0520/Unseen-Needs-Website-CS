@@ -28,11 +28,11 @@
               "on-tertiary-container": "#8a3624",
               primary: "#4B332D",
               "primary-fixed": "#ffe083",
-              "on-surface": "#1a1c1c",
-              "outline-variant": "#d0c6af",
-              outline: "#7e7663",
+              "on-surface": "#4B332D",
+              "outline-variant": "#4B332D",
+              outline: "#4B332D",
               "tertiary-container": "#ffb1a0",
-              "on-primary-container": "#634f00",
+              "on-primary-container": "#4B332D",
               "on-tertiary-fixed-variant": "#7d2c1b",
               "surface-variant": "#e2e2e2",
               "secondary-fixed-dim": "#a3c9ff",
@@ -43,10 +43,10 @@
               "secondary-container": "#8fbeff",
               "support-pink": "#EBB5CA",
               "on-secondary-container": "#0f4c86",
-              "on-surface-variant": "#4d4635",
+              "on-surface-variant": "#4B332D",
               "calm-purple": "#6D65A1",
               "on-secondary": "#ffffff",
-              "surface-container-highest": "#e2e2e2",
+              "surface-container-highest": "#f9f9f9",
               "error-container": "#ffdad6",
               "surface-dim": "#dadada",
               "on-error-container": "#93000a",
@@ -63,8 +63,8 @@
               tertiary: "#9c4330",
               "surface-container": "#eeeeee",
               "surface-bright": "#f9f9f9",
-              "text-deep": "#3F4652",
-              "on-background": "#1a1c1c",
+              "text-deep": "#4B332D",
+              "on-background": "#4B332D",
               "accent-red": "#D74737",
               "surface-container-low": "#f3f3f4",
               "on-secondary-fixed": "#001c39",
@@ -265,62 +265,108 @@
     <main class="flex-grow flex flex-col justify-center items-center py-section-padding bg-surface">
       <section id="share" class="w-full px-gutter relative z-30">
         <div
-          class="max-w-3xl mx-auto bg-support-pink/20 rounded-[40px] p-8 md:p-16 border border-support-pink/30 shadow-xl backdrop-blur-sm relative overflow-hidden"
+          class="max-w-3xl mx-auto bg-support-pink rounded-[40px] p-8 md:p-16 border border-primary-fixed/40 shadow-xl backdrop-blur-sm relative overflow-hidden"
         >
-          <div class="absolute -top-20 -right-20 w-64 h-64 bg-support-pink rounded-full floating-circle z-0"></div>
           <div class="relative z-10 text-center mb-12">
-            <h2 class="text-headline-lg font-headline-lg text-text-deep mb-4" data-reveal="up">Let's Share Together</h2>
-            <p class="text-body-md font-body-md text-on-surface-variant" data-reveal="up" style="--reveal-delay: 120ms">
-              Your voice helps make the invisible visible. Share your context.
+            <h2 class="text-headline-lg font-headline-lg text-primary mb-4" data-reveal="up">Let's Share Together</h2>
+            <p class="text-body-md font-body-md text-primary/70" data-reveal="up" style="--reveal-delay: 120ms">
+              Your voice helps make the invisible visible. Share your story.
             </p>
           </div>
 
           <form class="relative z-10 space-y-6" data-stagger data-stagger-step="90">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div class="flex flex-col" data-reveal="up">
-                <label class="text-label-bold font-label-bold text-on-surface mb-2 ml-4" for="name">Name (Optional)</label>
-                <input
-                  class="bg-surface-container-lowest/50 border border-outline-variant text-on-surface rounded-full px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-on-surface-variant/50"
-                  id="name"
-                  placeholder="How should we call you?"
-                  type="text"
-                />
-              </div>
-              <div class="flex flex-col" data-reveal="up" style="--reveal-delay: 90ms">
-                <label class="text-label-bold font-label-bold text-on-surface mb-2 ml-4" for="email">Email (Optional)</label>
-                <input
-                  class="bg-surface-container-lowest/50 border border-outline-variant text-on-surface rounded-full px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-on-surface-variant/50"
-                  id="email"
-                  placeholder="For updates on the movement"
-                  type="email"
-                />
+            <!-- Your name -->
+            <div class="flex flex-col" data-reveal="up">
+              <label class="text-label-bold font-label-bold text-primary mb-2 ml-4" for="name">Your name*</label>
+              <input
+                class="bg-surface-container-lowest/50 border border-outline-variant text-primary rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-primary/40"
+                id="name"
+                placeholder="How should we call you?"
+                type="text"
+                required
+              />
+            </div>
+
+            <!-- Your email address -->
+            <div class="flex flex-col" data-reveal="up">
+              <label class="text-label-bold font-label-bold text-primary mb-2 ml-4" for="email">Your email address*</label>
+              <input
+                class="bg-surface-container-lowest/50 border border-outline-variant text-primary rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-primary/40"
+                id="email"
+                placeholder="For updates on the movement"
+                type="email"
+                required
+              />
+            </div>
+
+            <!-- Do you have any invisible needs on trnsportation before? -->
+            <div class="flex flex-col" data-reveal="up">
+              <label class="text-label-bold font-label-bold text-primary mb-2 ml-4">Do you have any invisible needs on trnsportation before?*</label>
+              <div class="space-y-3">
+                <label class="flex items-center gap-3 bg-primary/10 hover:bg-primary/15 transition-colors rounded-xl px-6 py-4 cursor-pointer">
+                  <input type="radio" name="invisible_needs_transport" value="yes" class="form-radio rounded text-primary focus:ring-primary border-outline-variant bg-surface-container-lowest w-5 h-5" required />
+                  <span class="text-primary font-body-md">Yes, I do.</span>
+                </label>
+                <label class="flex items-center gap-3 bg-primary/10 hover:bg-primary/15 transition-colors rounded-xl px-6 py-4 cursor-pointer">
+                  <input type="radio" name="invisible_needs_transport" value="no" class="form-radio rounded text-primary focus:ring-primary border-outline-variant bg-surface-container-lowest w-5 h-5" />
+                  <span class="text-primary font-body-md">No, but I see other have.</span>
+                </label>
               </div>
             </div>
-            <div class="flex flex-col" data-reveal="up" style="--reveal-delay: 180ms">
-              <label class="text-label-bold font-label-bold text-on-surface mb-2 ml-4" for="needs">What unseen needs do you carry?</label>
+
+            <!-- What kind of support is needed? -->
+            <div class="flex flex-col" data-reveal="up">
+              <label class="text-label-bold font-label-bold text-primary mb-2 ml-4">What kind of support is needed?*</label>
+              <div class="space-y-3">
+                <label class="flex items-center gap-3 bg-primary/10 hover:bg-primary/15 transition-colors rounded-xl px-6 py-4 cursor-pointer">
+                  <input type="checkbox" name="support_type" value="physical" class="form-checkbox rounded text-primary focus:ring-primary border-outline-variant bg-surface-container-lowest w-5 h-5" />
+                  <span class="text-primary font-body-md">Physical Support</span>
+                </label>
+                <label class="flex items-center gap-3 bg-primary/10 hover:bg-primary/15 transition-colors rounded-xl px-6 py-4 cursor-pointer">
+                  <input type="checkbox" name="support_type" value="sensory" class="form-checkbox rounded text-primary focus:ring-primary border-outline-variant bg-surface-container-lowest w-5 h-5" />
+                  <span class="text-primary font-body-md">Sensory Support</span>
+                </label>
+                <label class="flex items-center gap-3 bg-primary/10 hover:bg-primary/15 transition-colors rounded-xl px-6 py-4 cursor-pointer">
+                  <input type="checkbox" name="support_type" value="emotional" class="form-checkbox rounded text-primary focus:ring-primary border-outline-variant bg-surface-container-lowest w-5 h-5" />
+                  <span class="text-primary font-body-md">Emotional Support</span>
+                </label>
+                <label class="flex items-center gap-3 bg-primary/10 hover:bg-primary/15 transition-colors rounded-xl px-6 py-4 cursor-pointer">
+                  <input type="checkbox" name="support_type" value="rest" class="form-checkbox rounded text-primary focus:ring-primary border-outline-variant bg-surface-container-lowest w-5 h-5" />
+                  <span class="text-primary font-body-md">Rest Support</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- What is the problem? -->
+            <div class="flex flex-col" data-reveal="up">
+              <label class="text-label-bold font-label-bold text-primary mb-2 ml-4" for="needs">What is the problem?*</label>
               <textarea
-                class="bg-surface-container-lowest/50 border border-outline-variant text-on-surface rounded-[2rem] px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-on-surface-variant/50 resize-none"
+                class="bg-surface-container-lowest/50 border border-outline-variant text-primary rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-primary/40 resize-none"
                 id="needs"
                 placeholder="E.g., Sensory overload in crowds, chronic fatigue..."
                 rows="3"
+                required
               ></textarea>
             </div>
-            <div class="flex flex-col" data-reveal="up" style="--reveal-delay: 270ms">
-              <label class="text-label-bold font-label-bold text-on-surface mb-2 ml-4" for="reflection">How could others better support this?</label>
+
+            <!-- What do you think our project? -->
+            <div class="flex flex-col" data-reveal="up">
+              <label class="text-label-bold font-label-bold text-primary mb-2 ml-4" for="reflection">What do you think of our project? Give us some feedback, thank you!!</label>
               <textarea
-                class="bg-surface-container-lowest/50 border border-outline-variant text-on-surface rounded-[2rem] px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-on-surface-variant/50 resize-none"
+                class="bg-surface-container-lowest/50 border border-outline-variant text-primary rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-primary/40 resize-none"
                 id="reflection"
                 placeholder="Share your thoughts..."
                 rows="4"
               ></textarea>
             </div>
-            <div class="pt-4 flex justify-center" data-reveal="scale" style="--reveal-delay: 360ms">
+
+            <!-- Submit Button -->
+            <div class="pt-4 flex justify-center" data-reveal="scale">
               <button
-                class="bg-secondary text-on-secondary px-10 py-4 rounded-full font-label-bold text-lg hover:bg-secondary/90 hover:scale-105 transition-all shadow-md flex items-center gap-2"
+                class="w-full bg-white text-primary border border-outline-variant/30 px-10 py-4 rounded-full font-label-bold text-lg hover:bg-white/90 hover:scale-[1.01] transition-all shadow-md flex justify-center items-center gap-2"
                 type="button"
               >
-                <span>Share My Context</span>
-                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">favorite</span>
+                <span>Submit</span>
               </button>
             </div>
           </form>

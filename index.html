@@ -29,11 +29,11 @@
               "on-tertiary-container": "#8a3624",
               primary: "#4B332D",
               "primary-fixed": "#ffe083",
-              "on-surface": "#1a1c1c",
-              "outline-variant": "#d0c6af",
-              outline: "#7e7663",
+              "on-surface": "#4B332D",
+              "outline-variant": "#4B332D",
+              outline: "#4B332D",
               "tertiary-container": "#ffb1a0",
-              "on-primary-container": "#634f00",
+              "on-primary-container": "#4B332D",
               "on-tertiary-fixed-variant": "#7d2c1b",
               "surface-variant": "#e2e2e2",
               "secondary-fixed-dim": "#a3c9ff",
@@ -44,10 +44,10 @@
               "secondary-container": "#8fbeff",
               "support-pink": "#EBB5CA",
               "on-secondary-container": "#0f4c86",
-              "on-surface-variant": "#4d4635",
+              "on-surface-variant": "#4B332D",
               "calm-purple": "#6D65A1",
               "on-secondary": "#ffffff",
-              "surface-container-highest": "#e2e2e2",
+              "surface-container-highest": "#f9f9f9",
               "error-container": "#ffdad6",
               "surface-dim": "#dadada",
               "on-error-container": "#93000a",
@@ -64,8 +64,8 @@
               tertiary: "#9c4330",
               "surface-container": "#eeeeee",
               "surface-bright": "#f9f9f9",
-              "text-deep": "#3F4652",
-              "on-background": "#1a1c1c",
+              "text-deep": "#4B332D",
+              "on-background": "#4B332D",
               "accent-red": "#D74737",
               "surface-container-low": "#f3f3f4",
               "on-secondary-fixed": "#001c39",
@@ -403,22 +403,22 @@
 
         // Timing (seconds)
         const T = {
-          ballsIn:     0.6,   // balls fly in from off-screen
-          orbitStart:  0.6,   // start orbiting around center
-          orbitEnd:    1.1,   // stop orbit, begin converging
-          morphStart:  1.1,
-          morphEnd:    2.0,
-          fillStart:   2.0,
-          fillEnd:     2.8,
-          colorStart:  2.8,
-          colorEnd:    3.5,
-          blinkStart:  3.5,
-          blinkEnd:    4.2,
-          fadeE2Start: 4.2,
-          fadeE2End:   4.7,
-          pause:       5.5,
-          fadeOut:     6.0,
-          total:       6.5,
+          ballsIn:     1.2,   // balls fly in from off-screen (2× slower)
+          orbitStart:  1.2,   // start orbiting around center
+          orbitEnd:    2.2,   // stop orbit after 1.0s (2× slower)
+          morphStart:  2.2,
+          morphEnd:    3.1,
+          fillStart:   3.1,
+          fillEnd:     3.9,
+          colorStart:  3.9,
+          colorEnd:    4.6,
+          //blinkStart:  4.6,
+          //blinkEnd:    6.7,   // 2.1s blink window (3× slower)
+          fadeE2Start: 5.6,
+          fadeE2End:   6.4,
+          pause:       8.0,
+          fadeOut:     8.5,
+          total:       9.0,
         };
 
         let W, H, letterPositions, ballRadius, fontSize;
@@ -490,12 +490,16 @@
 
           ctx.save();
           ctx.globalAlpha = globalAlpha;
+          // Scale entire animation to 0.8× around canvas center
+          ctx.translate(W / 2, H / 2);
+          ctx.scale(0.8, 0.8);
+          ctx.translate(-W / 2, -H / 2);
 
           // Determine 2nd-E visibility
           let e2Alpha = 1;
           if (t >= T.blinkStart && t < T.blinkEnd) {
             const bk = (t - T.blinkStart) / (T.blinkEnd - T.blinkStart);
-            e2Alpha = 0.5 + 0.5 * Math.sin(bk * Math.PI * 6); // oscillates ~3 times
+            e2Alpha = 0.5 + 0.5 * Math.sin(bk * Math.PI * 0.5); // oscillates ~1 time
           } else if (t >= T.fadeE2Start && t < T.fadeE2End) {
             e2Alpha = clamp01(1 - (t - T.fadeE2Start) / (T.fadeE2End - T.fadeE2Start));
           } else if (t >= T.fadeE2End) {
@@ -513,7 +517,7 @@
             // Phase 1a: balls fly in from off-screen → orbit ring entry point
             // Phase 1b: orbit around center for 0.5s
             // Phase 2:  converge from orbit position → letter center
-            const orbitRadius = Math.min(W, H) * 0.22;
+            const orbitRadius = Math.min(W, H) * 0.31;
             // Each ball has a base angle on the ring (evenly spaced)
             const baseAngle = (i / LETTERS.length) * Math.PI * 2 - Math.PI / 2;
             // Where the ball sits on the orbit ring
