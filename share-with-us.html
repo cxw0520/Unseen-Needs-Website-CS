@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UNSEEN - Story About Us</title>
+    <title>UNSEEN - Share With Us</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
@@ -152,18 +152,6 @@
         opacity: 1 !important;
       }
 
-      @keyframes logoPulse {
-        0% {
-          transform: scale(1) rotate(0deg);
-        }
-        50% {
-          transform: scale(1.03) rotate(-1deg);
-        }
-        100% {
-          transform: scale(1) rotate(0deg);
-        }
-      }
-
       @keyframes circleFloat {
         0% {
           transform: translate3d(0, 0, 0);
@@ -215,6 +203,16 @@
           transition: none;
         }
       }
+      
+      .interactive-lift {
+        transition: translate 200ms ease, background-color 200ms ease, color 200ms ease;
+      }
+      .interactive-lift:hover {
+        translate: 0 -2px;
+      }
+      .press:active {
+        scale: 0.98;
+      }
     </style>
   </head>
 
@@ -250,15 +248,10 @@
               href="your-needs.html"
               >Your Needs</a
             >
-            <a
-              class="text-primary font-label-bold text-label-bold border-b-2 border-primary pb-1"
-              href="story.html"
-              >Story</a
-            >
           </nav>
           <a
-            class="border-2 border-outline rounded-full px-8 py-2 text-on-surface font-label-bold text-label-bold hover:bg-surface-variant transition-colors interactive-lift press"
-            href="#share"
+            class="bg-primary text-white border-2 border-primary rounded-full px-8 py-2 font-label-bold text-label-bold hover:bg-primary/90 transition-colors interactive-lift press"
+            href="share-with-us.html"
             >Share With Us</a
           >
         </div>
@@ -269,91 +262,8 @@
     </header>
 
     <!-- Main Content Canvas -->
-    <main class="flex-grow flex flex-col">
-      <!-- Hero Story Title Section -->
-      <section class="bg-primary-container flex-grow flex items-center justify-start min-h-[716px] relative overflow-hidden">
-        <div
-          class="absolute -right-[20%] -bottom-[20%] w-[60%] h-[120%] bg-primary-fixed-dim rounded-full opacity-30 mix-blend-multiply blur-3xl pointer-events-none"
-        ></div>
-        <div class="w-full max-w-container-max mx-auto px-gutter relative z-10">
-          <h1 class="text-on-primary-container font-display-xl text-display-xl uppercase tracking-widest max-w-[800px]" data-reveal="up">
-            STORY ABOUT US
-          </h1>
-        </div>
-      </section>
-
-      <!-- Narrative Block 1 -->
-      <section class="py-section-padding bg-surface">
-        <div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
-          <div class="md:col-span-5 relative z-10">
-            <h2 class="text-tertiary font-headline-lg text-headline-lg mb-6" data-reveal="up">The Genesis of Empathy</h2>
-            <p class="text-text-deep font-body-lg text-body-lg mb-8 leading-relaxed" data-reveal="up" style="--reveal-delay: 100ms">
-              UNSEEN was born from a simple, profound realization: the vast majority of human struggle
-              happens beneath the surface. We move through shared spaces carrying invisible burdens—chronic
-              pain, anxiety, neurodivergence—often feeling entirely alone in a crowd.
-            </p>
-            <p class="text-text-deep font-body-md text-body-md opacity-80" data-reveal="up" style="--reveal-delay: 200ms">
-              Our mission is not merely to acknowledge these unseen truths, but to make them tangible. To
-              weave a new visual language of radical empathy.
-            </p>
-          </div>
-          <div class="md:col-span-6 md:col-start-7 relative mt-12 md:mt-0">
-            <div class="aspect-square bg-support-pink rounded-full absolute -left-12 -top-12 w-64 h-64 mix-blend-multiply opacity-50"></div>
-            <img
-              class="w-full h-auto rounded-lg object-cover relative z-10 shadow-none border-4 border-surface"
-              alt="A high-contrast, editorial photograph of a person in silhouette against a brightly lit background"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO-h8h1PQIcx8jDaRh5JORHfObyHybc-nI_QXiq8Rk33aF93-QWTCEsTPUoY-EQ4QVpeOqS9T-FOebdwkGVOunddyNdl_zv2xUUyO2R0-xhluT-C-sZFj9g57U-zLwYt-_X6rQtV22sKp6rVbQHWsoF_Rbd_v1F2yxpECzjzs_cowuCQAoSiV3SmoGpjKzyc53dtU_S4frIBQ22H5V6zHEke4q7fzyEQ2syzQFCBqT2TsaaLJoIBKzMItMt4yKC3jctDbkpFQ2yA2K"
-              data-reveal="scale"
-            />
-          </div>
-        </div>
-      </section>
-
-      <!-- The Vision Grid -->
-      <section class="py-section-padding bg-surface-container-low border-t border-outline-variant">
-        <div class="max-w-container-max mx-auto px-gutter">
-          <div class="text-center mb-16 max-w-3xl mx-auto">
-            <h2 class="text-secondary font-headline-md text-headline-md mb-4" data-reveal="up">Our Core Philosophy</h2>
-            <p class="text-on-surface-variant font-body-md text-body-md" data-reveal="up" style="--reveal-delay: 120ms">
-              We believe visibility is the first step toward true connection. Here is how we bridge the
-              gap.
-            </p>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8" data-stagger data-stagger-step="120">
-            <div class="bg-surface p-8 rounded-xl border border-surface-dim hover:border-action-teal transition-colors group" data-reveal="up">
-              <div class="w-16 h-16 bg-action-teal/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-action-teal/30 transition-colors transition-transform group-hover:scale-[1.05]">
-                <span class="material-symbols-outlined text-action-teal" data-icon="visibility">visibility</span>
-              </div>
-              <h3 class="font-headline-md text-headline-md text-on-surface mb-3">Make It Visible</h3>
-              <p class="font-body-md text-body-md text-on-surface-variant">
-                Translating internal states into external signals using our symbolic humanist design language.
-              </p>
-            </div>
-
-            <div class="bg-surface p-8 rounded-xl border border-surface-dim hover:border-accent-red transition-colors group mt-0 md:mt-12" data-reveal="up">
-              <div class="w-16 h-16 bg-accent-red/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-accent-red/30 transition-colors transition-transform group-hover:scale-[1.05]">
-                <span class="material-symbols-outlined text-accent-red" data-icon="favorite">favorite</span>
-              </div>
-              <h3 class="font-headline-md text-headline-md text-on-surface mb-3">Radical Empathy</h3>
-              <p class="font-body-md text-body-md text-on-surface-variant">
-                Moving past mere awareness into active, compassionate acknowledgment in shared spaces.
-              </p>
-            </div>
-
-            <div class="bg-surface p-8 rounded-xl border border-surface-dim hover:border-calm-purple transition-colors group mt-0 md:mt-24" data-reveal="up">
-              <div class="w-16 h-16 bg-calm-purple/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-calm-purple/30 transition-colors transition-transform group-hover:scale-[1.05]">
-                <span class="material-symbols-outlined text-calm-purple" data-icon="forum">forum</span>
-              </div>
-              <h3 class="font-headline-md text-headline-md text-on-surface mb-3">Spark Dialog</h3>
-              <p class="font-body-md text-body-md text-on-surface-variant">
-                Creating safe openings for conversation without placing the burden of explanation on the individual.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="share" class="w-full bg-surface py-[120px] px-gutter relative z-30">
+    <main class="flex-grow flex flex-col justify-center items-center py-section-padding bg-surface">
+      <section id="share" class="w-full px-gutter relative z-30">
         <div
           class="max-w-3xl mx-auto bg-support-pink/20 rounded-[40px] p-8 md:p-16 border border-support-pink/30 shadow-xl backdrop-blur-sm relative overflow-hidden"
         >
