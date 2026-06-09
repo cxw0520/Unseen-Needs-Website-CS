@@ -690,25 +690,45 @@
 
         revealEls.forEach((el) => observer.observe(el));
 
-        // Circle grid drop-in — dynamic random order per grid
+        // Circle grid drop-in — bottom row first, middle second, top third, randomized within each row
         const circleGrids = document.querySelectorAll('[data-circle-grid]');
         circleGrids.forEach((grid) => {
           const cells = Array.from(grid.children).filter(c => c.classList.contains('aspect-square'));
-          const inners = [];
-          cells.forEach((cell) => {
+          const row0_inners = [];
+          const row1_inners = [];
+          const row2_inners = [];
+
+          const COLS = 6;
+          cells.forEach((cell, i) => {
             const inner = cell.firstElementChild;
-            if (inner) inners.push(inner);
+            if (!inner) return;
+
+            const row = Math.floor(i / COLS);
+            if (row === 0) row0_inners.push(inner);
+            else if (row === 1) row1_inners.push(inner);
+            else row2_inners.push(inner);
           });
 
-          // Fisher-Yates shuffle to randomize the order
-          for (let i = inners.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [inners[i], inners[j]] = [inners[j], inners[i]];
-          }
+          // Fisher-Yates shuffle helper
+          const shuffle = (array) => {
+            for (let i = array.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+          };
 
-          // Apply staggered transition delay and random start rotation based on the shuffled order
+          // Shuffle each row independently
+          shuffle(row0_inners);
+          shuffle(row1_inners);
+          shuffle(row2_inners);
+
+          // Concatenate in order: bottom (row 2), middle (row 1), top (row 0)
+          const sortedInners = [...row2_inners, ...row1_inners, ...row0_inners];
+
+          // Apply staggered transition delay and random start rotation based on the sorted order
           const BASE_DELAY = 80; // ms between each circle dropping
-          inners.forEach((inner, index) => {
+          sortedInners.forEach((inner, index) => {
             inner.classList.add('circle-drop');
             inner.style.transitionDelay = `${index * BASE_DELAY}ms`;
             
