@@ -232,19 +232,23 @@
       [data-circle-grid] .circle-drop {
         opacity: 0;
         translate: 0 -200px;
+        rotate: var(--start-rotate, -180deg);
         transition:
           opacity 1.2s ease,
-          translate 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.15);
-        will-change: translate, opacity;
+          translate 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.15),
+          rotate 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+        will-change: translate, opacity, rotate;
       }
       [data-circle-grid].is-dropped .circle-drop {
         opacity: 1;
         translate: 0 0;
+        rotate: 0deg;
       }
       @media (prefers-reduced-motion: reduce) {
         [data-circle-grid] .circle-drop {
           opacity: 1;
           translate: 0 0;
+          rotate: 0deg;
           transition: none;
         }
       }
@@ -702,11 +706,16 @@
             [inners[i], inners[j]] = [inners[j], inners[i]];
           }
 
-          // Apply staggered transition delay based on the shuffled order
+          // Apply staggered transition delay and random start rotation based on the shuffled order
           const BASE_DELAY = 80; // ms between each circle dropping
           inners.forEach((inner, index) => {
             inner.classList.add('circle-drop');
             inner.style.transitionDelay = `${index * BASE_DELAY}ms`;
+            
+            // Random start rotation between 180 and 360 degrees (clockwise or counter-clockwise)
+            const randomDirection = Math.random() > 0.5 ? 1 : -1;
+            const randomDegree = 180 + Math.random() * 180;
+            inner.style.setProperty('--start-rotate', `${randomDirection * randomDegree}deg`);
           });
         });
 
