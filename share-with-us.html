@@ -255,11 +255,26 @@
             >Share With Us</a
           >
         </div>
-        <button class="md:hidden text-on-surface p-2" aria-label="Open menu" type="button">
+        <button id="nav-toggle" class="md:hidden text-on-surface p-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" type="button">
           <span class="material-symbols-outlined text-3xl">menu</span>
         </button>
       </div>
     </header>
+
+    <!-- Mobile nav drawer -->
+    <div
+      id="mobile-menu"
+      class="md:hidden fixed inset-x-0 top-[73px] z-40 bg-background/95 backdrop-blur-md border-b border-outline-variant shadow-lg"
+      style="display:none;"
+    >
+      <nav aria-label="Mobile Navigation" class="flex flex-col px-gutter py-6 gap-4">
+        <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2" href="index.html">Home</a>
+        <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2" href="seen.html">Seen</a>
+        <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2" href="unseen.html">Unseen</a>
+        <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2" href="your-needs.html">Your Needs</a>
+        <a class="mt-2 bg-primary text-white border-2 border-primary rounded-full px-8 py-2 text-center font-label-bold text-label-bold hover:bg-primary/90 transition-colors" href="share-with-us.html">Share With Us</a>
+      </nav>
+    </div>
 
     <!-- Main Content Canvas -->
     <main class="flex-grow flex flex-col justify-center items-center py-section-padding bg-surface">
@@ -373,6 +388,33 @@
         </div>
       </section>
     </main>
+
+    <script>
+      (() => {
+        // --- Mobile menu toggle ---
+        const toggle = document.getElementById('nav-toggle');
+        const menu = document.getElementById('mobile-menu');
+        function openMenu() {
+          menu.style.display = 'block';
+          toggle.setAttribute('aria-expanded', 'true');
+          toggle.setAttribute('aria-label', 'Close menu');
+          toggle.querySelector('.material-symbols-outlined').textContent = 'close';
+        }
+        function closeMenu() {
+          menu.style.display = 'none';
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open menu');
+          toggle.querySelector('.material-symbols-outlined').textContent = 'menu';
+        }
+        toggle.addEventListener('click', () => {
+          toggle.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
+        });
+        menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+        document.addEventListener('click', (e) => {
+          if (!menu.contains(e.target) && !toggle.contains(e.target)) closeMenu();
+        });
+      })();
+    </script>
 
     <script>
       (() => {
