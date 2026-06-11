@@ -11,7 +11,9 @@ The project utilizes a combination of serif and sans-serif fonts to balance appr
 
 - **Primary Serif:** Tobias
   - Variants: Regular, Light
-  - Usage: Headings, emphasis, and primary storytelling text.
+  - Usage:
+    - Tobias Light: General text (body, introductions, etc.)
+    - Tobias Regular: Headings and case titles
 - **Primary Sans-Serif:** Franklin Gothic Medium
   - Variants: Regular
   - Usage: Body text, UI elements, and technical descriptions.
