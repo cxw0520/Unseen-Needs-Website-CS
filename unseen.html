@@ -22,7 +22,7 @@
               "action-teal": "#68AC9D",
               "on-primary": "#ffffff",
               "secondary-fixed": "#d3e3ff",
-              background: "#f9f9f9",
+              background: "#ffffff",
               "surface-tint": "#4B332D",
               secondary: "#4680BE",
               "surface-container-high": "#e8e8e8",
@@ -68,13 +68,13 @@
               "on-background": "#4B332D",
               "accent-red": "#D74737",
               "surface-container-low": "#f3f3f4",
-              "on-secondary-fixed": "#001c39"
+              "on-secondary-fixed": "#001c39",
             },
             borderRadius: {
               DEFAULT: "0.25rem",
               lg: "0.5rem",
               xl: "0.75rem",
-              full: "9999px"
+              full: "9999px",
             },
             spacing: {
               gutter: "24px",
@@ -82,7 +82,7 @@
               "section-padding": "80px",
               unit: "8px",
               "margin-mobile": "16px",
-              "overlap-offset": "-40px"
+              "overlap-offset": "-40px",
             },
             fontFamily: {
               "body-lg": ["Tobias Light", "serif"],
@@ -103,23 +103,33 @@
                   fontWeight: "300",
                 },
               ],
-              "headline-md": ["28px", { lineHeight: "34px", fontWeight: "400" }],
+              "headline-md": [
+                "28px",
+                { lineHeight: "34px", fontWeight: "400" },
+              ],
               "headline-lg-mobile": [
                 "32px",
                 { lineHeight: "38px", fontWeight: "400" },
               ],
               "label-bold": ["16px", { lineHeight: "20px", fontWeight: "400" }],
-              "headline-lg": ["48px", { lineHeight: "56px", fontWeight: "400" }],
+              "headline-lg": [
+                "48px",
+                { lineHeight: "56px", fontWeight: "400" },
+              ],
               "body-md": ["18px", { lineHeight: "28px", fontWeight: "400" }],
             },
-          }
-        }
+          },
+        },
       };
     </script>
 
     <style>
       .material-symbols-outlined {
-        font-variation-settings: "FILL" 1, "wght" 450, "GRAD" 0, "opsz" 24;
+        font-variation-settings:
+          "FILL" 1,
+          "wght" 450,
+          "GRAD" 0,
+          "opsz" 24;
       }
 
       .max-w-container-max {
@@ -144,7 +154,9 @@
       [data-reveal] {
         opacity: 0;
         translate: 0 var(--reveal-y, 12px);
-        transition: opacity 600ms cubic-bezier(0.22, 1, 0.36, 1), translate 600ms cubic-bezier(0.22, 1, 0.36, 1);
+        transition:
+          opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
+          translate 600ms cubic-bezier(0.22, 1, 0.36, 1);
         transition-delay: var(--reveal-delay, 0ms);
       }
 
@@ -158,7 +170,10 @@
       }
 
       .interactive-lift {
-        transition: translate 200ms ease, background-color 200ms ease, color 200ms ease;
+        transition:
+          translate 200ms ease,
+          background-color 200ms ease,
+          color 200ms ease;
       }
 
       .interactive-lift:hover {
@@ -171,31 +186,55 @@
 
       .speech {
         position: relative;
-        border-radius: 56px;
-        font-family: 'Tobias Light', 'Tobias-Light', Georgia, serif !important;
+        border-radius: 32px;
+        font-family: "Tobias Light", "Tobias-Light", Georgia, serif !important;
+      }
+      @media (min-width: 768px) {
+        .speech {
+          border-radius: 56px;
+        }
       }
 
       .speech::after {
         content: "";
         position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
         width: 0;
         height: 0;
         border-style: solid;
         display: block;
       }
 
-      .speech-arrow-left::after {
-        left: -29px;
-        border-width: 22px 30px 22px 0;
-        border-color: transparent var(--arrow-color, inherit) transparent transparent;
-      }
- 
+      /* Mobile default: Arrow points UP (since illustration stacks on top) */
+      .speech-arrow-left::after,
       .speech-arrow-right::after {
-        right: -29px;
-        border-width: 22px 0 22px 30px;
-        border-color: transparent transparent transparent var(--arrow-color, inherit);
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 0 15px 20px 15px;
+        border-color: transparent transparent var(--arrow-color, inherit)
+          transparent;
+      }
+
+      /* Desktop: Arrows point left/right */
+      @media (min-width: 768px) {
+        .speech-arrow-left::after {
+          top: 50%;
+          left: -29px;
+          right: auto;
+          transform: translateY(-50%);
+          border-width: 22px 30px 22px 0;
+          border-color: transparent var(--arrow-color, inherit) transparent
+            transparent;
+        }
+        .speech-arrow-right::after {
+          top: 50%;
+          left: auto;
+          right: -29px;
+          transform: translateY(-50%);
+          border-width: 22px 0 22px 30px;
+          border-color: transparent transparent transparent
+            var(--arrow-color, inherit);
+        }
       }
 
       @keyframes logoPulse {
@@ -227,7 +266,7 @@
         top: 44px;
         width: 256px;
         height: 239px;
-        margin: 40px 12% -44px auto;
+        margin: 40px auto -44px auto;
       }
       @media (min-width: 768px) {
         .circles-container {
@@ -241,7 +280,7 @@
       .circle-blue {
         position: absolute;
         border-radius: 50%;
-        background-color: #4680BE; /* bg-secondary */
+        background-color: #4680be; /* bg-secondary */
         width: 128px;
         height: 128px;
       }
@@ -282,7 +321,9 @@
       .circles-container .circle-blue {
         opacity: 0;
         translate: 0 -400px;
-        transition: opacity 1.2s ease, translate 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+        transition:
+          opacity 1.2s ease,
+          translate 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.15);
         will-change: translate, opacity;
       }
 
@@ -325,24 +366,62 @@
   </head>
 
   <body class="bg-background text-on-surface font-body-md overflow-x-hidden">
-    <header class="bg-background/90 backdrop-blur-md border-b border-outline-variant docked full-width top-0 z-50 sticky">
-      <div class="flex justify-between items-center w-full px-gutter py-4 max-w-container-max mx-auto">
+    <header
+      class="bg-background backdrop-blur-md border-b border-outline-variant docked full-width top-0 z-50 sticky"
+    >
+      <div
+        class="flex justify-between items-center w-full px-gutter py-4 max-w-container-max mx-auto"
+      >
         <div class="hidden md:flex gap-4">
-          <span class="text-on-surface-variant font-label-bold uppercase tracking-wider text-xs">How can we see others' needs</span>
+          <span
+            class="text-on-surface-variant font-label-bold uppercase tracking-wider text-xs"
+            >How can we see others' needs</span
+          >
         </div>
-        <a class="relative z-20 inline-flex items-center" href="index.html" aria-label="UNSEEN Home">
+        <a
+          class="relative z-20 inline-flex items-center"
+          href="index.html"
+          aria-label="UNSEEN Home"
+        >
           <img class="nav-logo" src="assets/logo.png" alt="UNSEEN logo" />
         </a>
         <div class="hidden md:flex items-center gap-6">
           <nav aria-label="Main Navigation" class="flex gap-6">
-            <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors" href="index.html">Home</a>
-            <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors" href="seen.html">Seen</a>
-            <a class="text-primary font-label-bold text-label-bold border-b-2 border-primary pb-1" href="unseen.html">Unseen</a>
-            <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors" href="your-needs.html">Your Needs</a>
+            <a
+              class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors"
+              href="index.html"
+              >Home</a
+            >
+            <a
+              class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors"
+              href="seen.html"
+              >Seen</a
+            >
+            <a
+              class="text-primary font-label-bold text-label-bold border-b-2 border-primary pb-1"
+              href="unseen.html"
+              >Unseen</a
+            >
+            <a
+              class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors"
+              href="your-needs.html"
+              >Your Needs</a
+            >
           </nav>
-          <a class="border-2 border-outline rounded-full px-8 py-2 text-on-surface font-label-bold text-label-bold hover:bg-surface-variant transition-colors interactive-lift press" href="share-with-us.html">Share With Us</a>
+          <a
+            class="border border-outline rounded-full px-8 py-2 text-on-surface font-label-bold text-label-bold hover:bg-on-surface hover:text-white transition-colors interactive-lift press"
+            href="share-with-us.html"
+            >Share With Us</a
+          >
         </div>
-        <button id="nav-toggle" class="md:hidden text-on-surface p-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" type="button">
+        <button
+          id="nav-toggle"
+          class="md:hidden text-on-surface p-2"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          type="button"
+        >
           <span class="material-symbols-outlined text-3xl">menu</span>
         </button>
       </div>
@@ -351,32 +430,81 @@
     <!-- Mobile nav drawer -->
     <div
       id="mobile-menu"
-      class="md:hidden fixed inset-x-0 top-[73px] z-40 bg-background/95 backdrop-blur-md border-b border-outline-variant shadow-lg"
-      style="display:none;"
+      class="md:hidden fixed inset-x-0 top-[73px] z-40 bg-background backdrop-blur-md border-b border-outline-variant shadow-lg"
+      style="display: none"
     >
-      <nav aria-label="Mobile Navigation" class="flex flex-col px-gutter py-6 gap-4">
-        <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2" href="index.html">Home</a>
-        <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2" href="seen.html">Seen</a>
-        <a class="text-primary font-label-bold text-label-bold border-b-2 border-primary pb-2" href="unseen.html">Unseen</a>
-        <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2" href="your-needs.html">Your Needs</a>
-        <a class="mt-2 border-2 border-outline rounded-full px-8 py-2 text-center text-on-surface font-label-bold text-label-bold hover:bg-surface-variant transition-colors" href="share-with-us.html">Share With Us</a>
+      <nav
+        aria-label="Mobile Navigation"
+        class="flex flex-col px-gutter py-6 gap-4"
+      >
+        <a
+          class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2"
+          href="index.html"
+          >Home</a
+        >
+        <a
+          class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2"
+          href="seen.html"
+          >Seen</a
+        >
+        <a
+          class="text-primary font-label-bold text-label-bold border-b-2 border-primary pb-2"
+          href="unseen.html"
+          >Unseen</a
+        >
+        <a
+          class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2"
+          href="your-needs.html"
+          >Your Needs</a
+        >
+        <a
+          class="mt-2 border border-outline rounded-full px-8 py-2 text-center text-on-surface font-label-bold text-label-bold hover:bg-surface-variant transition-colors"
+          href="share-with-us.html"
+          >Share With Us</a
+        >
       </nav>
     </div>
 
     <main>
       <!-- Section 1: What is Invisible? -->
-      <section class="w-full bg-calm-purple text-on-secondary py-14 relative overflow-hidden">
-        <div class="absolute -left-8 bottom-8 w-24 h-24 bg-primary-container rounded-full floating-circle mix-blend-normal z-60 opacity-100"></div>
-        <div class="absolute right-0 top-20 w-40 h-40 bg-primary-container rounded-full floating-circle mix-blend-normal z-60 opacity-100" style="animation-duration: 7.5s"></div>
+      <section
+        class="w-full bg-calm-purple text-on-secondary py-14 relative overflow-hidden"
+      >
+        <div
+          class="absolute -left-4 bottom-4 w-12 h-12 md:w-24 md:h-24 bg-primary-container rounded-full floating-circle mix-blend-normal z-60 opacity-100"
+        ></div>
+        <div
+          class="absolute right-0 top-10 w-20 h-20 md:w-40 md:h-40 bg-primary-container rounded-full floating-circle mix-blend-normal z-60 opacity-100"
+          style="animation-duration: 7.5s"
+        ></div>
         <div class="w-full px-gutter relative z-10">
-          <h1 class="font-display-xl text-[44px] md:text-[72px] leading-none text-primary-container mb-8" data-reveal="up">What is Invisible  ?</h1>
-          <div class="flex items-center gap-6 md:gap-12" data-reveal="up" style="--reveal-delay: 100ms">
-            <div class="w-1/3 max-w-[400px] flex-shrink-0 flex justify-center">
-              <img src="assets/png/06-Unseen/unseen-heart-new.png" class="w-[400px] h-auto object-contain" alt="Unseen Hero Icon" data-reveal="scale" />
+          <h1
+            class="font-display-xl text-[44px] md:text-[72px] leading-none text-primary-container mb-8"
+            data-reveal="up"
+          >
+            What is Invisible ?
+          </h1>
+          <div
+            class="flex flex-col md:flex-row items-center gap-8 md:gap-12"
+            data-reveal="up"
+            style="--reveal-delay: 100ms"
+          >
+            <div
+              class="w-[180px] md:w-1/3 max-w-[400px] flex-shrink-0 flex justify-center"
+            >
+              <img
+                src="assets/png/06-Unseen/unseen-heart-new.png"
+                class="w-[400px] h-auto object-contain"
+                alt="Unseen Hero Icon"
+                data-reveal="scale"
+              />
             </div>
-            <div class="w-2/3 md:w-auto">
-              <p class="font-body-lg text-[22px] md:text-[48px] leading-tight text-white">
-                Invisible needs are often difficult to recognize from appearance alone.
+            <div class="w-full md:w-auto">
+              <p
+                class="font-body-lg text-[22px] md:text-[48px] leading-tight text-white text-center md:text-left"
+              >
+                Invisible needs are often difficult to recognize from appearance
+                alone.
               </p>
             </div>
           </div>
@@ -386,12 +514,20 @@
       <!-- Section 2: They can include... -->
       <section class="w-full bg-white py-12 relative overflow-hidden">
         <div class="w-full px-gutter relative z-10">
-          <p class="font-headline-lg text-[24px] md:text-[48px] text-text-deep leading-snug" data-reveal="up">
-            They can include anxiety, sensory sensitivity, chronic pain, fatigue, mental health conditions, reduced stamina, or temporary physical discomfort.
+          <p
+            class="font-headline-lg text-[24px] md:text-[48px] text-text-deep leading-snug text-center md:text-left"
+            data-reveal="up"
+          >
+            They can include anxiety, sensory sensitivity, chronic pain,
+            fatigue, mental health conditions, reduced stamina, or temporary
+            physical discomfort.
           </p>
-          
+
           <!-- Three Blue Circles Composition -->
-          <div class="circles-container select-none overflow-visible" data-reveal="drop">
+          <div
+            class="circles-container select-none overflow-visible"
+            data-reveal="drop"
+          >
             <!-- Left Circle (Bottom Left) -->
             <div class="circle-blue left"></div>
             <!-- Right Circle (Bottom Right) -->
@@ -404,240 +540,559 @@
 
       <!-- Section 3: Unlike visible conditions... -->
       <section class="w-full bg-secondary py-12 text-on-secondary">
-        <div class="w-full px-gutter flex items-center gap-6 md:gap-12">
-          <div class="w-2/3 md:w-auto" data-reveal="up">
-            <p class="font-headline-lg text-[24px] md:text-[48px] leading-snug text-white">
-              Unlike visible conditions, these experiences are not always immediately understood by others.
-              Yet the need for patience, space, rest, or support still exists.
+        <div
+          class="w-full px-gutter flex flex-col-reverse md:flex-row items-center gap-8 md:gap-12"
+        >
+          <div class="w-full md:w-auto" data-reveal="up">
+            <p
+              class="font-headline-lg text-[24px] md:text-[48px] leading-snug text-white text-center md:text-left"
+            >
+              Unlike visible conditions, these experiences are not always
+              immediately understood by others.
+              <br />Yet the need for patience, space, rest, or support still
+              exists.
             </p>
           </div>
-          <div class="w-1/3 max-w-[400px] flex-shrink-0 flex justify-center">
-            <img src="assets/png/03-Person/Person-09.png" class="w-[400px] h-auto object-contain" alt="Yellow Person Icon" data-reveal="scale" />
+          <div
+            class="w-[180px] md:w-1/3 max-w-[400px] flex-shrink-0 flex justify-center"
+          >
+            <img
+              src="assets/png/03-Person/Person-09.png"
+              class="w-[400px] h-auto object-contain"
+              alt="Yellow Person Icon"
+              data-reveal="scale"
+            />
           </div>
         </div>
       </section>
 
       <!-- Section 4: Early Pregnancy (Gold) -->
       <section class="w-full bg-[#E5C543] py-14">
-        <div class="w-full px-gutter flex items-center gap-6 md:gap-12">
-          <div class="w-1/3 max-w-[400px] flex-shrink-0 flex justify-center">
-            <img src="assets/png/06-Unseen/unseen-pregnancy-green.png" class="w-[400px] h-auto object-contain" alt="Early Pregnancy Icon" data-reveal="scale" />
+        <div
+          class="w-full px-gutter flex flex-col md:flex-row items-center gap-8 md:gap-12"
+        >
+          <div
+            class="w-[180px] md:w-1/3 max-w-[400px] flex-shrink-0 flex justify-center"
+          >
+            <img
+              src="assets/png/06-Unseen/unseen-pregnancy-green.png"
+              class="w-[400px] h-auto object-contain"
+              alt="Early Pregnancy Icon"
+              data-reveal="scale"
+            />
           </div>
-          <div class="w-2/3 md:w-auto" data-reveal="up" style="--reveal-delay: 120ms">
-            <div class="speech speech-arrow-left font-headline-lg bg-white text-action-teal p-6 md:p-10 text-[20px] md:text-[48px] leading-snug" style="--arrow-color: #ffffff">
-              My pregnancy may not be visible yet, but if I feel dizzy or unwell, could you offer me a seat?
+          <div
+            class="w-full md:w-auto text-center md:text-left"
+            data-reveal="up"
+            style="--reveal-delay: 120ms"
+          >
+            <div
+              class="speech speech-arrow-left font-headline-lg bg-white text-action-teal p-6 md:p-10 text-[20px] md:text-[48px] leading-snug"
+              style="--arrow-color: #ffffff"
+            >
+              My pregnancy may not be visible yet, but if I feel dizzy or
+              unwell, could you offer me a seat?
             </div>
-            <h3 class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-white mt-4">Early Pregnancy</h3>
+            <h3
+              class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-white mt-4"
+            >
+              Early Pregnancy
+            </h3>
           </div>
         </div>
       </section>
 
       <!-- Section 5: Heart Condition (Teal) -->
       <section class="w-full bg-[#68AC9D] py-14">
-        <div class="w-full px-gutter flex items-center gap-6 md:gap-12">
-          <div class="w-2/3 md:w-auto" data-reveal="up">
-            <div class="speech speech-arrow-right font-headline-lg bg-calm-purple text-white p-6 md:p-10 text-[20px] md:text-[48px] leading-snug" style="--arrow-color: #6D65A1">
+        <div
+          class="w-full px-gutter flex flex-col-reverse md:flex-row items-center gap-8 md:gap-12"
+        >
+          <div
+            class="w-full md:w-auto text-center md:text-left"
+            data-reveal="up"
+          >
+            <div
+              class="speech speech-arrow-right font-headline-lg bg-calm-purple text-white p-6 md:p-10 text-[20px] md:text-[48px] leading-snug"
+              style="--arrow-color: #6d65a1"
+            >
               I may need extra space to rest when I feel physically overwhelmed.
             </div>
-            <h3 class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-calm-purple mt-4">Heart Condition</h3>
+            <h3
+              class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-calm-purple mt-4"
+            >
+              Heart Condition
+            </h3>
           </div>
-          <div class="w-1/3 max-w-[400px] flex-shrink-0 flex justify-center">
-            <img src="assets/png/06-Unseen/unseen-heart.png" class="w-[400px] h-auto object-contain" alt="Heart Condition Icon" data-reveal="scale" />
+          <div
+            class="w-[180px] md:w-1/3 max-w-[400px] flex-shrink-0 flex justify-center"
+          >
+            <img
+              src="assets/png/06-Unseen/unseen-heart.png"
+              class="w-[400px] h-auto object-contain"
+              alt="Heart Condition Icon"
+              data-reveal="scale"
+            />
           </div>
         </div>
       </section>
 
       <!-- Section 6: Sensory Sensitivity (Red) -->
       <section class="w-full bg-white py-14">
-        <div class="w-full px-gutter flex items-center gap-6 md:gap-12">
-          <div class="w-1/3 max-w-[400px] flex-shrink-0 flex justify-center">
-            <img src="assets/png/06-Unseen/unseen-sensory.png" class="w-[400px] h-auto object-contain" alt="Sensory Sensitivity Icon" data-reveal="scale" />
+        <div
+          class="w-full px-gutter flex flex-col md:flex-row items-center gap-8 md:gap-12"
+        >
+          <div
+            class="w-[180px] md:w-1/3 max-w-[400px] flex-shrink-0 flex justify-center"
+          >
+            <img
+              src="assets/png/06-Unseen/unseen-sensory.png"
+              class="w-[400px] h-auto object-contain"
+              alt="Sensory Sensitivity Icon"
+              data-reveal="scale"
+            />
           </div>
-          <div class="w-2/3 md:w-auto" data-reveal="up" style="--reveal-delay: 120ms">
-            <div class="speech speech-arrow-left font-headline-lg bg-[#EBB5CA] text-on-error p-6 md:p-10 text-[20px] md:text-[48px] leading-snug" style="--arrow-color: #EBB5CA">
-              I may experience sensory input more intensely than others. Please lower the volume to help me feel more comfortable.
+          <div
+            class="w-full md:w-auto text-center md:text-left"
+            data-reveal="up"
+            style="--reveal-delay: 120ms"
+          >
+            <div
+              class="speech speech-arrow-left font-headline-lg bg-[#EBB5CA] text-on-error p-6 md:p-10 text-[20px] md:text-[48px] leading-snug"
+              style="--arrow-color: #ebb5ca"
+            >
+              I may experience sensory input more intensely than others. Please
+              lower the volume to help me feel more comfortable.
             </div>
-            <h3 class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-calm-purple mt-4">Sensory Sensitivity</h3>
+            <h3
+              class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-calm-purple mt-4"
+            >
+              Sensory Sensitivity
+            </h3>
           </div>
         </div>
       </section>
 
       <!-- Section 7: Menstruation (Pink) -->
       <section class="w-full bg-[#EBB5CA] py-14">
-        <div class="w-full px-gutter flex items-center gap-6 md:gap-12">
-          <div class="w-2/3 md:w-auto" data-reveal="up">
-            <div class="speech speech-arrow-right font-headline-lg bg-accent-red text-white p-6 md:p-10 text-[20px] md:text-[48px] leading-snug" style="--arrow-color: #D74737">
-              Sometimes discomfort can come suddenly. I may need a seat or a place to lean and rest.
+        <div
+          class="w-full px-gutter flex flex-col-reverse md:flex-row items-center gap-8 md:gap-12"
+        >
+          <div
+            class="w-full md:w-auto text-center md:text-left"
+            data-reveal="up"
+          >
+            <div
+              class="speech speech-arrow-right font-headline-lg bg-accent-red text-white p-6 md:p-10 text-[20px] md:text-[48px] leading-snug"
+              style="--arrow-color: #d74737"
+            >
+              Sometimes discomfort can come suddenly. I may need a seat or a
+              place to lean and rest.
             </div>
-            <h3 class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-accent-red mt-4">Menstruation</h3>
+            <h3
+              class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-accent-red mt-4"
+            >
+              Menstruation
+            </h3>
           </div>
-          <div class="w-1/3 max-w-[400px] flex-shrink-0 flex justify-center">
-            <img src="assets/png/06-Unseen/unseen-menstrual.png" class="w-[400px] h-auto object-contain" alt="Menstruation Icon" data-reveal="scale" />
+          <div
+            class="w-[180px] md:w-1/3 max-w-[400px] flex-shrink-0 flex justify-center"
+          >
+            <img
+              src="assets/png/06-Unseen/unseen-menstrual.png"
+              class="w-[400px] h-auto object-contain"
+              alt="Menstruation Icon"
+              data-reveal="scale"
+            />
           </div>
         </div>
       </section>
 
       <!-- Section 8: Dizziness (Blue) -->
       <section class="w-full bg-[#4680BE] py-14">
-        <div class="w-full px-gutter flex items-center gap-6 md:gap-12">
-          <div class="w-1/3 max-w-[400px] flex-shrink-0 flex justify-center">
-            <img src="assets/png/06-Unseen/unseen-dizziness.png" class="w-[400px] h-auto object-contain" alt="Dizziness Icon" data-reveal="scale" />
+        <div
+          class="w-full px-gutter flex flex-col md:flex-row items-center gap-8 md:gap-12"
+        >
+          <div
+            class="w-[180px] md:w-1/3 max-w-[400px] flex-shrink-0 flex justify-center"
+          >
+            <img
+              src="assets/png/06-Unseen/unseen-dizziness.png"
+              class="w-[400px] h-auto object-contain"
+              alt="Dizziness Icon"
+              data-reveal="scale"
+            />
           </div>
-          <div class="w-2/3 md:w-auto" data-reveal="up" style="--reveal-delay: 120ms">
-            <div class="speech speech-arrow-left font-headline-lg bg-white text-accent-red p-6 md:p-10 text-[20px] md:text-[48px] leading-snug" style="--arrow-color: #ffffff">
+          <div
+            class="w-full md:w-auto text-center md:text-left"
+            data-reveal="up"
+            style="--reveal-delay: 120ms"
+          >
+            <div
+              class="speech speech-arrow-left font-headline-lg bg-white text-accent-red p-6 md:p-10 text-[20px] md:text-[48px] leading-snug"
+              style="--arrow-color: #ffffff"
+            >
               Sudden dizziness can happen to anyone and may affect balance.
             </div>
-            <h3 class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-white mt-4">Dizziness</h3>
+            <h3
+              class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-white mt-4"
+            >
+              Dizziness
+            </h3>
           </div>
         </div>
       </section>
 
       <!-- Section 9: Prosthesis -->
       <section class="w-full bg-white py-14">
-        <div class="w-full px-gutter flex items-center gap-6 md:gap-12">
-          <div class="w-2/3 md:w-auto" data-reveal="up">
-            <div class="speech speech-arrow-right font-headline-lg bg-[#4680BE] text-primary-container p-6 md:p-10 text-[20px] md:text-[48px] leading-snug" style="--arrow-color: #4680BE">
-              I don’t always want my prosthesis to be noticed. Most of the time I can walk and stand independently, but I may move more slowly.
+        <div
+          class="w-full px-gutter flex flex-col-reverse md:flex-row items-center gap-8 md:gap-12"
+        >
+          <div
+            class="w-full md:w-auto text-center md:text-left"
+            data-reveal="up"
+          >
+            <div
+              class="speech speech-arrow-right font-headline-lg bg-[#4680BE] text-primary-container p-6 md:p-10 text-[20px] md:text-[48px] leading-snug"
+              style="--arrow-color: #4680be"
+            >
+              I don’t always want my prosthesis to be noticed. Most of the time
+              I can walk and stand independently, but I may move more slowly.
             </div>
-            <h3 class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-secondary mt-4">Prosthesis</h3>
+            <h3
+              class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-secondary mt-4"
+            >
+              Prosthesis
+            </h3>
           </div>
-          <div class="w-1/3 max-w-[400px] flex-shrink-0 flex justify-center">
-            <img src="assets/png/06-Unseen/unseen-prosthesis.png" class="w-[400px] h-auto object-contain" alt="Prosthesis Icon" data-reveal="scale" />
+          <div
+            class="w-[180px] md:w-1/3 max-w-[400px] flex-shrink-0 flex justify-center"
+          >
+            <img
+              src="assets/png/06-Unseen/unseen-prosthesis.png"
+              class="w-[400px] h-auto object-contain"
+              alt="Prosthesis Icon"
+              data-reveal="scale"
+            />
           </div>
         </div>
       </section>
 
       <!-- Section 10: Fatigue -->
       <section class="w-full bg-white py-14">
-        <div class="w-full px-gutter flex items-center gap-6 md:gap-12">
-          <div class="w-1/3 max-w-[400px] flex-shrink-0 flex justify-center">
-            <img src="assets/png/06-Unseen/unseen-fatigue.png" class="w-[400px] h-auto object-contain" alt="Fatigue Icon" data-reveal="scale" />
+        <div
+          class="w-full px-gutter flex flex-col md:flex-row items-center gap-8 md:gap-12"
+        >
+          <div
+            class="w-[180px] md:w-1/3 max-w-[400px] flex-shrink-0 flex justify-center"
+          >
+            <img
+              src="assets/png/06-Unseen/unseen-fatigue.png"
+              class="w-[400px] h-auto object-contain"
+              alt="Fatigue Icon"
+              data-reveal="scale"
+            />
           </div>
-          <div class="w-2/3 md:w-auto" data-reveal="up" style="--reveal-delay: 120ms">
-            <div class="speech speech-arrow-left font-headline-lg bg-primary-container text-calm-purple p-6 md:p-10 text-[20px] md:text-[48px] leading-snug" style="--arrow-color: #E5C543">
-              I stayed up all night. I may look okay, but my energy can run out quickly.
+          <div
+            class="w-full md:w-auto text-center md:text-left"
+            data-reveal="up"
+            style="--reveal-delay: 120ms"
+          >
+            <div
+              class="speech speech-arrow-left font-headline-lg bg-primary-container text-calm-purple p-6 md:p-10 text-[20px] md:text-[48px] leading-snug"
+              style="--arrow-color: #e5c543"
+            >
+              I stayed up all night. I may look okay, but my energy can run out
+              quickly.
             </div>
-            <h3 class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-primary-container mt-4">Fatigue</h3>
+            <h3
+              class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-primary-container mt-4"
+            >
+              Fatigue
+            </h3>
           </div>
         </div>
       </section>
 
       <!-- Section 11: Hand Injury (Blue/Purple) -->
       <section class="w-full bg-[#6D65A1] py-14">
-        <div class="w-full px-gutter flex items-center gap-6 md:gap-12">
-          <div class="w-2/3 md:w-auto" data-reveal="up">
-            <div class="speech speech-arrow-right font-headline-lg bg-[#EBB5CA] text-white p-6 md:p-10 text-[20px] md:text-[48px] leading-snug" style="--arrow-color: #EBB5CA">
-              Some injuries are not immediately visible. During recovery, simple daily actions may require more effort.
+        <div
+          class="w-full px-gutter flex flex-col-reverse md:flex-row items-center gap-8 md:gap-12"
+        >
+          <div
+            class="w-full md:w-auto text-center md:text-left"
+            data-reveal="up"
+          >
+            <div
+              class="speech speech-arrow-right font-headline-lg bg-[#EBB5CA] text-white p-6 md:p-10 text-[20px] md:text-[48px] leading-snug"
+              style="--arrow-color: #ebb5ca"
+            >
+              Some injuries are not immediately visible. During recovery, simple
+              daily actions may require more effort.
             </div>
-            <h3 class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-[#EBB5CA] mt-4">Hand Injury</h3>
+            <h3
+              class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-[#EBB5CA] mt-4"
+            >
+              Hand Injury
+            </h3>
           </div>
-          <div class="w-1/3 max-w-[400px] flex-shrink-0 flex justify-center">
-            <img src="assets/png/06-Unseen/unseen-hand.png" class="w-[400px] h-auto object-contain" alt="Hand Injury Icon" data-reveal="scale" />
+          <div
+            class="w-[180px] md:w-1/3 max-w-[400px] flex-shrink-0 flex justify-center"
+          >
+            <img
+              src="assets/png/06-Unseen/unseen-hand.png"
+              class="w-[400px] h-auto object-contain"
+              alt="Hand Injury Icon"
+              data-reveal="scale"
+            />
           </div>
         </div>
       </section>
 
       <!-- Section 12: Visual Impairment -->
       <section class="w-full bg-white py-14">
-        <div class="w-full px-gutter flex items-center gap-6 md:gap-12">
-          <div class="w-1/3 max-w-[400px] flex-shrink-0 flex justify-center">
-            <img src="assets/png/06-Unseen/unseen-blind.png" class="w-[400px] h-auto object-contain" alt="Visual Impairment Icon" data-reveal="scale" />
+        <div
+          class="w-full px-gutter flex flex-col md:flex-row items-center gap-8 md:gap-12"
+        >
+          <div
+            class="w-[180px] md:w-1/3 max-w-[400px] flex-shrink-0 flex justify-center"
+          >
+            <img
+              src="assets/png/06-Unseen/unseen-blind.png"
+              class="w-[400px] h-auto object-contain"
+              alt="Visual Impairment Icon"
+              data-reveal="scale"
+            />
           </div>
-          <div class="w-2/3 md:w-auto" data-reveal="up" style="--reveal-delay: 120ms">
-            <div class="speech speech-arrow-left font-headline-lg bg-[#4680BE] text-[#EBB5CA] p-6 md:p-10 text-[20px] md:text-[48px] leading-snug" style="--arrow-color: #4680BE">
-              I may not notice obstacles or signs right away. A little guidance can help me move more confidently.
+          <div
+            class="w-full md:w-auto text-center md:text-left"
+            data-reveal="up"
+            style="--reveal-delay: 120ms"
+          >
+            <div
+              class="speech speech-arrow-left font-headline-lg bg-[#4680BE] text-[#EBB5CA] p-6 md:p-10 text-[20px] md:text-[48px] leading-snug"
+              style="--arrow-color: #4680be"
+            >
+              I may not notice obstacles or signs right away. A little guidance
+              can help me move more confidently.
             </div>
-            <h3 class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-[#4680BE] mt-4">Visual Impairment</h3>
+            <h3
+              class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-[#4680BE] mt-4"
+            >
+              Visual Impairment
+            </h3>
           </div>
         </div>
       </section>
 
       <!-- Section 13: Hearing Impairment -->
       <section class="w-full bg-white py-14">
-        <div class="w-full px-gutter flex items-center gap-6 md:gap-12">
-          <div class="w-2/3 md:w-auto" data-reveal="up">
-            <div class="speech speech-arrow-right font-headline-lg bg-[#68AC9D] text-white p-6 md:p-10 text-[20px] md:text-[48px] leading-snug" style="--arrow-color: #68AC9D">
-              I may miss announcements or parts of conversations. Speaking clearly can help me understand.
+        <div
+          class="w-full px-gutter flex flex-col-reverse md:flex-row items-center gap-8 md:gap-12"
+        >
+          <div
+            class="w-full md:w-auto text-center md:text-left"
+            data-reveal="up"
+          >
+            <div
+              class="speech speech-arrow-right font-headline-lg bg-[#68AC9D] text-white p-6 md:p-10 text-[20px] md:text-[48px] leading-snug"
+              style="--arrow-color: #68ac9d"
+            >
+              I may miss announcements or parts of conversations. Speaking
+              clearly can help me understand.
             </div>
-            <h3 class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-[#68AC9D] mt-4">Hearing Impairment</h3>
+            <h3
+              class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-[#68AC9D] mt-4"
+            >
+              Hearing Impairment
+            </h3>
           </div>
-          <div class="w-1/3 max-w-[400px] flex-shrink-0 flex justify-center">
-            <img src="assets/png/06-Unseen/unseen-hearing.png" class="w-[400px] h-auto object-contain" alt="Hearing Impairment Icon" data-reveal="scale" />
+          <div
+            class="w-[180px] md:w-1/3 max-w-[400px] flex-shrink-0 flex justify-center"
+          >
+            <img
+              src="assets/png/06-Unseen/unseen-hearing.png"
+              class="w-[400px] h-auto object-contain"
+              alt="Hearing Impairment Icon"
+              data-reveal="scale"
+            />
           </div>
         </div>
       </section>
 
       <!-- Section 14: Diabetes (Teal) -->
       <section class="w-full bg-[#68AC9D] py-14">
-        <div class="w-full px-gutter flex items-center gap-6 md:gap-12">
-          <div class="w-1/3 max-w-[400px] flex-shrink-0 flex justify-center">
-            <img src="assets/png/06-Unseen/unseen-diabetes.png" class="w-[400px] h-auto object-contain" alt="Diabetes Icon" data-reveal="scale" />
+        <div
+          class="w-full px-gutter flex flex-col md:flex-row items-center gap-8 md:gap-12"
+        >
+          <div
+            class="w-[180px] md:w-1/3 max-w-[400px] flex-shrink-0 flex justify-center"
+          >
+            <img
+              src="assets/png/06-Unseen/unseen-diabetes.png"
+              class="w-[400px] h-auto object-contain"
+              alt="Diabetes Icon"
+              data-reveal="scale"
+            />
           </div>
-          <div class="w-2/3 md:w-auto" data-reveal="up" style="--reveal-delay: 120ms">
-            <div class="speech speech-arrow-left font-headline-lg bg-white text-accent-red p-6 md:p-10 text-[20px] md:text-[48px] leading-snug" style="--arrow-color: #ffffff">
-              My condition isn't always visible. Sometimes I may need to eat, rest, or sit unexpectedly.
+          <div
+            class="w-full md:w-auto text-center md:text-left"
+            data-reveal="up"
+            style="--reveal-delay: 120ms"
+          >
+            <div
+              class="speech speech-arrow-left font-headline-lg bg-white text-accent-red p-6 md:p-10 text-[20px] md:text-[48px] leading-snug"
+              style="--arrow-color: #ffffff"
+            >
+              My condition isn't always visible. Sometimes I may need to eat,
+              rest, or sit unexpectedly.
             </div>
-            <h3 class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-white mt-4">Diabetes</h3>
+            <h3
+              class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-white mt-4"
+            >
+              Diabetes
+            </h3>
           </div>
         </div>
       </section>
 
       <!-- Section 15: Stomach Discomfort -->
       <section class="w-full bg-white py-14">
-        <div class="w-full px-gutter flex items-center gap-6 md:gap-12">
-          <div class="w-2/3 md:w-auto" data-reveal="up">
-            <div class="speech speech-arrow-right font-headline-lg bg-accent-red text-on-secondary p-6 md:p-10 text-[20px] md:text-[48px] leading-snug" style="--arrow-color: #D74737">
-              Discomfort can come suddenly and affect how long I can stand. I may need a seat or a place to rest.
+        <div
+          class="w-full px-gutter flex flex-col-reverse md:flex-row items-center gap-8 md:gap-12"
+        >
+          <div
+            class="w-full md:w-auto text-center md:text-left"
+            data-reveal="up"
+          >
+            <div
+              class="speech speech-arrow-right font-headline-lg bg-accent-red text-on-secondary p-6 md:p-10 text-[20px] md:text-[48px] leading-snug"
+              style="--arrow-color: #d74737"
+            >
+              Discomfort can come suddenly and affect how long I can stand. I
+              may need a seat or a place to rest.
             </div>
-            <h3 class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-primary-container mt-4">Stomach Discomfort</h3>
+            <h3
+              class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-primary-container mt-4"
+            >
+              Stomach Discomfort
+            </h3>
           </div>
-          <div class="w-1/3 max-w-[400px] flex-shrink-0 flex justify-center">
-            <img src="assets/png/06-Unseen/unseen-stomach.png" class="w-[400px] h-auto object-contain" alt="Stomach Discomfort Icon" data-reveal="scale" />
+          <div
+            class="w-[180px] md:w-1/3 max-w-[400px] flex-shrink-0 flex justify-center"
+          >
+            <img
+              src="assets/png/06-Unseen/unseen-stomach.png"
+              class="w-[400px] h-auto object-contain"
+              alt="Stomach Discomfort Icon"
+              data-reveal="scale"
+            />
           </div>
         </div>
       </section>
 
       <!-- Section 16: Osteoporosis (Blue) -->
       <section class="w-full bg-[#4680BE] py-14">
-        <div class="w-full px-gutter flex items-center gap-6 md:gap-12">
-          <div class="w-1/3 max-w-[400px] flex-shrink-0 flex justify-center">
-            <img src="assets/png/06-Unseen/unseen-osteoporos.png" class="w-[400px] h-auto object-contain" alt="Osteoporosis Icon" data-reveal="scale" />
+        <div
+          class="w-full px-gutter flex flex-col md:flex-row items-center gap-8 md:gap-12"
+        >
+          <div
+            class="w-[180px] md:w-1/3 max-w-[400px] flex-shrink-0 flex justify-center"
+          >
+            <img
+              src="assets/png/06-Unseen/unseen-osteoporos.png"
+              class="w-[400px] h-auto object-contain"
+              alt="Osteoporosis Icon"
+              data-reveal="scale"
+            />
           </div>
-          <div class="w-2/3 md:w-auto" data-reveal="up" style="--reveal-delay: 120ms">
-            <div class="speech speech-arrow-left font-headline-lg bg-primary-container text-white p-6 md:p-10 text-[20px] md:text-[48px] leading-snug" style="--arrow-color: #E5C543">
-              My bones may be more fragile than they appear. I may move more carefully to avoid injury.
+          <div
+            class="w-full md:w-auto text-center md:text-left"
+            data-reveal="up"
+            style="--reveal-delay: 120ms"
+          >
+            <div
+              class="speech speech-arrow-left font-headline-lg bg-primary-container text-white p-6 md:p-10 text-[20px] md:text-[48px] leading-snug"
+              style="--arrow-color: #e5c543"
+            >
+              My bones may be more fragile than they appear. I may move more
+              carefully to avoid injury.
             </div>
-            <h3 class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-primary-container mt-4">Osteoporosis</h3>
+            <h3
+              class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-primary-container mt-4"
+            >
+              Osteoporosis
+            </h3>
           </div>
         </div>
       </section>
 
       <!-- Section 17: Depression (Pink) -->
       <section class="w-full bg-[#EBB5CA] py-14">
-        <div class="w-full px-gutter flex items-center gap-6 md:gap-12">
-          <div class="w-2/3 md:w-auto" data-reveal="up">
-            <div class="speech speech-arrow-right font-headline-lg bg-white text-[#4680BE] p-6 md:p-10 text-[20px] md:text-[48px] leading-snug" style="--arrow-color: #ffffff">
-              Some days require more energy than others. What looks simple may not feel simple.
+        <div
+          class="w-full px-gutter flex flex-col-reverse md:flex-row items-center gap-8 md:gap-12"
+        >
+          <div
+            class="w-full md:w-auto text-center md:text-left"
+            data-reveal="up"
+          >
+            <div
+              class="speech speech-arrow-right font-headline-lg bg-white text-[#4680BE] p-6 md:p-10 text-[20px] md:text-[48px] leading-snug"
+              style="--arrow-color: #ffffff"
+            >
+              Some days require more energy than others. What looks simple may
+              not feel simple.
             </div>
-            <h3 class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-white mt-4">Depression</h3>
+            <h3
+              class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-white mt-4"
+            >
+              Depression
+            </h3>
           </div>
-          <div class="w-1/3 max-w-[400px] flex-shrink-0 flex justify-center">
-            <img src="assets/png/06-Unseen/unseen-depression.png" class="w-[400px] h-auto object-contain" alt="Depression Icon" data-reveal="scale" />
+          <div
+            class="w-[180px] md:w-1/3 max-w-[400px] flex-shrink-0 flex justify-center"
+          >
+            <img
+              src="assets/png/06-Unseen/unseen-depression.png"
+              class="w-[400px] h-auto object-contain"
+              alt="Depression Icon"
+              data-reveal="scale"
+            />
           </div>
         </div>
       </section>
 
       <!-- Section 18: Emotional Distress -->
       <section class="w-full bg-white py-14">
-        <div class="w-full px-gutter flex items-center gap-6 md:gap-12">
-          <div class="w-1/3 max-w-[400px] flex-shrink-0 flex justify-center">
-            <img src="assets/png/06-Unseen/unseen-emotional.png" class="w-[400px] h-auto object-contain" alt="Emotional Distress Icon" data-reveal="scale" />
+        <div
+          class="w-full px-gutter flex flex-col md:flex-row items-center gap-8 md:gap-12"
+        >
+          <div
+            class="w-[180px] md:w-1/3 max-w-[400px] flex-shrink-0 flex justify-center"
+          >
+            <img
+              src="assets/png/06-Unseen/unseen-emotional.png"
+              class="w-[400px] h-auto object-contain"
+              alt="Emotional Distress Icon"
+              data-reveal="scale"
+            />
           </div>
-          <div class="w-2/3 md:w-auto" data-reveal="up" style="--reveal-delay: 120ms">
-            <div class="speech speech-arrow-left font-headline-lg bg-calm-purple text-white p-6 md:p-10 text-[20px] md:text-[48px] leading-snug" style="--arrow-color: #6D65A1">
-              I may look fine on the outside while struggling inside. Patience and understanding can make a difference.
+          <div
+            class="w-full md:w-auto text-center md:text-left"
+            data-reveal="up"
+            style="--reveal-delay: 120ms"
+          >
+            <div
+              class="speech speech-arrow-left font-headline-lg bg-calm-purple text-white p-6 md:p-10 text-[20px] md:text-[48px] leading-snug"
+              style="--arrow-color: #6d65a1"
+            >
+              I may look fine on the outside while struggling inside. Patience
+              and understanding can make a difference.
             </div>
-            <h3 class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-[#EBB5CA] mt-4">Emotional Distress</h3>
+            <h3
+              class="font-display-xl text-headline-md text-[28px] md:text-[72px] leading-none text-[#EBB5CA] mt-4"
+            >
+              Emotional Distress
+            </h3>
           </div>
         </div>
       </section>
@@ -645,7 +1100,7 @@
 
     <!-- Footer -->
     <footer
-      class="bg-surface-container-highest w-full px-gutter py-section-padding flex flex-col md:flex-row justify-between items-center gap-8 max-w-container-max mx-auto mt-24"
+      class="bg-background w-full px-gutter py-section-padding flex flex-col md:flex-row justify-between items-center gap-8 max-w-container-max mx-auto mt-24"
     >
       <img class="nav-logo" src="assets/logo.png" alt="UNSEEN logo" />
       <div class="flex gap-6 flex-wrap justify-center">
@@ -663,39 +1118,50 @@
     <script>
       (() => {
         // --- Mobile menu toggle ---
-        const toggle = document.getElementById('nav-toggle');
-        const menu = document.getElementById('mobile-menu');
+        const toggle = document.getElementById("nav-toggle");
+        const menu = document.getElementById("mobile-menu");
 
         function openMenu() {
-          menu.style.display = 'block';
-          toggle.setAttribute('aria-expanded', 'true');
-          toggle.setAttribute('aria-label', 'Close menu');
-          toggle.querySelector('.material-symbols-outlined').textContent = 'close';
+          menu.style.display = "block";
+          toggle.setAttribute("aria-expanded", "true");
+          toggle.setAttribute("aria-label", "Close menu");
+          toggle.querySelector(".material-symbols-outlined").textContent =
+            "close";
         }
 
         function closeMenu() {
-          menu.style.display = 'none';
-          toggle.setAttribute('aria-expanded', 'false');
-          toggle.setAttribute('aria-label', 'Open menu');
-          toggle.querySelector('.material-symbols-outlined').textContent = 'menu';
+          menu.style.display = "none";
+          toggle.setAttribute("aria-expanded", "false");
+          toggle.setAttribute("aria-label", "Open menu");
+          toggle.querySelector(".material-symbols-outlined").textContent =
+            "menu";
         }
 
-        toggle.addEventListener('click', () => {
-          toggle.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
+        toggle.addEventListener("click", () => {
+          toggle.getAttribute("aria-expanded") === "true"
+            ? closeMenu()
+            : openMenu();
         });
 
         // Close on any nav link click
-        menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+        menu
+          .querySelectorAll("a")
+          .forEach((a) => a.addEventListener("click", closeMenu));
 
         // Close on outside click
-        document.addEventListener('click', (e) => {
-          if (!menu.contains(e.target) && !toggle.contains(e.target)) closeMenu();
+        document.addEventListener("click", (e) => {
+          if (!menu.contains(e.target) && !toggle.contains(e.target))
+            closeMenu();
         });
 
         // --- Reveal / scroll animations ---
-        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const reduceMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
         const revealEls = document.querySelectorAll("[data-reveal]");
-        const circles = document.querySelectorAll("div.rounded-full[class*='w-'][class*='h-']");
+        const circles = document.querySelectorAll(
+          "div.rounded-full[class*='w-'][class*='h-']",
+        );
 
         const reveal = (el) => el.classList.add("is-visible");
         circles.forEach((el) => el.classList.add("floating-circle"));
@@ -718,7 +1184,7 @@
               obs.unobserve(entry.target);
             }
           },
-          { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
+          { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
         );
 
         revealEls.forEach((el) => observer.observe(el));

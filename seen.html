@@ -23,7 +23,7 @@
               "action-teal": "#68AC9D",
               "on-primary": "#ffffff",
               "secondary-fixed": "#d3e3ff",
-              background: "#f9f9f9",
+              background: "#ffffff",
               "surface-tint": "#4B332D",
               secondary: "#4680BE",
               "surface-container-high": "#e8e8e8",
@@ -104,13 +104,19 @@
                   fontWeight: "300",
                 },
               ],
-              "headline-md": ["28px", { lineHeight: "34px", fontWeight: "400" }],
+              "headline-md": [
+                "28px",
+                { lineHeight: "34px", fontWeight: "400" },
+              ],
               "headline-lg-mobile": [
                 "32px",
                 { lineHeight: "38px", fontWeight: "400" },
               ],
               "label-bold": ["16px", { lineHeight: "20px", fontWeight: "400" }],
-              "headline-lg": ["48px", { lineHeight: "56px", fontWeight: "400" }],
+              "headline-lg": [
+                "48px",
+                { lineHeight: "56px", fontWeight: "400" },
+              ],
               "body-md": ["18px", { lineHeight: "28px", fontWeight: "400" }],
             },
           },
@@ -120,10 +126,18 @@
 
     <style>
       .material-symbols-outlined {
-        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
       }
       .icon-fill {
-        font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+        font-variation-settings:
+          "FILL" 1,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
       }
 
       .max-w-container-max {
@@ -201,7 +215,10 @@
         scale: 1;
       }
       .interactive-lift {
-        transition: translate 200ms ease, background-color 200ms ease, color 200ms ease;
+        transition:
+          translate 200ms ease,
+          background-color 200ms ease,
+          color 200ms ease;
       }
       .interactive-lift:hover {
         translate: 0 -2px;
@@ -220,14 +237,27 @@
     </style>
   </head>
 
-  <body class="bg-background text-on-surface antialiased font-body-md overflow-x-hidden">
+  <body
+    class="bg-background text-on-surface antialiased font-body-md overflow-x-hidden"
+  >
     <!-- TopAppBar -->
-    <header class="bg-background/90 backdrop-blur-md border-b border-outline-variant docked full-width top-0 z-50 sticky">
-      <div class="flex justify-between items-center w-full px-gutter py-4 max-w-container-max mx-auto">
+    <header
+      class="bg-background backdrop-blur-md border-b border-outline-variant docked full-width top-0 z-50 sticky"
+    >
+      <div
+        class="flex justify-between items-center w-full px-gutter py-4 max-w-container-max mx-auto"
+      >
         <div class="hidden md:flex gap-4">
-          <span class="text-on-surface-variant font-label-bold uppercase tracking-wider text-xs">How can we see others' needs</span>
+          <span
+            class="text-on-surface-variant font-label-bold uppercase tracking-wider text-xs"
+            >How can we see others' needs</span
+          >
         </div>
-        <a class="relative z-20 inline-flex items-center" href="index.html" aria-label="UNSEEN Home">
+        <a
+          class="relative z-20 inline-flex items-center"
+          href="index.html"
+          aria-label="UNSEEN Home"
+        >
           <img class="nav-logo" src="assets/logo.png" alt="UNSEEN logo" />
         </a>
         <div class="hidden md:flex items-center gap-6">
@@ -254,12 +284,19 @@
             >
           </nav>
           <a
-            class="border-2 border-outline rounded-full px-8 py-2 text-on-surface font-label-bold text-label-bold hover:bg-surface-variant transition-colors interactive-lift press"
+            class="border border-outline rounded-full px-8 py-2 text-on-surface font-label-bold text-label-bold hover:bg-on-surface hover:text-white transition-colors interactive-lift press"
             href="share-with-us.html"
             >Share With Us</a
           >
         </div>
-        <button id="nav-toggle" class="md:hidden text-on-surface p-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" type="button">
+        <button
+          id="nav-toggle"
+          class="md:hidden text-on-surface p-2"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          type="button"
+        >
           <span class="material-symbols-outlined text-3xl">menu</span>
         </button>
       </div>
@@ -268,39 +305,72 @@
     <!-- Mobile nav drawer -->
     <div
       id="mobile-menu"
-      class="md:hidden fixed inset-x-0 top-[73px] z-40 bg-background/95 backdrop-blur-md border-b border-outline-variant shadow-lg"
-      style="display:none;"
+      class="md:hidden fixed inset-x-0 top-[73px] z-40 bg-background backdrop-blur-md border-b border-outline-variant shadow-lg"
+      style="display: none"
     >
-      <nav aria-label="Mobile Navigation" class="flex flex-col px-gutter py-6 gap-4">
-        <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2" href="index.html">Home</a>
-        <a class="text-primary font-label-bold text-label-bold border-b-2 border-primary pb-2" href="seen.html">Seen</a>
-        <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2" href="unseen.html">Unseen</a>
-        <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2" href="your-needs.html">Your Needs</a>
-        <a class="mt-2 border-2 border-outline rounded-full px-8 py-2 text-center text-on-surface font-label-bold text-label-bold hover:bg-surface-variant transition-colors" href="share-with-us.html">Share With Us</a>
+      <nav
+        aria-label="Mobile Navigation"
+        class="flex flex-col px-gutter py-6 gap-4"
+      >
+        <a
+          class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2"
+          href="index.html"
+          >Home</a
+        >
+        <a
+          class="text-primary font-label-bold text-label-bold border-b-2 border-primary pb-2"
+          href="seen.html"
+          >Seen</a
+        >
+        <a
+          class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2"
+          href="unseen.html"
+          >Unseen</a
+        >
+        <a
+          class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2"
+          href="your-needs.html"
+          >Your Needs</a
+        >
+        <a
+          class="mt-2 border border-outline rounded-full px-8 py-2 text-center text-on-surface font-label-bold text-label-bold hover:bg-surface-variant transition-colors"
+          href="share-with-us.html"
+          >Share With Us</a
+        >
       </nav>
     </div>
 
     <main>
       <!-- Hero Section: SEEN -->
-      <section class="bg-secondary text-on-secondary py-section-padding relative overflow-hidden">
+      <section
+        class="bg-secondary text-on-secondary py-section-padding relative overflow-hidden"
+      >
         <div
-          class="absolute top-[60px] right-[-50px] w-64 h-64 bg-accent-red rounded-full opacity-90"
+          class="absolute top-[30px] md:top-[60px] right-[-25px] md:right-[-50px] w-32 h-32 md:w-64 md:h-64 bg-accent-red rounded-full opacity-90"
         ></div>
         <div
           class="max-w-container-max mx-auto px-gutter relative z-10 grid md:grid-cols-2 gap-12 items-center"
         >
           <div>
-            <h1 class="font-display-xl text-display-xl md:text-[72px] leading-none mb-6" data-reveal="up">
+            <h1
+              class="font-display-xl text-display-xl md:text-[72px] leading-none mb-6 md:mb-16"
+              data-reveal="up"
+            >
               SEEN? UNSEEN?
             </h1>
-            <br>
-            <br>
-            <br>
-            <img class="w-[400px] h-auto object-contain" src="assets/png/05-Seen/seen-wheelchair-white.png" alt="Wheelchair Use" data-reveal="scale" />
-
+            <img
+              class="w-[400px] h-auto object-contain"
+              src="assets/png/05-Seen/seen-wheelchair-white.png"
+              alt="Wheelchair Use"
+              data-reveal="scale"
+            />
           </div>
           <div class="flex justify-center relative">
-            <p class="font-body-lg text-body-lg max-w-md md:text-[48px] md:leading-[1.15]" data-reveal="up" style="--reveal-delay: 120ms">
+            <p
+              class="font-body-lg text-body-lg max-w-md md:text-[48px] md:leading-[1.15]"
+              data-reveal="up"
+              style="--reveal-delay: 120ms"
+            >
               Visibility makes action more direct, and care more clear.
             </p>
           </div>
@@ -309,154 +379,254 @@
 
       <!-- SEEN Items -->
       <section class="bg-surface-lowest py-16">
-        <div class="max-w-container-max mx-auto px-gutter grid md:grid-cols-2 gap-12 items-center">
+        <div
+          class="max-w-container-max mx-auto px-gutter grid md:grid-cols-2 gap-12 items-center"
+        >
           <div>
-            <h1 class="font-display-xl text-headline-md text-secondary mb-4 md:text-[72px] md:leading-[1.1]" data-reveal="left">Caregiving</h1>
-            <br>
-            <br>
-            <br>
-            <p class="font-body-lg text-body-lg text-action-teal md:text-[48px] md:leading-[1.15]" data-reveal="left" style="--reveal-delay: 120ms">
-              Caregivers with children are easy to recognize. 
-              Their needs are visible, and we often respond.
+            <h1
+              class="font-display-xl text-headline-md text-secondary mb-4 md:mb-16 md:text-[72px] md:leading-[1.1]"
+              data-reveal="left"
+            >
+              Caregiving
+            </h1>
+            <p
+              class="font-body-lg text-body-lg text-action-teal md:text-[48px] md:leading-[1.15]"
+              data-reveal="left"
+              style="--reveal-delay: 120ms"
+            >
+              Caregivers with children are easy to recognize.
+              <br />Their needs are visible, and we often respond.
             </p>
           </div>
           <div class="flex justify-center md:justify-end">
-            <img class="w-[400px] h-auto object-contain" src="assets/png/05-Seen/seen-caregiving.png" alt="Caregiving" data-reveal="scale" />
+            <img
+              class="w-[400px] h-auto object-contain"
+              src="assets/png/05-Seen/seen-caregiving.png"
+              alt="Caregiving"
+              data-reveal="scale"
+            />
           </div>
         </div>
       </section>
 
       <section class="bg-primary-container text-white py-16">
-        <div class="max-w-container-max mx-auto px-gutter grid md:grid-cols-2 gap-12 items-center">
+        <div
+          class="max-w-container-max mx-auto px-gutter grid md:grid-cols-2 gap-12 items-center"
+        >
           <div class="order-2 md:order-1 flex justify-center md:justify-start">
-            <img class="w-[400px] h-auto object-contain" src="assets/png/05-Seen/seen-wheelchair-blue-white.png" alt="Wheelchair Use" data-reveal="scale" />
+            <img
+              class="w-[400px] h-auto object-contain"
+              src="assets/png/05-Seen/seen-wheelchair-blue-white.png"
+              alt="Wheelchair Use"
+              data-reveal="scale"
+            />
           </div>
           <div class="order-1 md:order-2 text-left">
-            <p class="font-body-lg text-body-lg md:text-[48px] md:leading-[1.15]" data-reveal="right" style="--reveal-delay: 120ms">
-              People who use wheelchairs are often easy to recognize. 
-              Their needs are visible, and we can respond by giving them space.
+            <p
+              class="font-body-lg text-body-lg md:text-[48px] md:leading-[1.15] mb-6 md:mb-16"
+              data-reveal="right"
+              style="--reveal-delay: 120ms"
+            >
+              People who use wheelchairs are often easy to recognize.
+              <br />Their needs are visible, and we can respond by giving them
+              space.
             </p>
-            <br>
-            <br>
-            <br>
-            <h3 class="font-display-xl text-headline-md text-secondary mb-4 md:text-[72px] md:leading-[1.1]" data-reveal="right">Wheelchair Use</h3>
+            <h3
+              class="font-display-xl text-headline-md text-secondary mb-4 md:text-[72px] md:leading-[1.1]"
+              data-reveal="right"
+            >
+              Wheelchair Use
+            </h3>
           </div>
         </div>
       </section>
 
       <section class="bg-calm-purple text-white py-16">
-        <div class="max-w-container-max mx-auto px-gutter grid md:grid-cols-2 gap-12 items-center">
+        <div
+          class="max-w-container-max mx-auto px-gutter grid md:grid-cols-2 gap-12 items-center"
+        >
           <div>
-            <h3 class="font-display-xl text-headline-md mb-4 text-primary-container md:text-[72px] md:leading-[1.1]" data-reveal="left">Aging</h3>
-            <br>
-            <br>
-            <br>
-            <p class="font-body-lg text-body-lg md:text-[48px] md:leading-[1.15]" data-reveal="left" style="--reveal-delay: 120ms">
-              Older adults are often easy to recognize. 
-              Their needs are visible, and we often offer
-              them seats or assistance.
+            <h3
+              class="font-display-xl text-headline-md mb-4 md:mb-16 text-primary-container md:text-[72px] md:leading-[1.1]"
+              data-reveal="left"
+            >
+              Aging
+            </h3>
+            <p
+              class="font-body-lg text-body-lg md:text-[48px] md:leading-[1.15]"
+              data-reveal="left"
+              style="--reveal-delay: 120ms"
+            >
+              Older adults are often easy to recognize.
+              <br />Their needs are visible, and we often offer them seats or
+              assistance.
             </p>
           </div>
           <div class="flex justify-center md:justify-end">
-            <img class="w-[400px] h-auto object-contain" src="assets/png/05-Seen/seen-aging-white-cane.png" alt="Aging" data-reveal="scale" />
+            <img
+              class="w-[400px] h-auto object-contain"
+              src="assets/png/05-Seen/seen-aging-white-cane.png"
+              alt="Aging"
+              data-reveal="scale"
+            />
           </div>
         </div>
       </section>
 
       <section class="bg-surface-lowest py-16">
-        <div class="max-w-container-max mx-auto px-gutter grid md:grid-cols-2 gap-12 items-center">
+        <div
+          class="max-w-container-max mx-auto px-gutter grid md:grid-cols-2 gap-12 items-center"
+        >
           <div class="order-2 md:order-1 flex justify-center md:justify-start">
-            <img class="w-[400px] h-auto object-contain" src="assets/png/05-Seen/seen-leg-pink-purple.png" alt="Leg Injury" data-reveal="scale" />
+            <img
+              class="w-[400px] h-auto object-contain"
+              src="assets/png/05-Seen/seen-leg-pink-purple.png"
+              alt="Leg Injury"
+              data-reveal="scale"
+            />
           </div>
           <div class="order-1 md:order-2 text-left">
-            <p class="font-body-lg text-body-lg text-support-pink md:text-[48px] md:leading-[1.15]" data-reveal="right" style="--reveal-delay: 120ms">
-              People with leg injuries are often easy to recognize.
-              Their needs are visible, and we can respond by giving them space or assistance.
+            <p
+              class="font-body-lg text-body-lg text-support-pink md:text-[48px] md:leading-[1.15] mb-6 md:mb-16"
+              data-reveal="right"
+              style="--reveal-delay: 120ms"
+            >
+              People with leg injuries are often easy to recognize.<br />
+              Their needs are visible, and we can respond by giving them space
+              or assistance.
             </p>
-            <br>
-            <br>
-            <br>
-            <h3 class="font-display-xl text-headline-md text-calm-purple mb-4 md:text-[72px] md:leading-[1.1]" data-reveal="right">Leg Injury</h3>
+            <h3
+              class="font-display-xl text-headline-md text-calm-purple mb-4 md:text-[72px] md:leading-[1.1]"
+              data-reveal="right"
+            >
+              Leg Injury
+            </h3>
           </div>
         </div>
       </section>
 
       <section class="bg-action-teal text-white py-16">
-        <div class="max-w-container-max mx-auto px-gutter grid md:grid-cols-2 gap-12 items-center">
+        <div
+          class="max-w-container-max mx-auto px-gutter grid md:grid-cols-2 gap-12 items-center"
+        >
           <div>
-            <h3 class="font-display-xl text-headline-md mb-4 text-secondary md:text-[72px] md:leading-[1.1]" data-reveal="left">Child</h3>
-            <br>
-            <br>
-            <br>
-            <p class="font-body-lg text-body-lg md:text-[48px] md:leading-[1.15]" data-reveal="left" style="--reveal-delay: 120ms">
-              Children are easy to recognize.
-              Their needs are visible,
-              and we often respond by paying extra attention.
+            <h3
+              class="font-display-xl text-headline-md mb-4 md:mb-16 text-secondary md:text-[72px] md:leading-[1.1]"
+              data-reveal="left"
+            >
+              Child
+            </h3>
+            <p
+              class="font-body-lg text-body-lg md:text-[48px] md:leading-[1.15]"
+              data-reveal="left"
+              style="--reveal-delay: 120ms"
+            >
+              Children are easy to recognize. <br />Their needs are visible, and
+              we often respond by paying extra attention.
             </p>
           </div>
           <div class="flex justify-center md:justify-end">
-            <img class="w-[400px] h-auto object-contain" src="assets/png/05-Seen/seen-child-blue.png" alt="Child" data-reveal="scale" />
+            <img
+              class="w-[400px] h-auto object-contain"
+              src="assets/png/05-Seen/seen-child-blue.png"
+              alt="Child"
+              data-reveal="scale"
+            />
           </div>
         </div>
-      </section>  
+      </section>
 
       <section class="bg-support-pink py-16">
-        <div class="max-w-container-max mx-auto px-gutter grid md:grid-cols-2 gap-12 items-center">
+        <div
+          class="max-w-container-max mx-auto px-gutter grid md:grid-cols-2 gap-12 items-center"
+        >
           <div class="order-2 md:order-1 flex justify-center md:justify-start">
-            <img class="w-[400px] h-auto object-contain" src="assets/png/05-Seen/seen-pregnancy-white-parent.png" alt="Pregnancy" data-reveal="scale" />
+            <img
+              class="w-[400px] h-auto object-contain"
+              src="assets/png/05-Seen/seen-pregnancy-white-parent.png"
+              alt="Pregnancy"
+              data-reveal="scale"
+            />
           </div>
           <div class="order-1 md:order-2 text-left">
-            <p class="font-body-lg text-body-lg text-action-teal md:text-[48px] md:leading-[1.15]" data-reveal="right" style="--reveal-delay: 120ms">
-              Pregnant people are often easy to recognize.
-              Their needs may be visible,
-              but maybe not everyone knows how to help.
+            <p
+              class="font-body-lg text-body-lg text-action-teal md:text-[48px] md:leading-[1.15] mb-6 md:mb-16"
+              data-reveal="right"
+              style="--reveal-delay: 120ms"
+            >
+              Pregnant people are often easy to recognize. <br />Their needs may
+              be visible, but maybe not everyone knows how to help.
             </p>
-            <br>
-            <br>
-            <br>
-            <h3 class="font-display-xl text-headline-md text-white mb-4 md:text-[72px] md:leading-[1.1]" data-reveal="right">Pregnancy</h3>
+            <h3
+              class="font-display-xl text-headline-md text-white mb-4 md:text-[72px] md:leading-[1.1]"
+              data-reveal="right"
+            >
+              Pregnancy
+            </h3>
           </div>
         </div>
       </section>
 
       <section class="bg-calm-purple py-20 text-center">
-        <h2 class="font-display-xl text-[56px] leading-tight md:text-[72px] md:leading-[1.1] text-primary-container" data-reveal="up">Seen needs are only one part of the story.</h2>
-        <a class="inline-block mt-8 px-10 py-3 rounded-full bg-white text-calm-purple font-label-bold hover:bg-primary-container transition-colors" href="unseen.html" data-reveal="up" style="--reveal-delay: 120ms">Go to Unseen</a>
+        <h2
+          class="font-display-xl text-[56px] leading-tight md:text-[72px] md:leading-[1.1] text-primary-container"
+          data-reveal="up"
+        >
+          Seen needs are only one part of the story.
+        </h2>
+        <a
+          class="inline-block border border-primary-container mt-8 px-10 py-3 rounded-full bg-calm-purple text-primary-container font-label-bold hover:bg-primary-container hover:text-calm-purple interactive-lift press transition-colors"
+          href="unseen.html"
+          data-reveal="up"
+          style="--reveal-delay: 120ms"
+          >Go to Unseen</a
+        >
       </section>
     </main>
 
     <script>
       (() => {
         // --- Mobile menu toggle ---
-        const toggle = document.getElementById('nav-toggle');
-        const menu = document.getElementById('mobile-menu');
+        const toggle = document.getElementById("nav-toggle");
+        const menu = document.getElementById("mobile-menu");
         function openMenu() {
-          menu.style.display = 'block';
-          toggle.setAttribute('aria-expanded', 'true');
-          toggle.setAttribute('aria-label', 'Close menu');
-          toggle.querySelector('.material-symbols-outlined').textContent = 'close';
+          menu.style.display = "block";
+          toggle.setAttribute("aria-expanded", "true");
+          toggle.setAttribute("aria-label", "Close menu");
+          toggle.querySelector(".material-symbols-outlined").textContent =
+            "close";
         }
         function closeMenu() {
-          menu.style.display = 'none';
-          toggle.setAttribute('aria-expanded', 'false');
-          toggle.setAttribute('aria-label', 'Open menu');
-          toggle.querySelector('.material-symbols-outlined').textContent = 'menu';
+          menu.style.display = "none";
+          toggle.setAttribute("aria-expanded", "false");
+          toggle.setAttribute("aria-label", "Open menu");
+          toggle.querySelector(".material-symbols-outlined").textContent =
+            "menu";
         }
-        toggle.addEventListener('click', () => {
-          toggle.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
+        toggle.addEventListener("click", () => {
+          toggle.getAttribute("aria-expanded") === "true"
+            ? closeMenu()
+            : openMenu();
         });
-        menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-        document.addEventListener('click', (e) => {
-          if (!menu.contains(e.target) && !toggle.contains(e.target)) closeMenu();
+        menu
+          .querySelectorAll("a")
+          .forEach((a) => a.addEventListener("click", closeMenu));
+        document.addEventListener("click", (e) => {
+          if (!menu.contains(e.target) && !toggle.contains(e.target))
+            closeMenu();
         });
       })();
     </script>
 
     <script>
       (() => {
-        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const reduceMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
         const revealEls = document.querySelectorAll("[data-reveal]");
-        const circles = document.querySelectorAll("div.rounded-full[class*='w-'][class*='h-']");
+        const circles = document.querySelectorAll(
+          "div.rounded-full[class*='w-'][class*='h-']",
+        );
 
         const initStagger = () => {
           document.querySelectorAll("[data-stagger]").forEach((parent) => {
@@ -465,7 +635,8 @@
             const children = parent.querySelectorAll("[data-reveal]");
             let i = 0;
             children.forEach((el) => {
-              const hasInlineDelay = el.style.getPropertyValue("--reveal-delay");
+              const hasInlineDelay =
+                el.style.getPropertyValue("--reveal-delay");
               const hasAttrDelay = el.dataset.delay;
               if (hasInlineDelay || hasAttrDelay) return;
               el.style.setProperty("--reveal-delay", `${start + i * step}ms`);
@@ -497,7 +668,7 @@
               obs.unobserve(entry.target);
             }
           },
-          { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
+          { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
         );
 
         revealEls.forEach((el) => observer.observe(el));
@@ -506,7 +677,7 @@
 
     <!-- Footer -->
     <footer
-      class="bg-surface-container-highest w-full px-gutter py-section-padding flex flex-col md:flex-row justify-between items-center gap-8 max-w-container-max mx-auto mt-24"
+      class="bg-background w-full px-gutter py-section-padding flex flex-col md:flex-row justify-between items-center gap-8 max-w-container-max mx-auto mt-24"
     >
       <img class="nav-logo" src="assets/logo.png" alt="UNSEEN logo" />
       <div class="flex gap-6 flex-wrap justify-center">

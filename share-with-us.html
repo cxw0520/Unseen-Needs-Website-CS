@@ -21,7 +21,7 @@
               "action-teal": "#68AC9D",
               "on-primary": "#ffffff",
               "secondary-fixed": "#d3e3ff",
-              background: "#f9f9f9",
+              background: "#ffffff",
               "surface-tint": "#4B332D",
               secondary: "#4680BE",
               "surface-container-high": "#e8e8e8",
@@ -102,13 +102,19 @@
                   fontWeight: "300",
                 },
               ],
-              "headline-md": ["28px", { lineHeight: "34px", fontWeight: "400" }],
+              "headline-md": [
+                "28px",
+                { lineHeight: "34px", fontWeight: "400" },
+              ],
               "headline-lg-mobile": [
                 "32px",
                 { lineHeight: "38px", fontWeight: "400" },
               ],
               "label-bold": ["16px", { lineHeight: "20px", fontWeight: "400" }],
-              "headline-lg": ["48px", { lineHeight: "56px", fontWeight: "400" }],
+              "headline-lg": [
+                "48px",
+                { lineHeight: "56px", fontWeight: "400" },
+              ],
               "body-md": ["18px", { lineHeight: "28px", fontWeight: "400" }],
             },
           },
@@ -203,9 +209,12 @@
           transition: none;
         }
       }
-      
+
       .interactive-lift {
-        transition: translate 200ms ease, background-color 200ms ease, color 200ms ease;
+        transition:
+          translate 200ms ease,
+          background-color 200ms ease,
+          color 200ms ease;
       }
       .interactive-lift:hover {
         translate: 0 -2px;
@@ -216,14 +225,27 @@
     </style>
   </head>
 
-  <body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+  <body
+    class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col"
+  >
     <!-- TopAppBar -->
-    <header class="bg-background/90 backdrop-blur-md border-b border-outline-variant docked full-width top-0 z-50 sticky">
-      <div class="flex justify-between items-center w-full px-gutter py-4 max-w-container-max mx-auto">
+    <header
+      class="bg-background backdrop-blur-md border-b border-outline-variant docked full-width top-0 z-50 sticky"
+    >
+      <div
+        class="flex justify-between items-center w-full px-gutter py-4 max-w-container-max mx-auto"
+      >
         <div class="hidden md:flex gap-4">
-          <span class="text-on-surface-variant font-label-bold uppercase tracking-wider text-xs">How can we see others' needs</span>
+          <span
+            class="text-on-surface-variant font-label-bold uppercase tracking-wider text-xs"
+            >How can we see others' needs</span
+          >
         </div>
-        <a class="relative z-20 inline-flex items-center" href="index.html" aria-label="UNSEEN Home">
+        <a
+          class="relative z-20 inline-flex items-center"
+          href="index.html"
+          aria-label="UNSEEN Home"
+        >
           <img class="nav-logo" src="assets/logo.png" alt="UNSEEN logo" />
         </a>
         <div class="hidden md:flex items-center gap-6">
@@ -250,12 +272,19 @@
             >
           </nav>
           <a
-            class="bg-primary text-white border-2 border-primary rounded-full px-8 py-2 font-label-bold text-label-bold hover:bg-primary/90 transition-colors interactive-lift press"
+            class="border border-outline rounded-full px-8 py-2 text-on-surface font-label-bold text-label-bold hover:bg-on-surface hover:text-white transition-colors interactive-lift press"
             href="share-with-us.html"
             >Share With Us</a
           >
         </div>
-        <button id="nav-toggle" class="md:hidden text-on-surface p-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" type="button">
+        <button
+          id="nav-toggle"
+          class="md:hidden text-on-surface p-2"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          type="button"
+        >
           <span class="material-symbols-outlined text-3xl">menu</span>
         </button>
       </div>
@@ -264,35 +293,78 @@
     <!-- Mobile nav drawer -->
     <div
       id="mobile-menu"
-      class="md:hidden fixed inset-x-0 top-[73px] z-40 bg-background/95 backdrop-blur-md border-b border-outline-variant shadow-lg"
-      style="display:none;"
+      class="md:hidden fixed inset-x-0 top-[73px] z-40 bg-background backdrop-blur-md border-b border-outline-variant"
+      style="display: none"
     >
-      <nav aria-label="Mobile Navigation" class="flex flex-col px-gutter py-6 gap-4">
-        <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2" href="index.html">Home</a>
-        <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2" href="seen.html">Seen</a>
-        <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2" href="unseen.html">Unseen</a>
-        <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2" href="your-needs.html">Your Needs</a>
-        <a class="mt-2 bg-primary text-white border-2 border-primary rounded-full px-8 py-2 text-center font-label-bold text-label-bold hover:bg-primary/90 transition-colors" href="share-with-us.html">Share With Us</a>
+      <nav
+        aria-label="Mobile Navigation"
+        class="flex flex-col px-gutter py-6 gap-4"
+      >
+        <a
+          class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2"
+          href="index.html"
+          >Home</a
+        >
+        <a
+          class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2"
+          href="seen.html"
+          >Seen</a
+        >
+        <a
+          class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2"
+          href="unseen.html"
+          >Unseen</a
+        >
+        <a
+          class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2"
+          href="your-needs.html"
+          >Your Needs</a
+        >
+        <a
+          class="mt-2 bg-primary text-white border border-primary rounded-full px-8 py-2 text-center font-label-bold text-label-bold hover:bg-primary/90 transition-colors"
+          href="share-with-us.html"
+          >Share With Us</a
+        >
       </nav>
     </div>
 
     <!-- Main Content Canvas -->
-    <main class="flex-grow flex flex-col justify-center items-center py-section-padding bg-surface">
+    <main
+      class="flex-grow flex flex-col justify-center items-center py-section-padding bg-background"
+    >
       <section id="share" class="w-full px-gutter relative z-30">
         <div
-          class="max-w-3xl mx-auto bg-support-pink rounded-[40px] p-8 md:p-16 border border-primary-fixed/40 shadow-xl backdrop-blur-sm relative overflow-hidden"
+          class="max-w-3xl mx-auto bg-support-pink rounded-2xl sm:rounded-[40px] p-4 sm:p-8 md:p-16 border border-primary-fixed/40 relative overflow-hidden"
         >
           <div class="relative z-10 text-center mb-12">
-            <h2 class="text-headline-lg font-headline-lg text-primary mb-4" data-reveal="up">Let's Share Together</h2>
-            <p class="text-body-md font-body-md text-primary/70" data-reveal="up" style="--reveal-delay: 120ms">
+            <h2
+              class="text-3xl md:text-headline-lg font-headline-lg text-primary mb-4"
+              data-reveal="up"
+            >
+              Let's Share Together
+            </h2>
+            <p
+              class="text-body-md font-body-md text-primary/70"
+              data-reveal="up"
+              style="--reveal-delay: 120ms"
+            >
               Your voice helps make the invisible visible. Share your story.
             </p>
           </div>
 
-          <form id="share-form" class="relative z-10 space-y-6" data-stagger data-stagger-step="90">
+          <form
+            id="share-form"
+            class="relative z-10 space-y-6"
+            data-stagger
+            data-stagger-step="90"
+          >
             <!-- Your name -->
             <div class="flex flex-col" data-reveal="up">
-              <label class="text-label-bold font-label-bold text-primary mb-2 ml-4" for="name">Your name*</label>
+              <label
+                class="text-label-bold font-label-bold text-primary mb-2 ml-4"
+                for="name"
+                >Your name*</label
+              >
               <input
                 class="bg-surface-container-lowest/50 border border-outline-variant text-primary rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-primary/40"
                 id="name"
@@ -305,7 +377,11 @@
 
             <!-- Your email address -->
             <div class="flex flex-col" data-reveal="up">
-              <label class="text-label-bold font-label-bold text-primary mb-2 ml-4" for="email">Your email address*</label>
+              <label
+                class="text-label-bold font-label-bold text-primary mb-2 ml-4"
+                for="email"
+                >Your email address*</label
+              >
               <input
                 class="bg-surface-container-lowest/50 border border-outline-variant text-primary rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-primary/40"
                 id="email"
@@ -318,37 +394,93 @@
 
             <!-- Do you have any invisible needs on trnsportation before? -->
             <div class="flex flex-col" data-reveal="up">
-              <label class="text-label-bold font-label-bold text-primary mb-2 ml-4">Do you have any invisible needs on trnsportation before?*</label>
+              <label
+                class="text-label-bold font-label-bold text-primary mb-2 ml-4"
+                >Do you have any invisible needs on trnsportation
+                before?*</label
+              >
               <div class="space-y-3">
-                <label class="flex items-center gap-3 bg-primary/10 hover:bg-primary/15 transition-colors rounded-xl px-6 py-4 cursor-pointer">
-                  <input type="radio" name="invisible_needs_transport" value="Yes, I do." class="form-radio text-primary focus:ring-primary border-outline-variant bg-surface-container-lowest w-5 h-5" required />
+                <label
+                  class="flex items-center gap-3 bg-primary/10 hover:bg-primary/15 transition-colors rounded-xl px-6 py-4 cursor-pointer"
+                >
+                  <input
+                    type="radio"
+                    name="invisible_needs_transport"
+                    value="Yes, I do."
+                    class="form-radio text-primary focus:ring-primary border-outline-variant bg-surface-container-lowest w-5 h-5"
+                    required
+                  />
                   <span class="text-primary font-body-md">Yes, I do.</span>
                 </label>
-                <label class="flex items-center gap-3 bg-primary/10 hover:bg-primary/15 transition-colors rounded-xl px-6 py-4 cursor-pointer">
-                  <input type="radio" name="invisible_needs_transport" value="No, but I see other have." class="form-radio text-primary focus:ring-primary border-outline-variant bg-surface-container-lowest w-5 h-5" />
-                  <span class="text-primary font-body-md">No, but I see other have.</span>
+                <label
+                  class="flex items-center gap-3 bg-primary/10 hover:bg-primary/15 transition-colors rounded-xl px-6 py-4 cursor-pointer"
+                >
+                  <input
+                    type="radio"
+                    name="invisible_needs_transport"
+                    value="No, but I see other have."
+                    class="form-radio text-primary focus:ring-primary border-outline-variant bg-surface-container-lowest w-5 h-5"
+                  />
+                  <span class="text-primary font-body-md"
+                    >No, but I see other have.</span
+                  >
                 </label>
               </div>
             </div>
 
             <!-- What kind of support is needed? -->
             <div class="flex flex-col" data-reveal="up">
-              <label class="text-label-bold font-label-bold text-primary mb-2 ml-4">What kind of support is needed?*</label>
+              <label
+                class="text-label-bold font-label-bold text-primary mb-2 ml-4"
+                >What kind of support is needed?*</label
+              >
               <div class="space-y-3">
-                <label class="flex items-center gap-3 bg-primary/10 hover:bg-primary/15 transition-colors rounded-xl px-6 py-4 cursor-pointer">
-                  <input type="checkbox" name="support_type" value="Physical Support" class="form-checkbox rounded text-primary focus:ring-primary border-outline-variant bg-surface-container-lowest w-5 h-5" />
-                  <span class="text-primary font-body-md">Physical Support</span>
+                <label
+                  class="flex items-center gap-3 bg-primary/10 hover:bg-primary/15 transition-colors rounded-xl px-6 py-4 cursor-pointer"
+                >
+                  <input
+                    type="checkbox"
+                    name="support_type"
+                    value="Physical Support"
+                    class="form-checkbox rounded text-primary focus:ring-primary border-outline-variant bg-surface-container-lowest w-5 h-5"
+                  />
+                  <span class="text-primary font-body-md"
+                    >Physical Support</span
+                  >
                 </label>
-                <label class="flex items-center gap-3 bg-primary/10 hover:bg-primary/15 transition-colors rounded-xl px-6 py-4 cursor-pointer">
-                  <input type="checkbox" name="support_type" value="Sensory Support" class="form-checkbox rounded text-primary focus:ring-primary border-outline-variant bg-surface-container-lowest w-5 h-5" />
+                <label
+                  class="flex items-center gap-3 bg-primary/10 hover:bg-primary/15 transition-colors rounded-xl px-6 py-4 cursor-pointer"
+                >
+                  <input
+                    type="checkbox"
+                    name="support_type"
+                    value="Sensory Support"
+                    class="form-checkbox rounded text-primary focus:ring-primary border-outline-variant bg-surface-container-lowest w-5 h-5"
+                  />
                   <span class="text-primary font-body-md">Sensory Support</span>
                 </label>
-                <label class="flex items-center gap-3 bg-primary/10 hover:bg-primary/15 transition-colors rounded-xl px-6 py-4 cursor-pointer">
-                  <input type="checkbox" name="support_type" value="Emotional Support" class="form-checkbox rounded text-primary focus:ring-primary border-outline-variant bg-surface-container-lowest w-5 h-5" />
-                  <span class="text-primary font-body-md">Emotional Support</span>
+                <label
+                  class="flex items-center gap-3 bg-primary/10 hover:bg-primary/15 transition-colors rounded-xl px-6 py-4 cursor-pointer"
+                >
+                  <input
+                    type="checkbox"
+                    name="support_type"
+                    value="Emotional Support"
+                    class="form-checkbox rounded text-primary focus:ring-primary border-outline-variant bg-surface-container-lowest w-5 h-5"
+                  />
+                  <span class="text-primary font-body-md"
+                    >Emotional Support</span
+                  >
                 </label>
-                <label class="flex items-center gap-3 bg-primary/10 hover:bg-primary/15 transition-colors rounded-xl px-6 py-4 cursor-pointer">
-                  <input type="checkbox" name="support_type" value="Rest Support" class="form-checkbox rounded text-primary focus:ring-primary border-outline-variant bg-surface-container-lowest w-5 h-5" />
+                <label
+                  class="flex items-center gap-3 bg-primary/10 hover:bg-primary/15 transition-colors rounded-xl px-6 py-4 cursor-pointer"
+                >
+                  <input
+                    type="checkbox"
+                    name="support_type"
+                    value="Rest Support"
+                    class="form-checkbox rounded text-primary focus:ring-primary border-outline-variant bg-surface-container-lowest w-5 h-5"
+                  />
                   <span class="text-primary font-body-md">Rest Support</span>
                 </label>
               </div>
@@ -356,7 +488,11 @@
 
             <!-- What is the problem? -->
             <div class="flex flex-col" data-reveal="up">
-              <label class="text-label-bold font-label-bold text-primary mb-2 ml-4" for="needs">What is the problem?*</label>
+              <label
+                class="text-label-bold font-label-bold text-primary mb-2 ml-4"
+                for="needs"
+                >What is the problem?*</label
+              >
               <textarea
                 class="bg-surface-container-lowest/50 border border-outline-variant text-primary rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-primary/40 resize-none"
                 id="needs"
@@ -369,7 +505,12 @@
 
             <!-- What do you think our project? -->
             <div class="flex flex-col" data-reveal="up">
-              <label class="text-label-bold font-label-bold text-primary mb-2 ml-4" for="reflection">What do you think of our project? Give us some feedback, thank you!!</label>
+              <label
+                class="text-label-bold font-label-bold text-primary mb-2 ml-4"
+                for="reflection"
+                >What do you think of our project? Give us some feedback, thank
+                you!!</label
+              >
               <textarea
                 class="bg-surface-container-lowest/50 border border-outline-variant text-primary rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-primary/40 resize-none"
                 id="reflection"
@@ -382,7 +523,7 @@
             <!-- Submit Button -->
             <div class="pt-4 flex justify-center" data-reveal="scale">
               <button
-                class="w-full bg-white text-primary border border-outline-variant/30 px-10 py-4 rounded-full font-label-bold text-lg hover:bg-white/90 hover:scale-[1.01] transition-all shadow-md flex justify-center items-center gap-2"
+                class="w-full bg-white text-primary border border-outline-variant/30 px-10 py-4 rounded-full font-label-bold text-lg hover:bg-white/90 hover:scale-[1.01] transition-all flex justify-center items-center gap-2"
                 type="submit"
               >
                 <span id="submit-text">Submit</span>
@@ -391,19 +532,39 @@
           </form>
 
           <!-- Success Message -->
-          <div id="success-message" class="hidden relative z-10 text-center py-12 px-4 opacity-0 scale-95 transition-all duration-500 ease-out">
-            <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6">
-              <span class="material-symbols-outlined text-action-teal text-5xl font-bold">check</span>
+          <div
+            id="success-message"
+            class="hidden relative z-10 text-center py-12 px-4 opacity-0 scale-95 transition-all duration-500 ease-out"
+          >
+            <div
+              class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6"
+            >
+              <span
+                class="material-symbols-outlined text-action-teal text-5xl font-bold"
+                >check</span
+              >
             </div>
-            <h3 class="text-headline-lg font-headline-lg text-primary mb-4">Thank you for sharing!</h3>
-            <p class="text-body-lg font-body-lg text-primary/70 mb-8 max-w-md mx-auto">
-              Your voice helps make the invisible visible. Your story has been successfully recorded.
+            <h3 class="text-headline-lg font-headline-lg text-primary mb-4">
+              Thank you for sharing!
+            </h3>
+            <p
+              class="text-body-lg font-body-lg text-primary/70 mb-8 max-w-md mx-auto"
+            >
+              Your voice helps make the invisible visible. Your story has been
+              successfully recorded.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-              <a href="index.html" class="bg-primary text-white border border-primary px-8 py-3 rounded-full font-label-bold text-md hover:bg-primary/90 transition-colors interactive-lift press">
+              <a
+                href="index.html"
+                class="bg-primary text-white border border-primary px-8 py-3 rounded-full font-label-bold text-md hover:bg-primary/90 transition-colors interactive-lift press"
+              >
                 Back to Home
               </a>
-              <button id="reset-form" type="button" class="bg-white text-primary border border-outline-variant/30 px-8 py-3 rounded-full font-label-bold text-md hover:bg-white/90 transition-colors interactive-lift press">
+              <button
+                id="reset-form"
+                type="button"
+                class="bg-white text-primary border border-outline-variant/30 px-8 py-3 rounded-full font-label-bold text-md hover:bg-white/90 transition-colors interactive-lift press"
+              >
                 Share Another Story
               </button>
             </div>
@@ -415,35 +576,46 @@
     <script>
       (() => {
         // --- Mobile menu toggle ---
-        const toggle = document.getElementById('nav-toggle');
-        const menu = document.getElementById('mobile-menu');
+        const toggle = document.getElementById("nav-toggle");
+        const menu = document.getElementById("mobile-menu");
         function openMenu() {
-          menu.style.display = 'block';
-          toggle.setAttribute('aria-expanded', 'true');
-          toggle.setAttribute('aria-label', 'Close menu');
-          toggle.querySelector('.material-symbols-outlined').textContent = 'close';
+          menu.style.display = "block";
+          toggle.setAttribute("aria-expanded", "true");
+          toggle.setAttribute("aria-label", "Close menu");
+          toggle.querySelector(".material-symbols-outlined").textContent =
+            "close";
         }
         function closeMenu() {
-          menu.style.display = 'none';
-          toggle.setAttribute('aria-expanded', 'false');
-          toggle.setAttribute('aria-label', 'Open menu');
-          toggle.querySelector('.material-symbols-outlined').textContent = 'menu';
+          menu.style.display = "none";
+          toggle.setAttribute("aria-expanded", "false");
+          toggle.setAttribute("aria-label", "Open menu");
+          toggle.querySelector(".material-symbols-outlined").textContent =
+            "menu";
         }
-        toggle.addEventListener('click', () => {
-          toggle.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
+        toggle.addEventListener("click", () => {
+          toggle.getAttribute("aria-expanded") === "true"
+            ? closeMenu()
+            : openMenu();
         });
-        menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-        document.addEventListener('click', (e) => {
-          if (!menu.contains(e.target) && !toggle.contains(e.target)) closeMenu();
+        menu
+          .querySelectorAll("a")
+          .forEach((a) => a.addEventListener("click", closeMenu));
+        document.addEventListener("click", (e) => {
+          if (!menu.contains(e.target) && !toggle.contains(e.target))
+            closeMenu();
         });
       })();
     </script>
 
     <script>
       (() => {
-        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const reduceMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
         const revealEls = document.querySelectorAll("[data-reveal]");
-        const circles = document.querySelectorAll("div.rounded-full[class*='w-'][class*='h-']");
+        const circles = document.querySelectorAll(
+          "div.rounded-full[class*='w-'][class*='h-']",
+        );
 
         const initStagger = () => {
           document.querySelectorAll("[data-stagger]").forEach((parent) => {
@@ -452,7 +624,8 @@
             const children = parent.querySelectorAll("[data-reveal]");
             let i = 0;
             children.forEach((el) => {
-              const hasInlineDelay = el.style.getPropertyValue("--reveal-delay");
+              const hasInlineDelay =
+                el.style.getPropertyValue("--reveal-delay");
               const hasAttrDelay = el.dataset.delay;
               if (hasInlineDelay || hasAttrDelay) return;
               el.style.setProperty("--reveal-delay", `${start + i * step}ms`);
@@ -484,7 +657,7 @@
               obs.unobserve(entry.target);
             }
           },
-          { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
+          { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
         );
 
         revealEls.forEach((el) => observer.observe(el));
@@ -495,50 +668,68 @@
       (() => {
         // --- Google Form configuration mapping ---
         const GOOGLE_FORM_CONFIG = {
-          actionUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScz9cEMrVQZqByS808qZW2u2UEZrp_uWPtKiFCF2aZrk6_hbw/formResponse',
+          actionUrl:
+            "https://docs.google.com/forms/d/e/1FAIpQLScz9cEMrVQZqByS808qZW2u2UEZrp_uWPtKiFCF2aZrk6_hbw/formResponse",
           entries: {
-            name: 'entry.657336847',
-            email: 'entry.1055362349',
-            invisible_needs_transport: 'entry.751784348',
-            support_type: 'entry.1854597624',
-            needs: 'entry.1854688655',
-            reflection: 'entry.481131213'
-          }
+            name: "entry.657336847",
+            email: "entry.1055362349",
+            invisible_needs_transport: "entry.751784348",
+            support_type: "entry.1854597624",
+            needs: "entry.1854688655",
+            reflection: "entry.481131213",
+          },
         };
 
-        const form = document.getElementById('share-form');
-        const successMessage = document.getElementById('success-message');
+        const form = document.getElementById("share-form");
+        const successMessage = document.getElementById("success-message");
         const submitBtn = form.querySelector('button[type="submit"]');
-        const submitText = document.getElementById('submit-text');
-        const resetBtn = document.getElementById('reset-form');
+        const submitText = document.getElementById("submit-text");
+        const resetBtn = document.getElementById("reset-form");
 
-        form.addEventListener('submit', async (e) => {
+        form.addEventListener("submit", async (e) => {
           e.preventDefault();
 
-          if (GOOGLE_FORM_CONFIG.actionUrl === 'YOUR_GOOGLE_FORM_ACTION_URL') {
-            alert('Please configure your Google Form Action URL and entry IDs in the script config first!');
+          if (GOOGLE_FORM_CONFIG.actionUrl === "YOUR_GOOGLE_FORM_ACTION_URL") {
+            alert(
+              "Please configure your Google Form Action URL and entry IDs in the script config first!",
+            );
             return;
           }
 
           // Disable button and show loading state
           submitBtn.disabled = true;
-          submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
-          if (submitText) submitText.textContent = 'Submitting...';
+          submitBtn.classList.add("opacity-75", "cursor-not-allowed");
+          if (submitText) submitText.textContent = "Submitting...";
 
           // Extract data
           const formData = new FormData(form);
           const params = new URLSearchParams();
 
           // Map inputs to Google Form entries
-          params.append(GOOGLE_FORM_CONFIG.entries.name, formData.get('name') || '');
-          params.append(GOOGLE_FORM_CONFIG.entries.email, formData.get('email') || '');
-          params.append(GOOGLE_FORM_CONFIG.entries.invisible_needs_transport, formData.get('invisible_needs_transport') || '');
-          params.append(GOOGLE_FORM_CONFIG.entries.needs, formData.get('needs') || '');
-          params.append(GOOGLE_FORM_CONFIG.entries.reflection, formData.get('reflection') || '');
+          params.append(
+            GOOGLE_FORM_CONFIG.entries.name,
+            formData.get("name") || "",
+          );
+          params.append(
+            GOOGLE_FORM_CONFIG.entries.email,
+            formData.get("email") || "",
+          );
+          params.append(
+            GOOGLE_FORM_CONFIG.entries.invisible_needs_transport,
+            formData.get("invisible_needs_transport") || "",
+          );
+          params.append(
+            GOOGLE_FORM_CONFIG.entries.needs,
+            formData.get("needs") || "",
+          );
+          params.append(
+            GOOGLE_FORM_CONFIG.entries.reflection,
+            formData.get("reflection") || "",
+          );
 
           // Handle multi-select checkboxes for support_type
-          const selectedSupports = formData.getAll('support_type');
-          selectedSupports.forEach(val => {
+          const selectedSupports = formData.getAll("support_type");
+          selectedSupports.forEach((val) => {
             params.append(GOOGLE_FORM_CONFIG.entries.support_type, val);
           });
 
@@ -547,57 +738,56 @@
             // Under no-cors, the response status is 0 (opaque) and we won't see response body,
             // but the browser will still submit the form successfully.
             await fetch(GOOGLE_FORM_CONFIG.actionUrl, {
-              method: 'POST',
-              mode: 'no-cors',
+              method: "POST",
+              mode: "no-cors",
               headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
+                "Content-Type": "application/x-www-form-urlencoded",
               },
-              body: params.toString()
+              body: params.toString(),
             });
 
             // Transition: Hide form and show success message
-            form.style.transition = 'opacity 400ms ease, transform 400ms ease';
-            form.style.opacity = '0';
-            form.style.transform = 'scale(0.95)';
+            form.style.transition = "opacity 400ms ease, transform 400ms ease";
+            form.style.opacity = "0";
+            form.style.transform = "scale(0.95)";
 
             setTimeout(() => {
-              form.classList.add('hidden');
-              successMessage.classList.remove('hidden');
+              form.classList.add("hidden");
+              successMessage.classList.remove("hidden");
               // Trigger reflow to animate
               successMessage.offsetHeight;
-              successMessage.classList.remove('opacity-0', 'scale-95');
-              successMessage.classList.add('opacity-100', 'scale-100');
+              successMessage.classList.remove("opacity-0", "scale-95");
+              successMessage.classList.add("opacity-100", "scale-100");
             }, 400);
-
           } catch (error) {
-            console.error('Submission failed:', error);
-            alert('Something went wrong. Please try again.');
+            console.error("Submission failed:", error);
+            alert("Something went wrong. Please try again.");
             submitBtn.disabled = false;
-            submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
-            if (submitText) submitText.textContent = 'Submit';
+            submitBtn.classList.remove("opacity-75", "cursor-not-allowed");
+            if (submitText) submitText.textContent = "Submit";
           }
         });
 
         // Reset form to submit another response
-        resetBtn.addEventListener('click', () => {
+        resetBtn.addEventListener("click", () => {
           form.reset();
-          
+
           // Reset button text & state
           submitBtn.disabled = false;
-          submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
-          if (submitText) submitText.textContent = 'Submit';
+          submitBtn.classList.remove("opacity-75", "cursor-not-allowed");
+          if (submitText) submitText.textContent = "Submit";
 
           // Transition back
-          successMessage.classList.add('opacity-0', 'scale-95');
-          successMessage.classList.remove('opacity-100', 'scale-100');
+          successMessage.classList.add("opacity-0", "scale-95");
+          successMessage.classList.remove("opacity-100", "scale-100");
 
           setTimeout(() => {
-            successMessage.classList.add('hidden');
-            form.classList.remove('hidden');
+            successMessage.classList.add("hidden");
+            form.classList.remove("hidden");
             // Trigger reflow
             form.offsetHeight;
-            form.style.opacity = '1';
-            form.style.transform = 'scale(1)';
+            form.style.opacity = "1";
+            form.style.transform = "scale(1)";
           }, 400);
         });
       })();
@@ -605,7 +795,7 @@
 
     <!-- Footer -->
     <footer
-      class="bg-surface-container-highest w-full px-gutter py-section-padding flex flex-col md:flex-row justify-between items-center gap-8 max-w-container-max mx-auto mt-24"
+      class="bg-background w-full px-gutter py-section-padding flex flex-col md:flex-row justify-between items-center gap-8 max-w-container-max mx-auto mt-24"
     >
       <img class="nav-logo" src="assets/logo.png" alt="UNSEEN logo" />
       <div class="flex gap-6 flex-wrap justify-center">

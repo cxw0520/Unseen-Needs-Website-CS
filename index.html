@@ -22,7 +22,7 @@
               "action-teal": "#68AC9D",
               "on-primary": "#ffffff",
               "secondary-fixed": "#d3e3ff",
-              background: "#f9f9f9",
+              background: "#ffffff",
               "surface-tint": "#4B332D",
               secondary: "#4680BE",
               "surface-container-high": "#e8e8e8",
@@ -103,13 +103,19 @@
                   fontWeight: "300",
                 },
               ],
-              "headline-md": ["28px", { lineHeight: "34px", fontWeight: "400" }],
+              "headline-md": [
+                "28px",
+                { lineHeight: "34px", fontWeight: "400" },
+              ],
               "headline-lg-mobile": [
                 "32px",
                 { lineHeight: "38px", fontWeight: "400" },
               ],
               "label-bold": ["16px", { lineHeight: "20px", fontWeight: "400" }],
-              "headline-lg": ["48px", { lineHeight: "56px", fontWeight: "400" }],
+              "headline-lg": [
+                "48px",
+                { lineHeight: "56px", fontWeight: "400" },
+              ],
               "body-md": ["18px", { lineHeight: "28px", fontWeight: "400" }],
             },
           },
@@ -119,7 +125,11 @@
 
     <style>
       .material-symbols-outlined {
-        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
       }
       .fill-icon {
         font-variation-settings: "FILL" 1;
@@ -259,7 +269,10 @@
       }
 
       .interactive-lift {
-        transition: translate 200ms ease, background-color 200ms ease, color 200ms ease;
+        transition:
+          translate 200ms ease,
+          background-color 200ms ease,
+          color 200ms ease;
       }
       .interactive-lift:hover {
         translate: 0 -2px;
@@ -268,12 +281,11 @@
         scale: 0.98;
       }
 
-
       /* ── Logo Intro Animation ── */
       #logo-intro {
         width: 100%;
-        height: 100svh;
-        background: #f9f9f9;
+        height: 82svh;
+        background: #ffffff;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -285,25 +297,66 @@
     </style>
   </head>
 
-  <body class="bg-background text-on-surface font-body-md overflow-x-hidden" data-mode="connect">
-    <header class="bg-background/90 backdrop-blur-md border-b border-outline-variant docked full-width top-0 z-50 sticky">
-      <div class="flex justify-between items-center w-full px-gutter py-4 max-w-container-max mx-auto">
+  <body
+    class="bg-background text-on-surface font-body-md overflow-x-hidden"
+    data-mode="connect"
+  >
+    <header
+      class="bg-background backdrop-blur-md border-b border-outline-variant docked full-width top-0 z-50 sticky"
+    >
+      <div
+        class="flex justify-between items-center w-full px-gutter py-4 max-w-container-max mx-auto"
+      >
         <div class="hidden md:flex gap-4">
-          <span class="text-on-surface-variant font-label-bold uppercase tracking-wider text-xs">How can we see others' needs</span>
+          <span
+            class="text-on-surface-variant font-label-bold uppercase tracking-wider text-xs"
+            >How can we see others' needs</span
+          >
         </div>
-        <a class="relative z-20 inline-flex items-center" href="index.html" aria-label="UNSEEN Home">
+        <a
+          class="relative z-20 inline-flex items-center"
+          href="index.html"
+          aria-label="UNSEEN Home"
+        >
           <img class="nav-logo" src="assets/logo.png" alt="UNSEEN logo" />
         </a>
         <div class="hidden md:flex items-center gap-6">
           <nav aria-label="Main Navigation" class="flex gap-6">
-            <a class="text-primary font-label-bold text-label-bold border-b-2 border-primary pb-1" href="index.html">Home</a>
-            <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors" href="seen.html">Seen</a>
-            <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors" href="unseen.html">Unseen</a>
-            <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors" href="your-needs.html">Your Needs</a>
+            <a
+              class="text-primary font-label-bold text-label-bold border-b-2 border-primary pb-1"
+              href="index.html"
+              >Home</a
+            >
+            <a
+              class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors"
+              href="seen.html"
+              >Seen</a
+            >
+            <a
+              class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors"
+              href="unseen.html"
+              >Unseen</a
+            >
+            <a
+              class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors"
+              href="your-needs.html"
+              >Your Needs</a
+            >
           </nav>
-          <a class="border-2 border-outline rounded-full px-8 py-2 text-on-surface font-label-bold text-label-bold hover:bg-surface-variant transition-colors interactive-lift press" href="share-with-us.html">Share With Us</a>
+          <a
+            class="border border-outline rounded-full px-8 py-2 text-on-surface font-label-bold text-label-bold hover:bg-on-surface hover:text-white transition-colors interactive-lift press"
+            href="share-with-us.html"
+            >Share With Us</a
+          >
         </div>
-        <button id="nav-toggle" class="md:hidden text-on-surface p-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" type="button">
+        <button
+          id="nav-toggle"
+          class="md:hidden text-on-surface p-2"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          type="button"
+        >
           <span class="material-symbols-outlined text-3xl">menu</span>
         </button>
       </div>
@@ -312,15 +365,38 @@
     <!-- Mobile nav drawer -->
     <div
       id="mobile-menu"
-      class="md:hidden fixed inset-x-0 top-[73px] z-40 bg-background/95 backdrop-blur-md border-b border-outline-variant shadow-lg"
-      style="display:none;"
+      class="md:hidden fixed inset-x-0 top-[73px] z-40 bg-background backdrop-blur-md border-b border-outline-variant shadow-lg"
+      style="display: none"
     >
-      <nav aria-label="Mobile Navigation" class="flex flex-col px-gutter py-6 gap-4">
-        <a class="text-primary font-label-bold text-label-bold border-b-2 border-primary pb-2" href="index.html">Home</a>
-        <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2" href="seen.html">Seen</a>
-        <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2" href="unseen.html">Unseen</a>
-        <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2" href="your-needs.html">Your Needs</a>
-        <a class="mt-2 border-2 border-outline rounded-full px-8 py-2 text-center text-on-surface font-label-bold text-label-bold hover:bg-surface-variant transition-colors" href="share-with-us.html">Share With Us</a>
+      <nav
+        aria-label="Mobile Navigation"
+        class="flex flex-col px-gutter py-6 gap-4"
+      >
+        <a
+          class="text-primary font-label-bold text-label-bold border-b-2 border-primary pb-2"
+          href="index.html"
+          >Home</a
+        >
+        <a
+          class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2"
+          href="seen.html"
+          >Seen</a
+        >
+        <a
+          class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2"
+          href="unseen.html"
+          >Unseen</a
+        >
+        <a
+          class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2"
+          href="your-needs.html"
+          >Your Needs</a
+        >
+        <a
+          class="mt-2 border border-outline rounded-full px-8 py-2 text-center text-on-surface font-label-bold text-label-bold hover:bg-surface-variant transition-colors"
+          href="share-with-us.html"
+          >Share With Us</a
+        >
       </nav>
     </div>
 
@@ -329,73 +405,168 @@
       <section id="logo-intro" aria-label="UNSEEN logo animation">
         <canvas id="logo-canvas"></canvas>
       </section>
-      <section class="relative w-full overflow-visible pt-8 pb-24">
+      <section class="relative w-full overflow-hidden pt-8 pb-24">
         <div class="max-w-container-max mx-auto px-gutter relative">
-          <div class="circle-decor bg-support-pink w-48 h-48 -top-12 left-1/4 mix-blend-normal opacity-100 z-60" data-anim="pink"></div>
-          <div class="circle-decor bg-secondary w-64 h-64 top-12 -left-8 mix-blend-normal opacity-100 z-60" data-anim="blue"></div>
-          <div class="circle-decor bg-calm-purple w-56 h-56 top-8 right-1/4 mix-blend-normal opacity-100 z-60" data-anim="purple"></div>
+          <div
+            class="circle-decor bg-support-pink w-[20vw] h-[20vw] md:w-[10vw] md:h-[10vw] max-w-[150px] max-h-[150px] -top-[4vw] md:-top-[2vw] left-1/4 mix-blend-normal opacity-100 z-60"
+            data-anim="pink"
+          ></div>
+          <div
+            class="circle-decor bg-secondary w-[28vw] h-[28vw] md:w-[14vw] md:h-[14vw] max-w-[200px] max-h-[200px] top-[4vw] md:top-[2vw] -left-[3vw] md:-left-[1.5vw] mix-blend-normal opacity-100 z-60"
+            data-anim="blue"
+          ></div>
+          <div
+            class="circle-decor bg-calm-purple w-[24vw] h-[24vw] md:w-[12vw] md:h-[12vw] max-w-[180px] max-h-[180px] top-[4vw] md:top-[2vw] right-1/4 mix-blend-normal opacity-100 z-60"
+            data-anim="purple"
+          ></div>
 
-          <div class="w-full aspect-video md:aspect-[21/9] relative rounded-xl mt-4" data-reveal="scale">
-            <img alt="Crowded subway interior" class="w-full h-full object-cover brightness-110" src="assets/subway.jpg" />
-            <div class="circle-decor bg-action-teal w-64 h-64 -bottom-16 -right-12 mix-blend-normal opacity-100 z-60" data-anim="teal"></div>
+          <div
+            class="w-full aspect-video md:aspect-[21/9] relative rounded-xl mt-4"
+            data-reveal="scale"
+          >
+            <img
+              alt="Crowded subway interior"
+              class="w-full h-full object-cover brightness-110"
+              src="assets/subway.jpg"
+            />
+            <div
+              class="circle-decor bg-action-teal w-[28vw] h-[28vw] md:w-[14vw] md:h-[14vw] max-w-[200px] max-h-[200px] -bottom-[6vw] md:-bottom-[3vw] -right-[5vw] md:-right-[2vw] mix-blend-normal opacity-100 z-60"
+              data-anim="teal"
+            ></div>
           </div>
 
-          <div class="relative z-30 py-16 text-center w-full flex justify-center overflow-visible">
-            <h1 class="font-display-xl text-[60px] md:text-[120px] lg:text-[180px] leading-none text-primary-container drop-shadow-sm tracking-tighter inline-block relative heading-fill hero-typewriter" data-reveal="up" style="--reveal-delay: 120ms">
+          <div
+            class="relative z-30 py-16 text-center w-full flex justify-center overflow-visible"
+          >
+            <h1
+              class="font-display-xl text-[60px] md:text-[120px] lg:text-[180px] leading-none text-primary-container drop-shadow-sm tracking-tighter inline-block relative heading-fill hero-typewriter"
+              data-reveal="up"
+              style="--reveal-delay: 120ms"
+            >
               <span class="hero-title-wrap">
-                <span id="hero-yellow-circle" class="circle-decor hero-sweep-circle bg-primary-container mix-blend-normal opacity-90" data-anim="yellow"></span>
+                <span
+                  id="hero-yellow-circle"
+                  class="circle-decor hero-sweep-circle bg-primary-container mix-blend-normal opacity-90"
+                  data-anim="yellow"
+                ></span>
                 <span id="hero-typewriter-text"></span>
               </span>
             </h1>
           </div>
 
-          <div class="circle-decor bg-accent-red w-40 h-40 bottom-1/4 left-1/3 mix-blend-normal opacity-100 z-60" data-anim="red"></div>
+          <div
+            class="circle-decor bg-accent-red w-[17vw] h-[17vw] md:w-[9vw] md:h-[9vw] max-w-[130px] max-h-[130px] bottom-1/4 left-1/3 mix-blend-normal opacity-100 z-60"
+            data-anim="red"
+          ></div>
         </div>
       </section>
 
-      <section class="bg-primary-container py-section-padding relative overflow-hidden">
+      <section
+        class="bg-primary-container py-section-padding relative overflow-hidden"
+      >
         <div class="max-w-container-max mx-auto px-gutter relative z-10">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            <div class="relative h-64 md:h-96 rounded-xl overflow-hidden" data-reveal="scale">
-              <img alt="Priority zone sign" class="w-full h-full object-cover" src="assets/4block.jpg" />
-              <div class="absolute inset-0 bg-secondary/20 mix-blend-multiply"></div>
+            <div
+              class="relative h-64 md:h-96 rounded-xl overflow-hidden"
+              data-reveal="scale"
+            >
+              <img
+                alt="Priority zone sign"
+                class="w-full h-full object-cover"
+                src="assets/4block.jpg"
+              />
+              <div
+                class="absolute inset-0 bg-secondary/20 mix-blend-multiply"
+              ></div>
             </div>
-            <div class="relative h-64 md:h-96 rounded-xl overflow-hidden" data-reveal="scale" style="--reveal-delay: 120ms">
-              <img alt="Public transportation seats" class="w-full h-full object-cover" src="assets/small-seat.jpg" />
-              <div class="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
+            <div
+              class="relative h-64 md:h-96 rounded-xl overflow-hidden"
+              data-reveal="scale"
+              style="--reveal-delay: 120ms"
+            >
+              <img
+                alt="Public transportation seats"
+                class="w-full h-full object-cover"
+                src="assets/small-seat.jpg"
+              />
+              <div
+                class="absolute inset-0 bg-primary/10 mix-blend-multiply"
+              ></div>
             </div>
           </div>
 
-          <div class="circle-decor bg-calm-purple w-56 h-56 top-1/4 -left-12 mix-blend-normal opacity-100 z-60" data-anim="purple"></div>
-          <div class="circle-decor bg-action-teal w-64 h-64 bottom-1/3 right-1/3 mix-blend-normal opacity-100 z-60" data-anim="teal"></div>
-          <div class="circle-decor bg-secondary w-72 h-72 -bottom-12 -right-12 mix-blend-normal opacity-100 z-60" data-anim="blue"></div>
+          <div
+            class="circle-decor bg-calm-purple w-[24vw] h-[24vw] md:w-[12vw] md:h-[12vw] max-w-[180px] max-h-[180px] top-1/4 -left-[6vw] md:-left-[3vw] mix-blend-normal opacity-100 z-60"
+            data-anim="purple"
+          ></div>
+          <div
+            class="circle-decor bg-action-teal w-[28vw] h-[28vw] md:w-[14vw] md:h-[14vw] max-w-[200px] max-h-[200px] bottom-1/3 right-1/3 mix-blend-normal opacity-100 z-60"
+            data-anim="teal"
+          ></div>
+          <div
+            class="circle-decor bg-secondary w-[30vw] h-[30vw] md:w-[16vw] md:h-[16vw] max-w-[230px] max-h-[230px] -bottom-[5vw] md:-bottom-[2.5vw] -right-[5vw] md:-right-[2vw] mix-blend-normal opacity-100 z-60"
+            data-anim="blue"
+          ></div>
 
-          <div class="flex flex-col md:flex-row justify-between items-end gap-8 relative z-30 mt-12">
-            <h2 class="font-display-xl text-on-primary text-[50px] md:text-[80px] leading-tight max-w-2xl" data-reveal="up">What is Unseen</h2>
-            <a class="border border-on-primary text-on-primary font-label-bold px-8 py-3 rounded-full hover:bg-on-primary hover:text-primary-container transition-colors whitespace-nowrap interactive-lift press" href="unseen.html" data-reveal="up" style="--reveal-delay: 120ms">Learn more</a>
+          <div
+            class="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 relative z-30 mt-12"
+          >
+            <h2
+              class="font-display-xl text-on-primary text-[50px] md:text-[80px] leading-tight max-w-2xl"
+              data-reveal="up"
+            >
+              What is Unseen
+            </h2>
+            <a
+              class="border border-on-primary text-on-primary font-label-bold px-8 py-3 rounded-full hover:bg-on-primary hover:text-primary-container transition-colors whitespace-nowrap interactive-lift press"
+              href="unseen.html"
+              data-reveal="up"
+              style="--reveal-delay: 120ms"
+              >Learn more</a
+            >
           </div>
         </div>
       </section>
 
-      <section class="py-section-padding bg-background relative overflow-hidden">
+      <section
+        class="py-section-padding bg-background relative overflow-hidden"
+      >
         <div class="max-w-container-max mx-auto px-gutter relative">
-          <div class="circle-decor bg-support-pink w-64 h-64 top-0 right-12 mix-blend-normal opacity-100 z-60" data-anim="pink"></div>
-          <div class="circle-decor bg-calm-purple w-56 h-56 bottom-0 right-1/4 mix-blend-normal opacity-100 z-60 translate-y-1/2" data-anim="purple"></div>
-          <h2 class="font-display-xl text-on-surface text-[40px] md:text-[70px] lg:text-[90px] leading-tight max-w-4xl relative z-10 mb-24" data-reveal="up">
+          <div
+            class="circle-decor bg-support-pink w-[28vw] h-[28vw] md:w-[14vw] md:h-[14vw] max-w-[200px] max-h-[200px] top-0 right-[3vw] mix-blend-normal opacity-100 z-60"
+            data-anim="pink"
+          ></div>
+          <div
+            class="circle-decor bg-calm-purple w-[24vw] h-[24vw] md:w-[12vw] md:h-[12vw] max-w-[180px] max-h-[180px] bottom-0 right-1/4 mix-blend-normal opacity-100 z-60 translate-y-1/2"
+            data-anim="purple"
+          ></div>
+          <h2
+            class="font-display-xl text-on-surface text-[40px] md:text-[70px] lg:text-[90px] leading-tight max-w-4xl relative z-10 mb-24"
+            data-reveal="up"
+          >
             We often assume the answer is obvious.
             <br />But is it?
           </h2>
-          <div class="relative h-[614px] rounded-xl overflow-hidden mt-12" data-reveal="scale" style="--reveal-delay: 120ms">
-            <img alt="Blue subway seats interior" class="w-full h-full object-cover" src="assets/seats.jpg" />
-            <div class="absolute inset-0 bg-secondary/10 mix-blend-multiply"></div>
+          <div
+            class="relative h-[300px] md:h-[614px] rounded-xl overflow-hidden mt-12"
+            data-reveal="scale"
+            style="--reveal-delay: 120ms"
+          >
+            <img
+              alt="Blue subway seats interior"
+              class="w-full h-full object-cover"
+              src="assets/seats.jpg"
+            />
+            <div
+              class="absolute inset-0 bg-secondary/10 mix-blend-multiply"
+            ></div>
           </div>
         </div>
       </section>
-      
     </main>
     <!-- Footer -->
     <footer
-      class="bg-surface-container-highest w-full px-gutter py-section-padding flex flex-col md:flex-row justify-between items-center gap-8 max-w-container-max mx-auto mt-24"
+      class="bg-background w-full px-gutter py-section-padding flex flex-col md:flex-row justify-between items-center gap-8 max-w-container-max mx-auto mt-24"
     >
       <img class="nav-logo" src="assets/logo.png" alt="UNSEEN logo" />
       <div class="flex gap-6 flex-wrap justify-center">
@@ -429,28 +600,35 @@
         const ctx = canvas.getContext("2d");
         const intro = document.getElementById("logo-intro");
 
-        const COLORS = ["#4680BE", "#D74737", "#EBB5CA", "#E5C543", "#68AC9D", "#6D65A1"];
+        const COLORS = [
+          "#4680BE",
+          "#D74737",
+          "#EBB5CA",
+          "#E5C543",
+          "#68AC9D",
+          "#6D65A1",
+        ];
         const BROWN = "#4B332D";
         const LETTERS = ["U", "N", "S", "E", "E", "N"];
 
         // Timing (seconds)
         const T = {
-          ballsIn:     1.2,   // balls fly in from off-screen (2× slower)
-          orbitStart:  1.2,   // start orbiting around center
-          orbitEnd:    2.2,   // stop orbit after 1.0s (2× slower)
-          morphStart:  2.2,
-          morphEnd:    3.1,
-          fillStart:   3.1,
-          fillEnd:     3.9,
-          colorStart:  3.9,
-          colorEnd:    4.6,
+          ballsIn: 1.2, // balls fly in from off-screen (2× slower)
+          orbitStart: 1.2, // start orbiting around center
+          orbitEnd: 2.2, // stop orbit after 1.0s (2× slower)
+          morphStart: 2.2,
+          morphEnd: 3.1,
+          fillStart: 3.1,
+          fillEnd: 3.9,
+          colorStart: 3.9,
+          colorEnd: 4.6,
           //blinkStart:  4.6,
           //blinkEnd:    6.7,   // 2.1s blink window (3× slower)
           fadeE2Start: 5.6,
-          fadeE2End:   6.4,
-          pause:       8.0,
-          fadeOut:     8.5,
-          total:       9.0,
+          fadeE2End: 6.4,
+          pause: 8.0,
+          fadeOut: 8.5,
+          total: 9.0,
         };
 
         let W, H, letterPositions, ballRadius, fontSize;
@@ -458,24 +636,25 @@
         let raf = null;
 
         // Easing
-        const ease = (t) => t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
+        const ease = (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t);
         const lerp = (a, b, t) => a + (b - a) * t;
         const clamp01 = (t) => Math.max(0, Math.min(1, t));
 
         function hexToRgb(hex) {
-          const r = parseInt(hex.slice(1,3),16);
-          const g = parseInt(hex.slice(3,5),16);
-          const b = parseInt(hex.slice(5,7),16);
-          return {r, g, b};
+          const r = parseInt(hex.slice(1, 3), 16);
+          const g = parseInt(hex.slice(3, 5), 16);
+          const b = parseInt(hex.slice(5, 7), 16);
+          return { r, g, b };
         }
         function lerpColor(c1, c2, t) {
-          const a = hexToRgb(c1), b = hexToRgb(c2);
-          return `rgb(${Math.round(lerp(a.r,b.r,t))},${Math.round(lerp(a.g,b.g,t))},${Math.round(lerp(a.b,b.b,t))})` ;
+          const a = hexToRgb(c1),
+            b = hexToRgb(c2);
+          return `rgb(${Math.round(lerp(a.r, b.r, t))},${Math.round(lerp(a.g, b.g, t))},${Math.round(lerp(a.b, b.b, t))})`;
         }
 
         function resize() {
-          W = canvas.width  = window.innerWidth;
-          H = canvas.height = window.innerHeight;
+          W = canvas.width = intro.clientWidth;
+          H = canvas.height = intro.clientHeight;
           fontSize = Math.min(W * 0.18, H * 0.35, 200);
           ballRadius = fontSize * 0.38;
           letterPositions = measureLetters();
@@ -484,7 +663,10 @@
         function measureLetters() {
           ctx.font = `900 ${fontSize}px 'Franklin Gothic Medium Regular', Arial Black, sans-serif`;
           ctx.textBaseline = "middle";
-          const totalW = LETTERS.reduce((acc, l) => acc + ctx.measureText(l).width, 0);
+          const totalW = LETTERS.reduce(
+            (acc, l) => acc + ctx.measureText(l).width,
+            0,
+          );
           const spacing = fontSize * 0.05;
           const fullW = totalW + spacing * (LETTERS.length - 1);
           let x = (W - fullW) / 2;
@@ -533,7 +715,9 @@
             const bk = (t - T.blinkStart) / (T.blinkEnd - T.blinkStart);
             e2Alpha = 0.5 + 0.5 * Math.sin(bk * Math.PI * 0.5); // oscillates ~1 time
           } else if (t >= T.fadeE2Start && t < T.fadeE2End) {
-            e2Alpha = clamp01(1 - (t - T.fadeE2Start) / (T.fadeE2End - T.fadeE2Start));
+            e2Alpha = clamp01(
+              1 - (t - T.fadeE2Start) / (T.fadeE2End - T.fadeE2Start),
+            );
           } else if (t >= T.fadeE2End) {
             e2Alpha = 0;
           }
@@ -543,7 +727,9 @@
             const target = letterPositions[i];
             const isE2 = i === 4; // second E
 
-            let cx, cy, alpha = 1;
+            let cx,
+              cy,
+              alpha = 1;
             if (isE2) alpha = e2Alpha;
 
             // Phase 1a: balls fly in from off-screen → orbit ring entry point
@@ -574,15 +760,23 @@
               cy = orbitY;
             } else {
               // Converge from orbit position → letter center
-              const p = ease(clamp01((t - T.morphStart) / (T.morphEnd - T.morphStart)));
+              const p = ease(
+                clamp01((t - T.morphStart) / (T.morphEnd - T.morphStart)),
+              );
               cx = lerp(orbitX, target.cx, p);
               cy = lerp(orbitY, target.cy, p);
             }
 
             // Phase 2: morph — we transition from circle → letter clip
-            const morphP = clamp01((t - T.morphStart) / (T.morphEnd - T.morphStart));
-            const fillP  = clamp01((t - T.fillStart)  / (T.fillEnd  - T.fillStart));
-            const colorP = clamp01((t - T.colorStart)  / (T.colorEnd - T.colorStart));
+            const morphP = clamp01(
+              (t - T.morphStart) / (T.morphEnd - T.morphStart),
+            );
+            const fillP = clamp01(
+              (t - T.fillStart) / (T.fillEnd - T.fillStart),
+            );
+            const colorP = clamp01(
+              (t - T.colorStart) / (T.colorEnd - T.colorStart),
+            );
 
             const currentColor = lerpColor(color, BROWN, ease(colorP));
 
@@ -604,7 +798,9 @@
               ctx.save();
               if (fillP < 1) {
                 // Clip to expanding circle
-                const maxR = Math.sqrt(target.w * target.w + fontSize * fontSize);
+                const maxR = Math.sqrt(
+                  target.w * target.w + fontSize * fontSize,
+                );
                 const clipR = ease(fillP) * maxR * 1.5;
                 ctx.beginPath();
                 ctx.arc(target.cx, target.cy, clipR, 0, Math.PI * 2);
@@ -647,7 +843,10 @@
           raf = requestAnimationFrame(loop);
         }
 
-        window.addEventListener("resize", () => { resize(); initBallStarts(); });
+        window.addEventListener("resize", () => {
+          resize();
+          initBallStarts();
+        });
         start();
       })();
     </script>
@@ -655,33 +854,42 @@
     <script>
       (() => {
         // --- Mobile menu toggle ---
-        const toggle = document.getElementById('nav-toggle');
-        const menu = document.getElementById('mobile-menu');
+        const toggle = document.getElementById("nav-toggle");
+        const menu = document.getElementById("mobile-menu");
         function openMenu() {
-          menu.style.display = 'block';
-          toggle.setAttribute('aria-expanded', 'true');
-          toggle.setAttribute('aria-label', 'Close menu');
-          toggle.querySelector('.material-symbols-outlined').textContent = 'close';
+          menu.style.display = "block";
+          toggle.setAttribute("aria-expanded", "true");
+          toggle.setAttribute("aria-label", "Close menu");
+          toggle.querySelector(".material-symbols-outlined").textContent =
+            "close";
         }
         function closeMenu() {
-          menu.style.display = 'none';
-          toggle.setAttribute('aria-expanded', 'false');
-          toggle.setAttribute('aria-label', 'Open menu');
-          toggle.querySelector('.material-symbols-outlined').textContent = 'menu';
+          menu.style.display = "none";
+          toggle.setAttribute("aria-expanded", "false");
+          toggle.setAttribute("aria-label", "Open menu");
+          toggle.querySelector(".material-symbols-outlined").textContent =
+            "menu";
         }
-        toggle.addEventListener('click', () => {
-          toggle.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
+        toggle.addEventListener("click", () => {
+          toggle.getAttribute("aria-expanded") === "true"
+            ? closeMenu()
+            : openMenu();
         });
-        menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-        document.addEventListener('click', (e) => {
-          if (!menu.contains(e.target) && !toggle.contains(e.target)) closeMenu();
+        menu
+          .querySelectorAll("a")
+          .forEach((a) => a.addEventListener("click", closeMenu));
+        document.addEventListener("click", (e) => {
+          if (!menu.contains(e.target) && !toggle.contains(e.target))
+            closeMenu();
         });
       })();
     </script>
 
     <script>
       (() => {
-        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const reduceMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
 
         const circles = document.querySelectorAll(".circle-decor[data-anim]");
         const revealEls = document.querySelectorAll("[data-reveal]");
@@ -702,7 +910,10 @@
           const render = (now) => {
             const elapsed = now - startAt;
             const progress = Math.min(1, elapsed / duration);
-            const revealCount = Math.min(heroText.length, Math.floor(progress * heroText.length));
+            const revealCount = Math.min(
+              heroText.length,
+              Math.floor(progress * heroText.length),
+            );
             typeTarget.textContent = heroText.slice(0, revealCount);
 
             if (progress < 1) {
@@ -753,7 +964,7 @@
               obs.unobserve(el);
             }
           },
-          { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
+          { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
         );
 
         if (heroYellowCircle) observer.observe(heroYellowCircle);

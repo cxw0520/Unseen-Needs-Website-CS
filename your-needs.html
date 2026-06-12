@@ -21,7 +21,7 @@
               "action-teal": "#68AC9D",
               "on-primary": "#ffffff",
               "secondary-fixed": "#d3e3ff",
-              background: "#f9f9f9",
+              background: "#ffffff",
               "surface-tint": "#4B332D",
               secondary: "#4680BE",
               "surface-container-high": "#e8e8e8",
@@ -102,13 +102,19 @@
                   fontWeight: "300",
                 },
               ],
-              "headline-md": ["28px", { lineHeight: "34px", fontWeight: "400" }],
+              "headline-md": [
+                "28px",
+                { lineHeight: "34px", fontWeight: "400" },
+              ],
               "headline-lg-mobile": [
                 "32px",
                 { lineHeight: "38px", fontWeight: "400" },
               ],
               "label-bold": ["16px", { lineHeight: "20px", fontWeight: "400" }],
-              "headline-lg": ["48px", { lineHeight: "56px", fontWeight: "400" }],
+              "headline-lg": [
+                "48px",
+                { lineHeight: "56px", fontWeight: "400" },
+              ],
               "body-md": ["18px", { lineHeight: "28px", fontWeight: "400" }],
             },
           },
@@ -137,7 +143,7 @@
       }
 
       .circle-label {
-        font-family: 'Tobias Light', 'Tobias-Light', Georgia, serif !important;
+        font-family: "Tobias Light", "Tobias-Light", Georgia, serif !important;
       }
 
       @keyframes logoPulse {
@@ -171,13 +177,21 @@
         margin-bottom: -40px;
       }
       .scalloped-top {
-        mask-image: radial-gradient(circle at 20px 0, transparent 20px, black 21px);
+        mask-image: radial-gradient(
+          circle at 20px 0,
+          transparent 20px,
+          black 21px
+        );
         mask-size: 40px 100%;
         mask-repeat: repeat-x;
         padding-top: 40px;
       }
       .scalloped-bottom {
-        mask-image: radial-gradient(circle at 20px 100%, transparent 20px, black 21px);
+        mask-image: radial-gradient(
+          circle at 20px 100%,
+          transparent 20px,
+          black 21px
+        );
         mask-size: 40px 100%;
         mask-repeat: repeat-x;
         padding-bottom: 40px;
@@ -188,9 +202,12 @@
         translate: var(--reveal-x, 0px) var(--reveal-y, 12px);
         scale: var(--reveal-scale, 1);
         transition:
-          opacity var(--reveal-duration, 600ms) var(--reveal-ease, cubic-bezier(0.22, 1, 0.36, 1)),
-          translate var(--reveal-duration, 600ms) var(--reveal-ease, cubic-bezier(0.22, 1, 0.36, 1)),
-          scale var(--reveal-duration, 600ms) var(--reveal-ease, cubic-bezier(0.22, 1, 0.36, 1));
+          opacity var(--reveal-duration, 600ms)
+            var(--reveal-ease, cubic-bezier(0.22, 1, 0.36, 1)),
+          translate var(--reveal-duration, 600ms)
+            var(--reveal-ease, cubic-bezier(0.22, 1, 0.36, 1)),
+          scale var(--reveal-duration, 600ms)
+            var(--reveal-ease, cubic-bezier(0.22, 1, 0.36, 1));
         transition-delay: var(--reveal-delay, 0ms);
       }
       [data-reveal="fade"] {
@@ -252,17 +269,87 @@
           transition: none;
         }
       }
+
+      /* Responsive grid system for overlapping circles */
+      .responsive-grid {
+        display: grid !important;
+        --grid-cols: 3;
+        --grid-overlap: -16.666vw;
+        grid-template-columns: repeat(
+          var(--grid-cols),
+          minmax(0, 1fr)
+        ) !important;
+        margin-top: var(--grid-overlap) !important;
+        margin-bottom: var(--grid-overlap) !important;
+      }
+
+      @media (min-width: 768px) {
+        .responsive-grid {
+          --grid-cols: 6;
+          --grid-overlap: -8.333vw;
+        }
+      }
+
+      /* Transition filler block */
+      .transition-filler {
+        height: 16.666vw;
+        margin-top: -16.666vw;
+      }
+      @media (min-width: 768px) {
+        .transition-filler {
+          height: 8.333vw;
+          margin-top: -8.333vw;
+        }
+      }
+
+      /* Mobile layout column swaps for asymmetric grids */
+      @media (max-width: 767px) {
+        .swap-mobile-cols > :nth-child(1) {
+          order: 3;
+        }
+        .swap-mobile-cols > :nth-child(2) {
+          order: 2;
+        }
+        .swap-mobile-cols > :nth-child(3) {
+          order: 1;
+        }
+        .swap-mobile-cols > :nth-child(4) {
+          order: 6;
+        }
+        .swap-mobile-cols > :nth-child(5) {
+          order: 5;
+        }
+        .swap-mobile-cols > :nth-child(6) {
+          order: 4;
+        }
+        .swap-mobile-cols > :nth-child(n + 7) {
+          order: 7;
+        }
+      }
     </style>
   </head>
 
-  <body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col">
+  <body
+    class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col"
+  >
     <!-- TopAppBar -->
-    <header class="bg-background/90 backdrop-blur-md border-b border-outline-variant docked full-width top-0 z-50 sticky">
-      <div class="flex justify-between items-center w-full px-gutter py-4 max-w-container-max mx-auto">
+    <header
+      class="bg-background backdrop-blur-md border-b border-outline-variant docked full-width top-0 z-50 sticky"
+    >
+      <div
+        class="flex justify-between items-center w-full px-gutter py-4 max-w-container-max mx-auto"
+      >
         <div class="hidden md:flex gap-4">
-          <span class="text-on-surface-variant font-label-bold uppercase tracking-wider text-xs">How can we see others' needs</span>
+          <span
+            class="text-on-surface-variant font-label-bold uppercase tracking-wider text-xs"
+            >How can we see others' needs</span
+          >
         </div>
-        <a class="relative z-20 inline-flex items-center" href="index.html" aria-label="UNSEEN Home">
+        <a
+          class="relative z-20 inline-flex items-center"
+          href="index.html"
+          aria-label="UNSEEN Home"
+        >
           <img class="nav-logo" src="assets/logo.png" alt="UNSEEN logo" />
         </a>
         <div class="hidden md:flex items-center gap-6">
@@ -289,12 +376,19 @@
             >
           </nav>
           <a
-            class="border-2 border-outline rounded-full px-8 py-2 text-on-surface font-label-bold text-label-bold hover:bg-surface-variant transition-colors interactive-lift press"
+            class="border border-outline rounded-full px-8 py-2 text-on-surface font-label-bold text-label-bold hover:bg-on-surface hover:text-white transition-colors interactive-lift press"
             href="share-with-us.html"
             >Share With Us</a
           >
         </div>
-        <button id="nav-toggle" class="md:hidden text-on-surface p-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" type="button">
+        <button
+          id="nav-toggle"
+          class="md:hidden text-on-surface p-2"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          type="button"
+        >
           <span class="material-symbols-outlined text-3xl">menu</span>
         </button>
       </div>
@@ -303,15 +397,38 @@
     <!-- Mobile nav drawer -->
     <div
       id="mobile-menu"
-      class="md:hidden fixed inset-x-0 top-[73px] z-40 bg-background/95 backdrop-blur-md border-b border-outline-variant shadow-lg"
-      style="display:none;"
+      class="md:hidden fixed inset-x-0 top-[73px] z-40 bg-background backdrop-blur-md border-b border-outline-variant shadow-lg"
+      style="display: none"
     >
-      <nav aria-label="Mobile Navigation" class="flex flex-col px-gutter py-6 gap-4">
-        <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2" href="index.html">Home</a>
-        <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2" href="seen.html">Seen</a>
-        <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2" href="unseen.html">Unseen</a>
-        <a class="text-primary font-label-bold text-label-bold border-b-2 border-primary pb-2" href="your-needs.html">Your Needs</a>
-        <a class="mt-2 border-2 border-outline rounded-full px-8 py-2 text-center text-on-surface font-label-bold text-label-bold hover:bg-surface-variant transition-colors" href="share-with-us.html">Share With Us</a>
+      <nav
+        aria-label="Mobile Navigation"
+        class="flex flex-col px-gutter py-6 gap-4"
+      >
+        <a
+          class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2"
+          href="index.html"
+          >Home</a
+        >
+        <a
+          class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2"
+          href="seen.html"
+          >Seen</a
+        >
+        <a
+          class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors py-2"
+          href="unseen.html"
+          >Unseen</a
+        >
+        <a
+          class="text-primary font-label-bold text-label-bold border-b-2 border-primary pb-2"
+          href="your-needs.html"
+          >Your Needs</a
+        >
+        <a
+          class="mt-2 border border-outline rounded-full px-8 py-2 text-center text-on-surface font-label-bold text-label-bold hover:bg-surface-variant transition-colors"
+          href="share-with-us.html"
+          >Share With Us</a
+        >
       </nav>
     </div>
 
@@ -323,9 +440,17 @@
         <div class="absolute inset-0 z-0 pointer-events-none">
           <div
             class="absolute inset-y-0 left-1/2 w-[min(520px,72vw)] md:w-[min(460px,34vw)]"
-            style="transform: translateX(calc(-50% - var(--hero-shift-x))) scale(var(--hero-scale)); transform-origin: center"
+            style="
+              transform: translateX(calc(-50% - var(--hero-shift-x)))
+                scale(var(--hero-scale));
+              transform-origin: center;
+            "
           >
-            <img class="w-full h-full object-cover" src="assets/handle.png" alt="Your Needs header image" />
+            <img
+              class="w-full h-full object-cover"
+              src="assets/handle.png"
+              alt="Your Needs header image"
+            />
           </div>
         </div>
         <div class="relative z-10 w-full max-w-[1600px] mx-auto">
@@ -341,18 +466,31 @@
                 A WAY TO
               </span>
 
-              <span class="flex flex-col items-center leading-none md:justify-self-center" style="transform: translateX(calc(-1 * var(--hero-shift-x)))">
+              <span
+                class="flex flex-col items-center leading-none md:justify-self-center"
+                style="transform: translateX(calc(-1 * var(--hero-shift-x)))"
+              >
                 <span
                   class="font-display-xl text-[clamp(52px,5.5vw,100px)] leading-none text-accent-red font-bold decoration-[8px] decoration-accent-red"
                   data-reveal="left"
-                  style="--reveal-delay: 160ms; --reveal-x: -28px; --reveal-duration: 1000ms; --reveal-ease: cubic-bezier(0.16, 1, 0.3, 1)"
+                  style="
+                    --reveal-delay: 160ms;
+                    --reveal-x: -28px;
+                    --reveal-duration: 1000ms;
+                    --reveal-ease: cubic-bezier(0.16, 1, 0.3, 1);
+                  "
                 >
                   SEE
                 </span>
                 <span
                   class="font-display-xl text-[clamp(52px,5.5vw,100px)] leading-none text-accent-red font-bold"
                   data-reveal="right"
-                  style="--reveal-delay: 320ms; --reveal-x: 28px; --reveal-duration: 1000ms; --reveal-ease: cubic-bezier(0.16, 1, 0.3, 1)"
+                  style="
+                    --reveal-delay: 320ms;
+                    --reveal-x: 28px;
+                    --reveal-duration: 1000ms;
+                    --reveal-ease: cubic-bezier(0.16, 1, 0.3, 1);
+                  "
                 >
                   SHOW
                 </span>
@@ -371,19 +509,34 @@
       </section>
 
       <!-- Statement Block 1 (Blue) -->
-      <section class="w-full bg-secondary py-[100px] px-gutter text-center relative z-20">
+      <section
+        class="w-full bg-secondary py-[100px] px-gutter text-center relative z-20"
+      >
         <div class="max-w-4xl mx-auto">
-          <h2 class="font-display-xl text-[clamp(44px,6.5vw,110px)] text-white mb-8 leading-tight" data-reveal="up">
-            A way to show needs <span class="text-primary-container">without<br class="hidden md:inline" /> defining people.</span><br/>
-            These categories reflect temporary situations, feelings, and invisible conditions that many of us may experience.
+          <h2
+            class="font-display-xl text-[28px] md:text-[clamp(44px,6.5vw,110px)] text-white mb-8 leading-tight"
+            data-reveal="up"
+          >
+            A way to show needs
+            <span class="text-primary-container"
+              >without<br class="hidden md:inline" />
+              defining people.</span
+            ><br />
+            These categories reflect temporary situations, feelings, and
+            invisible conditions that many of us may experience.
           </h2>
         </div>
       </section>
 
       <!-- Statement Block 2 (White) -->
-      <section class="w-full bg-surface-container-lowest pt-20 pb-0 px-0 text-center relative z-20">
+      <section
+        class="w-full bg-surface-container-lowest pt-20 pb-0 px-0 text-center relative z-20 overflow-hidden"
+      >
         <div class="max-w-4xl mx-auto px-gutter mb-12">
-          <h2 class="font-display-xl text-[clamp(44px,6.5vw,110px)] text-secondary mb-8 leading-tight" data-reveal="up">
+          <h2
+            class="font-display-xl text-[28px] md:text-[clamp(44px,6.5vw,110px)] text-secondary mb-8 leading-tight"
+            data-reveal="up"
+          >
             These terms describe contexts of need, not labels of identity.
           </h2>
         </div>
@@ -391,190 +544,358 @@
         <!-- Yellow Transition Circles -->
         <div class="relative w-full">
           <!-- Row 1 (Top Row of Circles) -->
-          <div class="grid grid-cols-6 gap-0 w-full relative z-10" data-circle-grid>
+          <div
+            class="grid grid-cols-3 md:grid-cols-6 gap-0 w-full relative z-10"
+            data-circle-grid
+          >
             <div class="aspect-square"></div>
-            <div class="aspect-square"><div class="w-full h-full rounded-full bg-primary-container"></div></div>
+            <div class="aspect-square">
+              <div
+                class="w-full h-full rounded-full bg-primary-container"
+              ></div>
+            </div>
             <div class="aspect-square"></div>
             <div class="aspect-square"></div>
-            <div class="aspect-square"><div class="w-full h-full rounded-full bg-primary-container"></div></div>
+            <div class="aspect-square">
+              <div
+                class="w-full h-full rounded-full bg-primary-container"
+              ></div>
+            </div>
             <div class="aspect-square"></div>
-          
-          
-          <!-- Row 2 (Bottom Row of Circles) -->
-          
-            <div class="aspect-square"><div class="w-full h-full rounded-full bg-primary-container"></div></div>
-            <div class="aspect-square"><div class="w-full h-full rounded-full bg-primary-container"></div></div>
-            <div class="aspect-square"><div class="w-full h-full rounded-full bg-primary-container"></div></div>
-            <div class="aspect-square"><div class="w-full h-full rounded-full bg-primary-container"></div></div>
-            <div class="aspect-square"><div class="w-full h-full rounded-full bg-primary-container"></div></div>
-            <div class="aspect-square"><div class="w-full h-full rounded-full bg-primary-container"></div></div>
+
+            <!-- Row 2 (Bottom Row of Circles) -->
+
+            <div class="aspect-square">
+              <div
+                class="w-full h-full rounded-full bg-primary-container"
+              ></div>
+            </div>
+            <div class="aspect-square">
+              <div
+                class="w-full h-full rounded-full bg-primary-container"
+              ></div>
+            </div>
+            <div class="aspect-square">
+              <div
+                class="w-full h-full rounded-full bg-primary-container"
+              ></div>
+            </div>
+            <div class="aspect-square">
+              <div
+                class="w-full h-full rounded-full bg-primary-container"
+              ></div>
+            </div>
+            <div class="aspect-square">
+              <div
+                class="w-full h-full rounded-full bg-primary-container"
+              ></div>
+            </div>
+            <div class="aspect-square">
+              <div
+                class="w-full h-full rounded-full bg-primary-container"
+              ></div>
+            </div>
           </div>
 
           <!-- Solid Yellow Filler to merge with the next section -->
-          <div class="w-full h-[8.333vw] bg-primary-container -mt-[8.333vw] relative z-0"></div>
+          <div
+            class="w-full transition-filler bg-primary-container relative z-0"
+          ></div>
         </div>
       </section>
 
       <!-- Emotional/Cognitive Section -->
-      <section class="w-full bg-primary-container relative z-10 pt-12 pb-20 px-gutter">
-
+      <section
+        class="w-full bg-primary-container relative z-10 pt-12 pb-20 px-gutter"
+      >
         <!-- Header -->
         <div class="max-w-6xl mx-auto px-6 flex justify-center">
-          <div class="w-72 h-72 md:w-[432px] md:h-[432px] relative flex-shrink-0" data-reveal="scale">
-            <img src="assets/png/04-Wristbands/Emotional-20.png" class="w-full h-full object-contain" alt="Emotional Cognitive Icon" />
+          <div
+            class="w-72 h-72 md:w-[432px] md:h-[432px] relative flex-shrink-0"
+            data-reveal="scale"
+          >
+            <img
+              src="assets/png/04-Wristbands/Emotional-20.png"
+              class="w-full h-full object-contain"
+              alt="Emotional Cognitive Icon"
+            />
           </div>
         </div>
       </section>
 
       <!-- Emotional Grid Section -->
       <section class="w-full bg-primary-container py-0 relative z-10">
-        <div class="grid grid-cols-6 gap-0 w-full" style="margin-top: -8.333vw; margin-bottom: -8.333vw;" data-circle-grid>
-
+        <div class="grid responsive-grid gap-0 w-full" data-circle-grid>
           <!-- Row 1 -->
           <div class="aspect-square"></div>
           <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-accent-red flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(20px,1.3vw,20px)] leading-tight">
+            <div
+              class="w-full h-full rounded-full bg-accent-red flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[13px] sm:text-sm md:text-xs lg:text-sm xl:text-base leading-tight"
+            >
               Overstimulated
             </div>
           </div>
           <div class="aspect-square"></div>
           <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-accent-red flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(20px,1.3vw,20px)] leading-tight">
+            <div
+              class="w-full h-full rounded-full bg-accent-red flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[13px] sm:text-sm md:text-xs lg:text-sm xl:text-base leading-tight"
+            >
               Anxiety
             </div>
           </div>
           <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-accent-red flex items-center justify-center p-4">
-              <img src="assets/png/04-Wristbands/Emotional -21_cropped.png" class="w-[50%] h-[50%] object-contain" style="filter: brightness(0) invert(1);" alt="Icon" />
+            <div
+              class="w-full h-full rounded-full bg-accent-red flex items-center justify-center p-4"
+            >
+              <img
+                src="assets/png/04-Wristbands/Emotional -21_cropped.png"
+                class="w-[50%] h-[50%] object-contain"
+                style="filter: brightness(0) invert(1)"
+                alt="Icon"
+              />
             </div>
           </div>
           <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-accent-red flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(20px,1.3vw,20px)] leading-tight">
+            <div
+              class="w-full h-full rounded-full bg-accent-red flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[13px] sm:text-sm md:text-xs lg:text-sm xl:text-base leading-tight"
+            >
               Social<br />Discomfort
             </div>
           </div>
 
           <!-- Row 2 -->
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-accent-red"></div></div>
           <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-accent-red flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(20px,1.3vw,20px)] leading-tight">
+            <div class="w-full h-full rounded-full bg-accent-red"></div>
+          </div>
+          <div class="aspect-square">
+            <div
+              class="w-full h-full rounded-full bg-accent-red flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[13px] sm:text-sm md:text-xs lg:text-sm xl:text-base leading-tight"
+            >
               Sensory<br />Sensitivity
             </div>
           </div>
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-accent-red"></div></div>
           <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-accent-red flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(20px,1.3vw,20px)] leading-tight">
+            <div class="w-full h-full rounded-full bg-accent-red"></div>
+          </div>
+          <div class="aspect-square">
+            <div
+              class="w-full h-full rounded-full bg-accent-red flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[13px] sm:text-sm md:text-xs lg:text-sm xl:text-base leading-tight"
+            >
               Psychological
             </div>
           </div>
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-accent-red"></div></div>
           <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-accent-red flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(20px,1.3vw,20px)] leading-tight">
+            <div class="w-full h-full rounded-full bg-accent-red"></div>
+          </div>
+          <div class="aspect-square">
+            <div
+              class="w-full h-full rounded-full bg-accent-red flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[13px] sm:text-sm md:text-xs lg:text-sm xl:text-base leading-tight"
+            >
               Distress
             </div>
           </div>
 
           <!-- Row 3 -->
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-accent-red"></div></div>
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-accent-red"></div></div>
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-accent-red"></div></div>
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-accent-red"></div></div>
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-accent-red"></div></div>
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-accent-red"></div></div>
+          <div class="aspect-square">
+            <div class="w-full h-full rounded-full bg-accent-red"></div>
+          </div>
+          <div class="aspect-square">
+            <div class="w-full h-full rounded-full bg-accent-red"></div>
+          </div>
+          <div class="aspect-square">
+            <div class="w-full h-full rounded-full bg-accent-red"></div>
+          </div>
+          <div class="aspect-square">
+            <div class="w-full h-full rounded-full bg-accent-red"></div>
+          </div>
+          <div class="aspect-square">
+            <div class="w-full h-full rounded-full bg-accent-red"></div>
+          </div>
+          <div class="aspect-square">
+            <div class="w-full h-full rounded-full bg-accent-red"></div>
+          </div>
         </div>
       </section>
 
       <!-- Emotional Message Block -->
-      <section class="w-full bg-accent-red py-24 px-gutter relative z-10 overflow-hidden flex flex-col items-center text-center">
-        <h3 class="text-headline-lg md:text-display-xl font-display-xl text-white mb-12 transform -rotate-3 max-w-2xl" data-reveal="up">
+      <section
+        class="w-full bg-accent-red py-24 px-gutter relative z-10 overflow-hidden flex flex-col items-center text-center"
+      >
+        <h3
+          class="text-headline-lg md:text-display-xl font-display-xl text-white mb-12 transform -rotate-3 max-w-2xl"
+          data-reveal="up"
+        >
           Please be gentle with me.
         </h3>
-        <div class="space-y-6 text-white text-body-lg font-body-lg italic w-full max-w-2xl text-left pl-8 md:pl-20" data-stagger data-stagger-step="120">
-          <p class="transform -translate-x-12" data-reveal="left">I may need space.</p>
-          <p class="transform translate-x-4" data-reveal="up">I may need quiet.</p>
-          <p class="transform translate-x-20" data-reveal="right">I'm feeling overwhelmed.</p>
+        <div
+          class="space-y-6 text-white text-body-lg font-body-lg italic w-full max-w-2xl text-left pl-8 md:pl-20"
+          data-stagger
+          data-stagger-step="120"
+        >
+          <p class="transform -translate-x-12" data-reveal="left">
+            I may need space.
+          </p>
+          <p class="transform translate-x-4" data-reveal="up">
+            I may need quiet.
+          </p>
+          <p class="transform translate-x-20" data-reveal="right">
+            I'm feeling overwhelmed.
+          </p>
         </div>
-        <div class="absolute bottom-20 right-10 md:right-auto md:left-[calc(50%+100px)] w-64 h-auto transform rotate-12 opacity-90" data-reveal="scale">
-          <img src="assets/png/04-Wristbands/yellow-wristband-nobg.png" class="w-full h-auto object-contain" alt="Emotional Wristband" />
+        <div
+          class="absolute bottom-4 right-2 md:bottom-20 md:right-auto md:left-[calc(50%+100px)] w-40 md:w-64 h-auto transform rotate-12 opacity-90"
+          data-reveal="scale"
+        >
+          <img
+            src="assets/png/04-Wristbands/yellow-wristband-nobg.png"
+            class="w-full h-auto object-contain"
+            alt="Emotional Wristband"
+          />
         </div>
       </section>
 
       <!-- Physical Support Section -->
-      <section class="w-full bg-support-pink relative z-20 pt-12 pb-20 px-gutter">
+      <section
+        class="w-full bg-support-pink relative z-20 pt-12 pb-20 px-gutter"
+      >
         <!-- Header -->
         <div class="max-w-6xl mx-auto px-6 flex justify-center">
-          <div class="w-72 h-72 md:w-[432px] md:h-[432px] relative flex-shrink-0" data-reveal="scale">
-            <img src="assets/png/04-Wristbands/Physical-24.png" class="w-full h-full object-contain" alt="Physical Person Icon" />
+          <div
+            class="w-72 h-72 md:w-[432px] md:h-[432px] relative flex-shrink-0"
+            data-reveal="scale"
+          >
+            <img
+              src="assets/png/04-Wristbands/Physical-24.png"
+              class="w-full h-full object-contain"
+              alt="Physical Person Icon"
+            />
           </div>
         </div>
       </section>
 
       <!-- Physical Support Grid Section -->
       <section class="w-full bg-support-pink py-0 relative z-20">
-        <div class="grid grid-cols-6 gap-0 w-full" style="margin-top: -8.333vw; margin-bottom: -8.333vw;" data-circle-grid>
-
+        <div class="grid responsive-grid gap-0 w-full" data-circle-grid>
           <!-- Row 1 -->
           <div class="aspect-square"></div>
           <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-action-teal flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(20px,1.3vw,20px)] leading-tight">
+            <div
+              class="w-full h-full rounded-full bg-action-teal flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[13px] sm:text-sm md:text-xs lg:text-sm xl:text-base leading-tight"
+            >
               Chronic<br />Pain
             </div>
           </div>
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-action-teal"></div></div>
+          <div class="aspect-square">
+            <div class="w-full h-full rounded-full bg-action-teal"></div>
+          </div>
           <div class="aspect-square"></div>
           <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-action-teal flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(20px,1.3vw,20px)] leading-tight">
+            <div
+              class="w-full h-full rounded-full bg-action-teal flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[13px] sm:text-sm md:text-xs lg:text-sm xl:text-base leading-tight"
+            >
               Heart<br />Condition
             </div>
           </div>
           <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-action-teal flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(20px,1.3vw,20px)] leading-tight">
+            <div
+              class="w-full h-full rounded-full bg-action-teal flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[13px] sm:text-sm md:text-xs lg:text-sm xl:text-base leading-tight"
+            >
               Surgery<br />Recovery
             </div>
           </div>
 
           <!-- Row 2 -->
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-action-teal"></div></div>
           <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-action-teal flex items-center justify-center p-4">
-              <img src="assets/png/04-Wristbands/Physical -25_processed.png" class="w-[50%] h-[50%] object-contain" alt="Physical Support Icon" />
+            <div class="w-full h-full rounded-full bg-action-teal"></div>
+          </div>
+          <div class="aspect-square">
+            <div
+              class="w-full h-full rounded-full bg-action-teal flex items-center justify-center p-4"
+            >
+              <img
+                src="assets/png/04-Wristbands/Physical -25_processed.png"
+                class="w-[50%] h-[50%] object-contain"
+                alt="Physical Support Icon"
+              />
             </div>
           </div>
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-action-teal"></div></div>
           <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-action-teal flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(20px,1.3vw,20px)] leading-tight">
+            <div class="w-full h-full rounded-full bg-action-teal"></div>
+          </div>
+          <div class="aspect-square">
+            <div
+              class="w-full h-full rounded-full bg-action-teal flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[13px] sm:text-sm md:text-xs lg:text-sm xl:text-base leading-tight"
+            >
               Menstrual<br />Pain
             </div>
           </div>
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-action-teal"></div></div>
           <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-action-teal flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(20px,1.3vw,20px)] leading-tight">
+            <div class="w-full h-full rounded-full bg-action-teal"></div>
+          </div>
+          <div class="aspect-square">
+            <div
+              class="w-full h-full rounded-full bg-action-teal flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[13px] sm:text-sm md:text-xs lg:text-sm xl:text-base leading-tight"
+            >
               Early<br />Pregnancy
             </div>
           </div>
 
           <!-- Row 3 -->
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-action-teal"></div></div>
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-action-teal"></div></div>
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-action-teal"></div></div>
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-action-teal"></div></div>
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-action-teal"></div></div>
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-action-teal"></div></div>
+          <div class="aspect-square">
+            <div class="w-full h-full rounded-full bg-action-teal"></div>
+          </div>
+          <div class="aspect-square">
+            <div class="w-full h-full rounded-full bg-action-teal"></div>
+          </div>
+          <div class="aspect-square">
+            <div class="w-full h-full rounded-full bg-action-teal"></div>
+          </div>
+          <div class="aspect-square">
+            <div class="w-full h-full rounded-full bg-action-teal"></div>
+          </div>
+          <div class="aspect-square">
+            <div class="w-full h-full rounded-full bg-action-teal"></div>
+          </div>
+          <div class="aspect-square">
+            <div class="w-full h-full rounded-full bg-action-teal"></div>
+          </div>
         </div>
       </section>
 
       <!-- Physical Support Message Block -->
-      <section class="w-full bg-action-teal py-24 px-gutter relative z-20 overflow-hidden flex flex-col items-center text-center text-white">
-        <h3 class="text-headline-lg md:text-display-xl font-display-xl mb-12 transform rotate-2 max-w-3xl" data-reveal="up">
+      <section
+        class="w-full bg-action-teal py-24 px-gutter relative z-20 overflow-hidden flex flex-col items-center text-center text-white"
+      >
+        <h3
+          class="text-headline-lg md:text-display-xl font-display-xl mb-12 transform rotate-2 max-w-3xl"
+          data-reveal="up"
+        >
           Please be mindful<br />of my condition.
         </h3>
-        <div class="space-y-6 text-white text-body-lg font-body-lg italic w-full max-w-2xl text-right pr-8 md:pr-20" data-stagger data-stagger-step="120">
-          <p class="transform -translate-x-12" data-reveal="left">I may need a seat.</p>
-          <p class="transform translate-x-4" data-reveal="up">I may need assistance.</p>
-          <p class="transform translate-x-12" data-reveal="right">I'm managing a physical condition.</p>
+        <div
+          class="space-y-6 text-white text-body-lg font-body-lg italic w-full max-w-2xl text-right pr-8 md:pr-20"
+          data-stagger
+          data-stagger-step="120"
+        >
+          <p class="transform -translate-x-12" data-reveal="left">
+            I may need a seat.
+          </p>
+          <p class="transform translate-x-4" data-reveal="up">
+            I may need assistance.
+          </p>
+          <p class="transform translate-x-12" data-reveal="right">
+            I'm managing a physical condition.
+          </p>
         </div>
-        <div class="absolute bottom-20 left-10 md:left-auto md:right-[calc(50%+100px)] w-64 h-auto transform -rotate-6 opacity-90" data-reveal="scale">
-          <img src="assets/png/04-Wristbands/pink-wristband-nobg.png" class="w-full h-auto object-contain" alt="Physical Wristband" />
+        <div
+          class="absolute bottom-4 left-2 md:bottom-20 md:left-auto md:right-[calc(50%+100px)] w-40 md:w-64 h-auto transform -rotate-6 opacity-90"
+          data-reveal="scale"
+        >
+          <img
+            src="assets/png/04-Wristbands/pink-wristband-nobg.png"
+            class="w-full h-auto object-contain"
+            alt="Physical Wristband"
+          />
         </div>
       </section>
 
@@ -582,111 +903,189 @@
       <section class="w-full bg-secondary relative z-10 pt-12 pb-20 px-gutter">
         <!-- Header -->
         <div class="max-w-6xl mx-auto px-6 flex justify-center">
-          <div class="w-72 h-72 md:w-[432px] md:h-[432px] relative flex-shrink-0" data-reveal="scale">
-            <img src="assets/png/04-Wristbands/Energy.png" class="w-full h-full object-contain" alt="Energy Endurance Icon" />
+          <div
+            class="w-72 h-72 md:w-[432px] md:h-[432px] relative flex-shrink-0"
+            data-reveal="scale"
+          >
+            <img
+              src="assets/png/04-Wristbands/Energy.png"
+              class="w-full h-full object-contain"
+              alt="Energy Endurance Icon"
+            />
           </div>
         </div>
       </section>
 
       <!-- Energy Endurance Grid Section -->
       <section class="w-full bg-secondary py-0 relative z-10">
-        <div class="grid grid-cols-6 gap-0 w-full" style="margin-top: -8.333vw; margin-bottom: -8.333vw;" data-circle-grid>
-
+        <div
+          class="grid responsive-grid swap-mobile-cols gap-0 w-full"
+          data-circle-grid
+        >
           <!-- Row 1 -->
           <div class="aspect-square"></div>
           <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-primary-container flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(20px,1.3vw,20px)] leading-tight">
+            <div
+              class="w-full h-full rounded-full bg-primary-container flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[13px] sm:text-sm md:text-xs lg:text-sm xl:text-base leading-tight"
+            >
               Chronic<br />fatigue
             </div>
           </div>
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-primary-container"></div></div>
+          <div class="aspect-square">
+            <div class="w-full h-full rounded-full bg-primary-container"></div>
+          </div>
           <div class="aspect-square"></div>
           <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-primary-container flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(20px,1.3vw,20px)] leading-tight">
+            <div
+              class="w-full h-full rounded-full bg-primary-container flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[13px] sm:text-sm md:text-xs lg:text-sm xl:text-base leading-tight"
+            >
               Reduced<br />stamina
             </div>
           </div>
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-primary-container"></div></div>
+          <div class="aspect-square">
+            <div class="w-full h-full rounded-full bg-primary-container"></div>
+          </div>
 
           <!-- Row 2 -->
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-primary-container"></div></div>
           <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-primary-container flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(20px,1.3vw,20px)] leading-tight">
+            <div class="w-full h-full rounded-full bg-primary-container"></div>
+          </div>
+          <div class="aspect-square">
+            <div
+              class="w-full h-full rounded-full bg-primary-container flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[13px] sm:text-sm md:text-xs lg:text-sm xl:text-base leading-tight"
+            >
               Burnout
             </div>
           </div>
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-primary-container"></div></div>
           <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-primary-container flex items-center justify-center p-4">
-              <img src="assets/png/04-Wristbands/Energy -29_cropped.png" class="w-[50%] h-[50%] object-contain" style="filter: brightness(0) invert(1);" alt="Icon" />
+            <div class="w-full h-full rounded-full bg-primary-container"></div>
+          </div>
+          <div class="aspect-square">
+            <div
+              class="w-full h-full rounded-full bg-primary-container flex items-center justify-center p-4"
+            >
+              <img
+                src="assets/png/04-Wristbands/Energy -29_cropped.png"
+                class="w-[50%] h-[50%] object-contain"
+                style="filter: brightness(0) invert(1)"
+                alt="Icon"
+              />
             </div>
           </div>
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-primary-container"></div></div>
           <div class="aspect-square">
-            <div class="w-full h-full rounded-full bg-primary-container flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[clamp(20px,1.3vw,20px)] leading-tight">
+            <div class="w-full h-full rounded-full bg-primary-container"></div>
+          </div>
+          <div class="aspect-square">
+            <div
+              class="w-full h-full rounded-full bg-primary-container flex items-center justify-center text-center p-3 text-white font-body-lg circle-label text-[13px] sm:text-sm md:text-xs lg:text-sm xl:text-base leading-tight"
+            >
               Insomnia
             </div>
           </div>
 
           <!-- Row 3 -->
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-primary-container"></div></div>
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-primary-container"></div></div>
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-primary-container"></div></div>
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-primary-container"></div></div>
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-primary-container"></div></div>
-          <div class="aspect-square"><div class="w-full h-full rounded-full bg-primary-container"></div></div>
+          <div class="aspect-square">
+            <div class="w-full h-full rounded-full bg-primary-container"></div>
+          </div>
+          <div class="aspect-square">
+            <div class="w-full h-full rounded-full bg-primary-container"></div>
+          </div>
+          <div class="aspect-square">
+            <div class="w-full h-full rounded-full bg-primary-container"></div>
+          </div>
+          <div class="aspect-square">
+            <div class="w-full h-full rounded-full bg-primary-container"></div>
+          </div>
+          <div class="aspect-square">
+            <div class="w-full h-full rounded-full bg-primary-container"></div>
+          </div>
+          <div class="aspect-square">
+            <div class="w-full h-full rounded-full bg-primary-container"></div>
+          </div>
         </div>
       </section>
 
       <!-- Energy Endurance Message Block -->
-      <section class="w-full bg-primary-container py-24 px-gutter relative z-10 overflow-hidden flex flex-col items-center text-center text-white">
-        <h3 class="text-headline-lg md:text-display-xl font-display-xl mb-12 transform -rotate-3 max-w-2xl" data-reveal="up">
+      <section
+        class="w-full bg-primary-container py-24 px-gutter relative z-10 overflow-hidden flex flex-col items-center text-center text-white"
+      >
+        <h3
+          class="text-headline-lg md:text-display-xl font-display-xl mb-12 transform -rotate-3 max-w-2xl"
+          data-reveal="up"
+        >
           Please be patient with me.
         </h3>
-        <div class="space-y-6 text-white text-body-lg font-body-lg italic w-full max-w-2xl text-left pl-8 md:pl-20" data-stagger data-stagger-step="120">
-          <p class="transform -translate-x-12" data-reveal="left">I may need to rest.</p>
-          <p class="transform translate-x-4" data-reveal="up">I may move slowly.</p>
-          <p class="transform translate-x-20" data-reveal="right">I'm easily fatigued.</p>
+        <div
+          class="space-y-6 text-white text-body-lg font-body-lg italic w-full max-w-2xl text-left pl-8 md:pl-20"
+          data-stagger
+          data-stagger-step="120"
+        >
+          <p class="transform -translate-x-12" data-reveal="left">
+            I may need to rest.
+          </p>
+          <p class="transform translate-x-4" data-reveal="up">
+            I may move slowly.
+          </p>
+          <p class="transform translate-x-20" data-reveal="right">
+            I'm easily fatigued.
+          </p>
         </div>
-        <div class="absolute bottom-20 right-10 md:right-auto md:left-[calc(50%+100px)] w-64 h-auto transform rotate-12 opacity-90" data-reveal="scale">
-          <img src="assets/png/04-Wristbands/blue-wristband-nobg.png" class="w-full h-auto object-contain" alt="Energy Wristband" />
+        <div
+          class="absolute bottom-4 right-2 md:bottom-20 md:right-auto md:left-[calc(50%+100px)] w-40 md:w-64 h-auto transform rotate-12 opacity-90"
+          data-reveal="scale"
+        >
+          <img
+            src="assets/png/04-Wristbands/blue-wristband-nobg.png"
+            class="w-full h-auto object-contain"
+            alt="Energy Wristband"
+          />
         </div>
       </section>
-
     </main>
 
     <script>
       (() => {
         // --- Mobile menu toggle ---
-        const toggle = document.getElementById('nav-toggle');
-        const menu = document.getElementById('mobile-menu');
+        const toggle = document.getElementById("nav-toggle");
+        const menu = document.getElementById("mobile-menu");
         function openMenu() {
-          menu.style.display = 'block';
-          toggle.setAttribute('aria-expanded', 'true');
-          toggle.setAttribute('aria-label', 'Close menu');
-          toggle.querySelector('.material-symbols-outlined').textContent = 'close';
+          menu.style.display = "block";
+          toggle.setAttribute("aria-expanded", "true");
+          toggle.setAttribute("aria-label", "Close menu");
+          toggle.querySelector(".material-symbols-outlined").textContent =
+            "close";
         }
         function closeMenu() {
-          menu.style.display = 'none';
-          toggle.setAttribute('aria-expanded', 'false');
-          toggle.setAttribute('aria-label', 'Open menu');
-          toggle.querySelector('.material-symbols-outlined').textContent = 'menu';
+          menu.style.display = "none";
+          toggle.setAttribute("aria-expanded", "false");
+          toggle.setAttribute("aria-label", "Open menu");
+          toggle.querySelector(".material-symbols-outlined").textContent =
+            "menu";
         }
-        toggle.addEventListener('click', () => {
-          toggle.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
+        toggle.addEventListener("click", () => {
+          toggle.getAttribute("aria-expanded") === "true"
+            ? closeMenu()
+            : openMenu();
         });
-        menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-        document.addEventListener('click', (e) => {
-          if (!menu.contains(e.target) && !toggle.contains(e.target)) closeMenu();
+        menu
+          .querySelectorAll("a")
+          .forEach((a) => a.addEventListener("click", closeMenu));
+        document.addEventListener("click", (e) => {
+          if (!menu.contains(e.target) && !toggle.contains(e.target))
+            closeMenu();
         });
       })();
     </script>
 
     <script>
       (() => {
-        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const reduceMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
         const revealEls = document.querySelectorAll("[data-reveal]");
-        const circles = document.querySelectorAll("div.rounded-full.floating-circle-target");
+        const circles = document.querySelectorAll(
+          "div.rounded-full.floating-circle-target",
+        );
 
         const initStagger = () => {
           document.querySelectorAll("[data-stagger]").forEach((parent) => {
@@ -695,7 +1094,8 @@
             const children = parent.querySelectorAll("[data-reveal]");
             let i = 0;
             children.forEach((el) => {
-              const hasInlineDelay = el.style.getPropertyValue("--reveal-delay");
+              const hasInlineDelay =
+                el.style.getPropertyValue("--reveal-delay");
               const hasAttrDelay = el.dataset.delay;
               if (hasInlineDelay || hasAttrDelay) return;
               el.style.setProperty("--reveal-delay", `${start + i * step}ms`);
@@ -727,15 +1127,17 @@
               obs.unobserve(entry.target);
             }
           },
-          { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
+          { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
         );
 
         revealEls.forEach((el) => observer.observe(el));
 
         // Circle grid drop-in — bottom row first, middle second, top third, randomized within each row
-        const circleGrids = document.querySelectorAll('[data-circle-grid]');
+        const circleGrids = document.querySelectorAll("[data-circle-grid]");
         circleGrids.forEach((grid) => {
-          const cells = Array.from(grid.children).filter(c => c.classList.contains('aspect-square'));
+          const cells = Array.from(grid.children).filter((c) =>
+            c.classList.contains("aspect-square"),
+          );
           const row0_inners = [];
           const row1_inners = [];
           const row2_inners = [];
@@ -771,28 +1173,31 @@
           // Apply staggered transition delay and random start rotation based on the sorted order
           const BASE_DELAY = 80; // ms between each circle dropping
           sortedInners.forEach((inner, index) => {
-            inner.classList.add('circle-drop');
+            inner.classList.add("circle-drop");
             inner.style.transitionDelay = `${index * BASE_DELAY}ms`;
-            
+
             // Random start rotation between 180 and 360 degrees (clockwise or counter-clockwise)
             const randomDirection = Math.random() > 0.5 ? 1 : -1;
             const randomDegree = 180 + Math.random() * 180;
-            inner.style.setProperty('--start-rotate', `${randomDirection * randomDegree}deg`);
+            inner.style.setProperty(
+              "--start-rotate",
+              `${randomDirection * randomDegree}deg`,
+            );
           });
         });
 
         if (reduceMotion) {
-          circleGrids.forEach((el) => el.classList.add('is-dropped'));
+          circleGrids.forEach((el) => el.classList.add("is-dropped"));
         } else {
           const gridObserver = new IntersectionObserver(
             (entries, obs) => {
               for (const entry of entries) {
                 if (!entry.isIntersecting) continue;
-                entry.target.classList.add('is-dropped');
+                entry.target.classList.add("is-dropped");
                 obs.unobserve(entry.target);
               }
             },
-            { threshold: 0.05, rootMargin: '0px 0px -5% 0px' }
+            { threshold: 0.05, rootMargin: "0px 0px -5% 0px" },
           );
           circleGrids.forEach((el) => gridObserver.observe(el));
         }
@@ -801,7 +1206,7 @@
 
     <!-- Footer -->
     <footer
-      class="bg-surface-container-highest w-full px-gutter py-section-padding flex flex-col md:flex-row justify-between items-center gap-8 max-w-container-max mx-auto mt-24"
+      class="bg-background w-full px-gutter py-section-padding flex flex-col md:flex-row justify-between items-center gap-8 max-w-container-max mx-auto mt-24"
     >
       <img class="nav-logo" src="assets/logo.png" alt="UNSEEN logo" />
       <div class="flex gap-6 flex-wrap justify-center">
