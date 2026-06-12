@@ -127,7 +127,7 @@
       *::before,
       *::after {
         cursor:
-          url("assets/png/03-Person/Person-12.png?v=2") 19 0,
+          url("assets/png/03-Person/Person-12.png?v=3") 18 0,
           auto !important;
       }
       .max-w-container-max {
@@ -554,33 +554,23 @@
     </div>
 
     <main class="flex-grow flex flex-col">
-      <!-- Hero Section -->
       <section
-        class="relative w-full min-h-[760px] md:min-h-[900px] flex items-center justify-center py-section-padding px-gutter overflow-hidden bg-surface-container-lowest [--hero-shift-x:0px] md:[--hero-shift-x:clamp(41.4px,5.4vw,91.3px)] [--hero-scale:1.2]"
+        class="relative w-full min-h-[760px] md:min-h-[900px] flex items-center justify-center py-section-padding px-gutter overflow-hidden bg-surface-container-lowest"
       >
         <div class="absolute inset-0 z-0 pointer-events-none">
-          <div
-            class="absolute inset-y-0 left-1/2 w-[min(520px,72vw)] md:w-[min(460px,34vw)]"
-            style="
-              transform: translateX(calc(-50% - var(--hero-shift-x)))
-                scale(var(--hero-scale));
-              transform-origin: center;
-            "
-          >
-            <img
-              class="w-full h-full object-cover"
-              src="assets/handle.png"
-              alt="Your Needs header image"
-            />
-          </div>
+          <img
+            class="w-full h-full object-cover brightness-[0.8]"
+            src="assets/handle.png"
+            alt="Your Needs header image"
+          />
         </div>
         <div class="relative z-10 w-full max-w-[1600px] mx-auto">
           <h1 class="w-full" aria-label="A WAY TO SEE SHOW YOUR NEEDS">
             <div
-              class="flex flex-col items-center gap-6 md:grid md:grid-cols-[minmax(0,1fr)_min(640px,40vw)_minmax(0,1fr)] md:items-center md:gap-16"
+              class="flex flex-col items-center gap-6 md:flex md:flex-row md:justify-center md:items-center md:gap-16"
             >
               <span
-                class="font-display-xl text-[clamp(44px,6.5vw,110px)] leading-none text-primary tracking-tight md:text-left whitespace-nowrap min-w-max md:justify-self-start"
+                class="font-display-xl text-[clamp(44px,6.5vw,110px)] leading-none text-primary tracking-tight md:text-left whitespace-nowrap min-w-max"
                 data-reveal="fade"
                 style="--reveal-delay: 0ms"
               >
@@ -588,8 +578,7 @@
               </span>
 
               <span
-                class="flex flex-col items-center leading-none md:justify-self-center"
-                style="transform: translateX(calc(-1 * var(--hero-shift-x)))"
+                class="flex flex-col items-center leading-none"
               >
                 <span
                   class="font-display-xl text-[clamp(52px,5.5vw,100px)] leading-none text-accent-red font-bold decoration-[8px] decoration-accent-red"
@@ -618,7 +607,7 @@
               </span>
 
               <span
-                class="font-display-xl text-[clamp(44px,6.5vw,110px)] leading-none text-primary tracking-tight md:text-right whitespace-nowrap min-w-max md:justify-self-end"
+                class="font-display-xl text-[clamp(44px,6.5vw,110px)] leading-none text-primary tracking-tight md:text-right whitespace-nowrap min-w-max"
                 data-reveal="fade"
                 style="--reveal-delay: 80ms"
               >
