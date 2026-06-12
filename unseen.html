@@ -124,6 +124,9 @@
     </script>
 
     <style>
+      *, *::before, *::after {
+        cursor: url('assets/png/03-Person/Person-12.png') 0 0, auto !important;
+      }
       .material-symbols-outlined {
         font-variation-settings:
           "FILL" 1,
@@ -362,6 +365,37 @@
           animation: none;
         }
       }
+
+      /* -- Logo Frame Animation -- */
+      .nav-logo-anim {
+        position: relative;
+        width: 120px;
+        display: inline-block;
+      }
+      .logo-frame {
+        width: 120px;
+        height: auto;
+        display: block;
+      }
+      .logo-frame-2,
+      .logo-frame-3 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+      @keyframes logo-frame-cycle {
+        0%,  28% { opacity: 1; }
+        36%, 92% { opacity: 0; }
+        100%     { opacity: 1; }
+      }
+      .logo-frame-1 { animation: logo-frame-cycle 3s infinite; }
+      .logo-frame-2 { animation: logo-frame-cycle 3s infinite; animation-delay: -2s; }
+      .logo-frame-3 { animation: logo-frame-cycle 3s infinite; animation-delay: -1s; }
+      @media (prefers-reduced-motion: reduce) {
+        .logo-frame-1, .logo-frame-2, .logo-frame-3 { animation: none; }
+        .logo-frame-2, .logo-frame-3 { display: none; }
+      }
     </style>
   </head>
 
@@ -383,7 +417,11 @@
           href="index.html"
           aria-label="UNSEEN Home"
         >
-          <img class="nav-logo" src="assets/logo.png" alt="UNSEEN logo" />
+          <div class="nav-logo-anim" role="img" aria-label="UNSEEN logo">
+            <img class="logo-frame logo-frame-1" src="assets/png/01-Logo/logo_animate_red.png" alt="" />
+            <img class="logo-frame logo-frame-2" src="assets/png/01-Logo/logo_animate_greeen.png" alt="" />
+            <img class="logo-frame logo-frame-3" src="assets/png/01-Logo/logo_animate_yellow.png" alt="" />
+          </div>
         </a>
         <div class="hidden md:flex items-center gap-6">
           <nav aria-label="Main Navigation" class="flex gap-6">
