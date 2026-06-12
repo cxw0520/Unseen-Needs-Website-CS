@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en" class="light">
   <head>
     <meta charset="utf-8" />
@@ -124,8 +124,12 @@
     </script>
 
     <style>
-      *, *::before, *::after {
-        cursor: url('assets/png/03-Person/Person-12.png') 0 0, auto !important;
+      *,
+      *::before,
+      *::after {
+        cursor:
+          url("assets/png/03-Person/Person-12.png") 19 0,
+          auto !important;
       }
       .material-symbols-outlined {
         font-variation-settings:
@@ -159,7 +163,7 @@
       }
 
       .nav-logo {
-        width: 120px;
+        width: 100px;
         height: auto;
         transform-origin: center;
       }
@@ -301,11 +305,11 @@
       /* -- Logo Frame Animation -- */
       .nav-logo-anim {
         position: relative;
-        width: 120px;
+        width: 100px;
         display: inline-block;
       }
       .logo-frame {
-        width: 120px;
+        width: 100px;
         height: auto;
         display: block;
       }
@@ -316,29 +320,48 @@
         left: 0;
         width: 100%;
       }
-      @keyframes logo-frame-cycle {
+      @keyframes cycle-frame-1 {
         0%,
-        28% {
+        33.33% {
           opacity: 1;
         }
-        36%,
-        92% {
+        33.34%,
+        100% {
           opacity: 0;
         }
+      }
+      @keyframes cycle-frame-2 {
+        0%,
+        33.33% {
+          opacity: 0;
+        }
+        33.34%,
+        66.66% {
+          opacity: 1;
+        }
+        66.67%,
+        100% {
+          opacity: 0;
+        }
+      }
+      @keyframes cycle-frame-3 {
+        0%,
+        66.66% {
+          opacity: 0;
+        }
+        66.67%,
         100% {
           opacity: 1;
         }
       }
       .logo-frame-1 {
-        animation: logo-frame-cycle 3s infinite;
+        animation: cycle-frame-1 3s infinite;
       }
       .logo-frame-2 {
-        animation: logo-frame-cycle 3s infinite;
-        animation-delay: -2s;
+        animation: cycle-frame-2 3s infinite;
       }
       .logo-frame-3 {
-        animation: logo-frame-cycle 3s infinite;
-        animation-delay: -1s;
+        animation: cycle-frame-3 3s infinite;
       }
       @media (prefers-reduced-motion: reduce) {
         .logo-frame-1,
@@ -362,7 +385,7 @@
       class="bg-background backdrop-blur-md border-b border-outline-variant docked full-width top-0 z-50 sticky"
     >
       <div
-        class="flex justify-between items-center w-full px-gutter py-4 max-w-container-max mx-auto"
+        class="flex justify-between items-center w-full px-gutter py-2 md:py-4 max-w-container-max mx-auto"
       >
         <div class="hidden md:flex gap-4">
           <span
@@ -438,7 +461,7 @@
     <!-- Mobile nav drawer -->
     <div
       id="mobile-menu"
-      class="md:hidden fixed inset-x-0 top-[73px] z-40 bg-background backdrop-blur-md border-b border-outline-variant shadow-lg"
+      class="md:hidden fixed inset-x-0 top-[72px] z-40 bg-background backdrop-blur-md border-b border-outline-variant shadow-lg"
       style="display: none"
     >
       <nav

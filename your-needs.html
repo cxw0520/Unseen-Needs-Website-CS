@@ -123,8 +123,12 @@
     </script>
 
     <style>
-      *, *::before, *::after {
-        cursor: url('assets/png/03-Person/Person-12.png') 0 0, auto !important;
+      *,
+      *::before,
+      *::after {
+        cursor:
+          url("assets/png/03-Person/Person-12.png") 19 0,
+          auto !important;
       }
       .max-w-container-max {
         max-width: 100% !important;
@@ -136,7 +140,7 @@
       }
 
       .nav-logo {
-        width: 120px;
+        width: 100px;
         height: auto;
       }
 
@@ -147,6 +151,31 @@
 
       .circle-label {
         font-family: "Tobias Light", "Tobias-Light", Georgia, serif !important;
+      }
+      @media (min-width: 480px) {
+        .circle-label {
+          font-size: 15.6px !important; /* mobile 13px * 1.2 = 15.6px */
+        }
+      }
+      @media (min-width: 640px) {
+        .circle-label {
+          font-size: 1.05rem !important; /* sm: 0.875rem * 1.2 = 1.05rem */
+        }
+      }
+      @media (min-width: 768px) {
+        .circle-label {
+          font-size: 0.9rem !important; /* md: 0.75rem * 1.2 = 0.9rem */
+        }
+      }
+      @media (min-width: 1024px) {
+        .circle-label {
+          font-size: 1.05rem !important; /* lg: 0.875rem * 1.2 = 1.05rem */
+        }
+      }
+      @media (min-width: 1280px) {
+        .circle-label {
+          font-size: 1.2rem !important; /* xl: 1rem * 1.2 = 1.2rem */
+        }
       }
 
       @keyframes logoPulse {
@@ -333,11 +362,11 @@
       /* -- Logo Frame Animation -- */
       .nav-logo-anim {
         position: relative;
-        width: 120px;
+        width: 100px;
         display: inline-block;
       }
       .logo-frame {
-        width: 120px;
+        width: 100px;
         height: auto;
         display: block;
       }
@@ -348,17 +377,59 @@
         left: 0;
         width: 100%;
       }
-      @keyframes logo-frame-cycle {
-        0%,  28% { opacity: 1; }
-        36%, 92% { opacity: 0; }
-        100%     { opacity: 1; }
+      @keyframes cycle-frame-1 {
+        0%,
+        33.33% {
+          opacity: 1;
+        }
+        33.34%,
+        100% {
+          opacity: 0;
+        }
       }
-      .logo-frame-1 { animation: logo-frame-cycle 3s infinite; }
-      .logo-frame-2 { animation: logo-frame-cycle 3s infinite; animation-delay: -2s; }
-      .logo-frame-3 { animation: logo-frame-cycle 3s infinite; animation-delay: -1s; }
+      @keyframes cycle-frame-2 {
+        0%,
+        33.33% {
+          opacity: 0;
+        }
+        33.34%,
+        66.66% {
+          opacity: 1;
+        }
+        66.67%,
+        100% {
+          opacity: 0;
+        }
+      }
+      @keyframes cycle-frame-3 {
+        0%,
+        66.66% {
+          opacity: 0;
+        }
+        66.67%,
+        100% {
+          opacity: 1;
+        }
+      }
+      .logo-frame-1 {
+        animation: cycle-frame-1 3s infinite;
+      }
+      .logo-frame-2 {
+        animation: cycle-frame-2 3s infinite;
+      }
+      .logo-frame-3 {
+        animation: cycle-frame-3 3s infinite;
+      }
       @media (prefers-reduced-motion: reduce) {
-        .logo-frame-1, .logo-frame-2, .logo-frame-3 { animation: none; }
-        .logo-frame-2, .logo-frame-3 { display: none; }
+        .logo-frame-1,
+        .logo-frame-2,
+        .logo-frame-3 {
+          animation: none;
+        }
+        .logo-frame-2,
+        .logo-frame-3 {
+          display: none;
+        }
       }
     </style>
   </head>
@@ -371,7 +442,7 @@
       class="bg-background backdrop-blur-md border-b border-outline-variant docked full-width top-0 z-50 sticky"
     >
       <div
-        class="flex justify-between items-center w-full px-gutter py-4 max-w-container-max mx-auto"
+        class="flex justify-between items-center w-full px-gutter py-2 md:py-4 max-w-container-max mx-auto"
       >
         <div class="hidden md:flex gap-4">
           <span
@@ -385,9 +456,21 @@
           aria-label="UNSEEN Home"
         >
           <div class="nav-logo-anim" role="img" aria-label="UNSEEN logo">
-            <img class="logo-frame logo-frame-1" src="assets/png/01-Logo/logo_animate_red.png" alt="" />
-            <img class="logo-frame logo-frame-2" src="assets/png/01-Logo/logo_animate_greeen.png" alt="" />
-            <img class="logo-frame logo-frame-3" src="assets/png/01-Logo/logo_animate_yellow.png" alt="" />
+            <img
+              class="logo-frame logo-frame-1"
+              src="assets/png/01-Logo/logo_animate_red.png"
+              alt=""
+            />
+            <img
+              class="logo-frame logo-frame-2"
+              src="assets/png/01-Logo/logo_animate_greeen.png"
+              alt=""
+            />
+            <img
+              class="logo-frame logo-frame-3"
+              src="assets/png/01-Logo/logo_animate_yellow.png"
+              alt=""
+            />
           </div>
         </a>
         <div class="hidden md:flex items-center gap-6">
@@ -435,7 +518,7 @@
     <!-- Mobile nav drawer -->
     <div
       id="mobile-menu"
-      class="md:hidden fixed inset-x-0 top-[73px] z-40 bg-background backdrop-blur-md border-b border-outline-variant shadow-lg"
+      class="md:hidden fixed inset-x-0 top-[72px] z-40 bg-background backdrop-blur-md border-b border-outline-variant shadow-lg"
       style="display: none"
     >
       <nav
