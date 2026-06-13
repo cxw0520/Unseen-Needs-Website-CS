@@ -198,9 +198,9 @@
       }
 
       .heading-fill {
-        font-size: clamp(24px, 8vw, 180px);
+        font-size: clamp(24px, 9vw, 180px) !important;
         white-space: nowrap;
-        letter-spacing: normal;
+        letter-spacing: normal !important;
         text-align: center;
       }
 
@@ -522,7 +522,7 @@
           >
             <img
               alt="Crowded subway interior"
-              class="w-full h-full object-cover brightness-110"
+              class="w-full h-full object-cover rounded-xl brightness-110"
               src="assets/subway.jpg"
             />
             <div
@@ -535,7 +535,7 @@
             class="relative z-30 py-16 text-center w-full flex justify-center overflow-visible"
           >
             <h1
-              class="font-display-xl text-[60px] md:text-[120px] lg:text-[180px] leading-none text-primary-container drop-shadow-sm tracking-tighter inline-block relative heading-fill hero-typewriter"
+              class="font-display-xl leading-none text-primary-container drop-shadow-sm inline-block relative heading-fill hero-typewriter"
               data-reveal="up"
               style="--reveal-delay: 120ms"
             >
@@ -696,6 +696,9 @@
         const ctx = canvas.getContext("2d");
         const intro = document.getElementById("logo-intro");
 
+        const tempCanvas = document.createElement("canvas");
+        const tempCtx = tempCanvas.getContext("2d");
+
         const COLORS = [
           "#4680BE",
           "#D74737",
@@ -706,6 +709,29 @@
         ];
         const BROWN = "#4B332D";
         const LETTERS = ["U", "N", "S", "E", "E", "N"];
+
+        const imgSources = {
+          "U": "assets/png/01-Logo/logo_U.png",
+          "N": "assets/png/01-Logo/logo_N.png",
+          "S": "assets/png/01-Logo/logo_S.png",
+          "E": "assets/png/01-Logo/logo_E.png"
+        };
+        const images = {};
+        let loadedCount = 0;
+        let imagesReady = false;
+
+        for (let key in imgSources) {
+          const img = new Image();
+          img.src = imgSources[key];
+          img.onload = () => {
+            loadedCount++;
+            if (loadedCount === 4) {
+              imagesReady = true;
+              start();
+            }
+          };
+          images[key] = img;
+        }
 
         // Timing (seconds)
         const T = {
@@ -751,26 +777,23 @@
         function resize() {
           W = canvas.width = intro.clientWidth;
           H = canvas.height = intro.clientHeight;
-          fontSize = Math.min(W * 0.18, H * 0.35, 200);
+          fontSize = Math.min(W * 0.18, H * 0.35, 200) / 2; // 縮小一半
           ballRadius = fontSize * 0.38;
           letterPositions = measureLetters();
         }
 
+        const RELATIVE_CX = [0.8105, 1.8660, 2.8856, 3.8856, 4.8758, 5.9052];
+        const RELATIVE_W = [0.8562, 0.8235, 0.8758, 0.7712, 0.7712, 0.8235];
+        const LEFT_OFFSET = 0.3824;
+        const TOTAL_W_RATIO = 5.9346;
+
         function measureLetters() {
-          ctx.font = `900 ${fontSize}px 'Franklin Gothic Medium Regular', Arial Black, sans-serif`;
-          ctx.textBaseline = "middle";
-          const totalW = LETTERS.reduce(
-            (acc, l) => acc + ctx.measureText(l).width,
-            0,
-          );
-          const spacing = fontSize * 0.05;
-          const fullW = totalW + spacing * (LETTERS.length - 1);
-          let x = (W - fullW) / 2;
+          const totalW = TOTAL_W_RATIO * fontSize;
+          const startX = (W - totalW) / 2;
           const y = H / 2;
-          return LETTERS.map((l) => {
-            const w = ctx.measureText(l).width;
-            const cx = x + w / 2;
-            x += w + spacing;
+          return LETTERS.map((l, i) => {
+            const cx = startX + (RELATIVE_CX[i] - LEFT_OFFSET) * fontSize;
+            const w = RELATIVE_W[i] * fontSize;
             return { cx, cy: y, w };
           });
         }
@@ -891,23 +914,37 @@
             } else {
               // Draw letter with radial reveal from center outward
               // Use clipping: reveal circle expanding from letter center
-              ctx.save();
-              if (fillP < 1) {
-                // Clip to expanding circle
-                const maxR = Math.sqrt(
-                  target.w * target.w + fontSize * fontSize,
-                );
-                const clipR = ease(fillP) * maxR * 1.5;
-                ctx.beginPath();
-                ctx.arc(target.cx, target.cy, clipR, 0, Math.PI * 2);
-                ctx.clip();
+              const letter = LETTERS[i];
+              const img = images[letter];
+              
+              if (img && img.complete) {
+                const imgH = fontSize * 2.06;
+                const imgW = imgH * (412 / 309);
+                const imgX = target.cx - imgW / 2;
+                const imgY = target.cy - imgH / 2;
+
+                tempCanvas.width = imgW;
+                tempCanvas.height = imgH;
+                tempCtx.clearRect(0, 0, imgW, imgH);
+                tempCtx.drawImage(img, 0, 0, imgW, imgH);
+                tempCtx.globalCompositeOperation = "source-in";
+                tempCtx.fillStyle = currentColor;
+                tempCtx.fillRect(0, 0, imgW, imgH);
+
+                ctx.save();
+                if (fillP < 1) {
+                  // Clip to expanding circle
+                  const maxR = Math.sqrt(
+                    target.w * target.w + fontSize * fontSize,
+                  );
+                  const clipR = ease(fillP) * maxR * 1.5;
+                  ctx.beginPath();
+                  ctx.arc(target.cx, target.cy, clipR, 0, Math.PI * 2);
+                  ctx.clip();
+                }
+                ctx.drawImage(tempCanvas, imgX, imgY);
+                ctx.restore();
               }
-              ctx.font = `900  ${fontSize}px 'Franklin Gothic Medium Regular', Arial Black, sans-serif`;
-              ctx.textBaseline = "middle";
-              ctx.textAlign = "center";
-              ctx.fillStyle = currentColor;
-              ctx.fillText(LETTERS[i], target.cx, target.cy);
-              ctx.restore();
             }
 
             ctx.restore();
@@ -932,6 +969,7 @@
         }
 
         function start() {
+          if (!imagesReady) return;
           resize();
           initBallStarts();
           startTime = null;
